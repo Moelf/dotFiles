@@ -6,8 +6,6 @@
 ### Variables
 #
 exec --no-startup-id ibus-daemon -drx
-exec --no-startup-id albert
-exec --no-startup-id eval $(ssh-agent) 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -61,7 +59,7 @@ client.background       #212121
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/akako/Pictures/Wallpapers/Street.jpg fill
+output * bg ~/Pictures/Wallpapers/Street.jpg fill
 # output eDP-1 scale 2
 output DP-2 scale 2
 #
@@ -246,10 +244,6 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk 
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-# Print screen
-bindsym Print exec swaygrab ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")
-bindsym Ctrl+Print exec scrot --focused --count --delay 0.5 --quality 80 --silent $screenshot_file && notify-send "done"
-
 #
 # Status Bar:
 #
@@ -263,19 +257,10 @@ bar {
     position bottom
     pango_markup enabled
     font Hack, FontAwesome5Free, IonicIcons 12
-    # font pango:Font Awesome, Hack, IonicIcons 14
     status_command i3blocks
-    # tray_output eDP-1
-    # output eDP-1
     separator_symbol " | "
     srtip_workspace_number no
     height 60
-    # colors {
-    #     statusline #ffffff
-    #     background #32323266
-    #     active_workspace #323232 #323232 #00000000
-    #     inactive_workspace #323232 #323232 #00000000
-    # }
     colors {
         background  #21212155
         # statusline  #000000
@@ -287,16 +272,6 @@ bar {
         urgent_workspace    #D64E4E #D64E4E #FFFFFF
     }
 }
-# bar {
-#     position top
-#     font hack 10
-#     colors {
-#         statusline #ffffff
-#         background #32323200
-#         active_workspace #323232 #323232 #00000000
-#         inactive_workspace #323232 #323232 #00000000
-#     }
-# }
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 #start up sequenc
