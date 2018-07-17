@@ -1,17 +1,26 @@
 command=/usr/lib/i3blocks/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=-1
 color=#F3F4F5
 markup=pango
+
+
+[media]
+label=♫
+command=mpc current
+color=#FF99AA
+interval=1
+separator=false
+signal=10
 
 [volume]
 label=
 instance=Master
 interval=1
+separator=true
 signal=10
 
-
 [time]
-command= date '+%m/%Y %H:%M'
+command= date '+%d/%m %H:%M'
 label=
 interval=1
 
@@ -44,12 +53,12 @@ interval=10
 #color=#dcedc1
 separator=true
 
-[iface]
-label=
-instance=wlp61s0
+#[iface]
+#label=
+#instance=wlp61s0
 #color=#00FFFF
-interval=10
-separator=true
+#interval=10
+#separator=true
 
 [bandwidth]
 label=

@@ -258,9 +258,9 @@ gaps outer 5
 bar {
     position bottom
     pango_markup enabled
-    font Hack, FontAwesome5Free, IonicIcons 12
+    font Hack, FontAwesome5Free, IonicIcons 11
     status_command i3blocks
-    separator_symbol " | "
+    separator_symbol "|"
     srtip_workspace_number no
     height 60
     colors {
