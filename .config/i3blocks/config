@@ -28,12 +28,17 @@ separator=false
 [memory]
 label=
 separator=true
-interval=1
+interval=2
 #color=#dfe3ee
+
+[cpu_usage]
+label=
+interval=2
+separator=false
 
 [temperature]
 #label=TEMP
-label=
+label=
 interval=10
 #color=#8caba8
 #color=#dcedc1

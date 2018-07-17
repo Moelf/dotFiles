@@ -1,4 +1,5 @@
 for_window [id="nautilus"] border pixel
 for_window [id="gnome-*"] floating enable; border pixel
 for_window [id="ibus-*"] floating enable; border pixel
+for_window [id="skype-*"] floating enable; border pixel
 for_window [class="Chromium"] border none
