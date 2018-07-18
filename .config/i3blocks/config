@@ -1,23 +1,23 @@
 command=/usr/lib/i3blocks/$BLOCK_NAME
-separator_block_width=-1
+separator_block_width=0
 color=#F3F4F5
 markup=pango
+full_text=
+align=right
 
 
 [media]
 label=♫
-command=mpc current
+command=mpc current -f "%title%"
 color=#FF99AA
-interval=1
+interval=3
 separator=false
-signal=10
 
 [volume]
 label=
 instance=Master
 interval=1
 separator=true
-signal=10
 
 [time]
 command= date '+%d/%m %H:%M'
@@ -27,17 +27,13 @@ interval=1
 [disk]
 label=
 instance=/mnt
-interval=30
+interval=60
 separator=false
-#color=#ffff00
-#[disk-home]
-#command=df -h -P -l $HOME | awk '/\/.*/ { print $3; exit 0 }'
-#interval=30
 
 [memory]
 label=
 separator=true
-interval=2
+interval=5
 #color=#dfe3ee
 
 [cpu_usage]
@@ -70,4 +66,4 @@ color=#83d0c9
 [battery]
 label=
 instance=0
-interval=5
+interval=30

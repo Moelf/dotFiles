@@ -59,7 +59,7 @@ client.background       #212121
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpapers/Street.jpg fill
+output * bg ~/Pictures/Wallpapers/rock.jpg fill
 # output eDP-1 scale 2
 output DP-2 scale 2
 #
@@ -244,9 +244,12 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk 
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-# bindsym $mod+Pause exec swaylock -i ~/Pictures/Wallpapers/rzw2v1mue0111.png --scaling fill 
-bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
-bindsym Print exec swaygrab ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")
+bindsym $mod+Pause exec mpc pause & swaylock -i ~/Pictures/Wallpapers/rzw2v1mue0111.png --scaling fill 
+# bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
+bindsym $mod+Print exec swaygrab ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")
+bindsym Print exec /home/akako/imgcat.sh
+# bindsym Print exec termite -e /home/akako/imgcat.sh
+
 #
 # Status Bar:
 #
@@ -259,11 +262,11 @@ gaps outer 5
 bar {
     position bottom
     pango_markup enabled
-    font Hack, FontAwesome5Free, IonicIcons 11
+    font Hack, FontAwesome5Free, IonicIcons 14
     status_command i3blocks
     separator_symbol "|"
     srtip_workspace_number no
-    height 60
+    height 40
     colors {
         background  #21212155
         # statusline  #000000
