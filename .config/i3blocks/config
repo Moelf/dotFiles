@@ -6,11 +6,11 @@ full_text=
 align=right
 
 
-[media]
+[mediaplayer]
 label=♫
-command=mpc current -f "%title%"
-color=#FF99AA
-interval=3
+instance=mpd
+interval=1
+signal=10
 separator=false
 
 [volume]
@@ -66,4 +66,4 @@ color=#83d0c9
 [battery]
 label=
 instance=0
-interval=30
+interval=1

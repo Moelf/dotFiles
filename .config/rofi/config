@@ -1,4 +1,4 @@
-rofi.combi-modi:    window,run,ssh
+rofi.combi-modi:    window,drun,ssh
 rofi.font:          Hack 18
 rofi.modi:          combi
 rofi.color-window: argb:EE373B47, #373B47

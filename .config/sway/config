@@ -281,4 +281,4 @@ bar {
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 #start up sequenc
-exec sh ~/office.sh
+always_exec sh ~/office.sh
