@@ -62,6 +62,7 @@ plugins=(
   gitfast
   sudo
   python
+  autojump 
   zsh-autosuggestions
   pip
 )
@@ -103,6 +104,7 @@ alias python=python3
 alias ll=ls\ -alF
 alias uaf7=ssh\ -q\ -Y\ jling@uaf-7.t2.ucsd.edu\ -t\ zsh
 alias uaf8=ssh\ -q\ -Y\ jling@uaf-8.t2.ucsd.edu\ -t\ zsh
+alias uaf4=ssh\ -q\ -Y\ jling@uaf-4.t2.ucsd.edu\ -t\ zsh
 alias syncnas=rsync\ -r\ -n\ -t\ -v\ --progress\ -s\ /home/akako/NASHomes\ akako@192.168.50.146:/volume1/homes/akako/WebArchive\ 
 alias tau=ssh\ -Y\ jling@tau.physics.ucsb.edu
 alias ex=ssh\ -Y\ ex@moelf.xyz\ -t\ zsh
