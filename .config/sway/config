@@ -20,7 +20,7 @@ set $term urxvt
 set $menu rofi -show combi
 set $launcher albert toggle
 # Your preferred file explorer
-set $file_exp nautilus 
+set $file_exp ranger
 # colors
 default_border pixel 4
 set $base00 #282828
@@ -50,7 +50,7 @@ set $base0F #d65d0e
 # client.placeholder      $base00 $base00 $base05 $base00 $base00
 # client.background       $base07
 # class                 border  backgr. text    indicator child_border
-client.focused          #2B83A6 #2B83A6 #FFFFFF #DDDDDD   #2B83A6
+client.focused          #5A6A83 #B55A45 #FFFFFF #DDDDDD   #DA6971
 client.focused_inactive #212121 #212121 #86888C #292D2E   #5A5A5A
 client.unfocused        #212121 #212121 #86888C #292D2E   #5A5A5A
 client.urgent           #D64E4E #D64E4E #FFFFFF #D64E4E   #D64E4E
@@ -60,9 +60,9 @@ client.background       #212121
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpapers/rock.jpg fill
+output * bg ~/Pictures/rock.jpg fill
 # output eDP-1 scale 2
-output DP-2 scale 2
+# output DP-2 scale 2
 #
 # Example configuration:
 #
@@ -261,11 +261,12 @@ gaps inner 10
 gaps outer 5
 bar {
     position bottom
-    pango_markup enabled
-    font Hack, FontAwesome5Free, IonicIcons 14
+    pango_markup enable 
+    font Hack, Font Awesome 5 Free
+    # font Hack, Ionicons 14
     status_command i3blocks
     separator_symbol "|"
-    srtip_workspace_number no
+    srtip_workspace_number yes
     height 40
     colors {
         background  #21212155

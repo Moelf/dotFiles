@@ -2,13 +2,13 @@
 URxvt.perl-ext-common: default,matcher,resize-font
 URxvt.scrollBar: false
 URxvt.termName: xterm-256color
-URxvt.font: xft:Hack:size=16:antialias=true, xft:dejavu sans:16
-URxvt.boldFont: xft:Hack:size=16:Bold
-URxvt.italicFont: xft:Hack:size=16:Italic
+URxvt.font: xft:Hack:size=16:antialias=true, xft:Font Awesome 5 Free:16, xft:dejavu sans:16
+URxvt.boldfont: xft:Hack:size=16:Bold:antialias=true, xft:Font Awesome 5 Free:Bold:16, xft:dejavu sans:Bold:16
+URxvt.italicfont: xft:Hack:size=16:Italic:antialias=true, xft:Font Awesome 5 Free:Italic:16, xft:dejavu sans:Italic:16
 URxvt.boldItalicFont: xft:Hack:size=16:Bold:Italic
 URxvt.foreground:       #839496
 URxvt.internalBorder: 15
-URxvt.letterSpace: 2
+URxvt.letterSpace:1
 URxvt*depth: 32
 URxvt.foreground : #D8DEE9
 URxvt.background : [80]#3F403F
