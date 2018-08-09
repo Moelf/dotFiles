@@ -1,14 +1,14 @@
 ! URxvt
 URxvt.perl-ext-common: default,matcher,resize-font
 URxvt.scrollBar: false
-URxvt.termName: rxvt-256color
-URxvt.font: xft:Hack:size=15:antialias=true
-URxvt.boldFont: xft:Hack:size=15:Bold
-URxvt.italicFont: xft:Hack:size=15:Italic
-URxvt.boldItalicFont: xft:Hack:size=15:Bold:Italic
+URxvt.termName: xterm-256color
+URxvt.font: xft:Hack:size=16:antialias=true, xft:dejavu sans:16
+URxvt.boldFont: xft:Hack:size=16:Bold
+URxvt.italicFont: xft:Hack:size=16:Italic
+URxvt.boldItalicFont: xft:Hack:size=16:Bold:Italic
 URxvt.foreground:       #839496
 URxvt.internalBorder: 15
-URxvt.letterSpace: 0.8
+URxvt.letterSpace: 2
 URxvt*depth: 32
 URxvt.foreground : #D8DEE9
 URxvt.background : [80]#3F403F

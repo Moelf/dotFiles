@@ -59,15 +59,16 @@ ZSH_THEME="agnoster_cus"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  zsh-autosuggestions
   gitfast
   sudo
   python
   autojump 
-  zsh-autosuggestions
   pip
 )
 
 source $ZSH/oh-my-zsh.sh
+export TERM=xterm-256color 
 
 # User configuration
 

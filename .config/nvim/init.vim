@@ -22,6 +22,7 @@ inoremap kj <Esc>`^
 inoremap <Esc> USE kj
 "open file under cursor in v split
 nnoremap gf <C-W>vgf
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
 set expandtab
 set smarttab
@@ -30,6 +31,9 @@ set tabstop=4
 set autoindent
 set smartindent
 set wrap
+" set a directory to store the undo history
+set undofile
+set undodir=~/.vimundo/
 
 
 call plug#begin('~/.vim/plugged')
@@ -57,6 +61,8 @@ Plug 'ajh17/VimCompletesMe'
 Plug 'parnmatt/vim-root'
 "linter
 Plug 'w0rp/ale'
+"python-folding
+Plug 'tmhedberg/SimpylFold'
 
 "powerline
 Plug 'itchyny/lightline.vim'
