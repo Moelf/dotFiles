@@ -1,0 +1,12 @@
+[playlist]
+File1=http://14523.live.streamtheworld.com:80/KUSCMP96_SC
+File2=http://14523.live.streamtheworld.com:3690/KUSCMP96_SC
+File3=http://18543.live.streamtheworld.com:80/KUSCMP96_SC
+File4=http://18543.live.streamtheworld.com:3690/KUSCMP96_SC
+File5=http://13983.live.streamtheworld.com:80/KUSCMP96_SC
+File6=http://13983.live.streamtheworld.com:3690/KUSCMP96_SC
+Title1=KUSCMP96_SC
+Title2=KUSCMP96_SC-Bak
+Length1=-1
+NumberOfEntries=6
+Version=2
