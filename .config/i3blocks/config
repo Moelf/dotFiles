@@ -8,7 +8,7 @@ align=right
 
 [mediaplayer]
 label=♫
-instance=mpc
+instance=mpd
 interval=1
 signal=10
 separator=false
