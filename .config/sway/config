@@ -203,6 +203,9 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
 
     # move focus to the parent container
     bindsym $mod+a focus parent
+    # move back and forth
+    bindsym $mod+a focus parent
+    bindsym Alt+Tab workspace back_and_forth
 #
 # Scratchpad:
 #
