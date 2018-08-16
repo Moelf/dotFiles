@@ -264,11 +264,11 @@ gaps inner 10
 gaps outer 5
 bar {
     position bottom
-    pango_markup enable 
+    # pango_markup enable 
     font Hack, Font Awesome 5 Free
     status_command i3blocks
     separator_symbol "|"
-    srtip_workspace_number yes
+    # srtip_workspace_number yes
     height 40
     colors {
         background  #21212155

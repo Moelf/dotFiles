@@ -1,6 +1,8 @@
 ! URxvt
 URxvt.perl-ext-common: default,matcher,resize-font
 URxvt.scrollBar: false
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
 URxvt.termName: xterm-256color
 URxvt.font: xft:Hack:size=16:antialias=true, xft:Font Awesome 5 Free:16, xft:dejavu sans:16
 URxvt.boldfont: xft:Hack:size=16:Bold:antialias=true, xft:Font Awesome 5 Free:Bold:16, xft:dejavu sans:Bold:16

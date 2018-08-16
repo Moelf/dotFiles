@@ -79,7 +79,7 @@ export TERM=xterm-256color
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+  export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -99,6 +99,7 @@ export TERM=xterm-256color
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim=nvim\ -O
+export EDITOR='nvim -O'
 alias zshrc=vim\ ~/.zshrc
 alias root=root\ -l
 alias python=python3
