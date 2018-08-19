@@ -6,3 +6,4 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 [ ! -s ~/.config/mpd/pid ] && mpd
+exec sway

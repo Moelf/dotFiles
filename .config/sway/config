@@ -74,7 +74,7 @@ output * bg ~/Pictures/rock.jpg fill
 #
 # Example configuration:
 #
-input "2:14:ETPS/2_Elantech_Touchpad" {
+input "1267:32:Elan_Touch" {
   tap enabled
   natural_scroll enabled
 }
