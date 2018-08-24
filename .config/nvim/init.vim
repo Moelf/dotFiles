@@ -17,7 +17,7 @@ set shiftwidth=4
 set tabstop=4
 syntax enable
 filetype plugin indent on
-colorscheme wombat
+colorscheme elflord
 "terminal enviroment
 set shell=/bin/zsh
 "escape alternative

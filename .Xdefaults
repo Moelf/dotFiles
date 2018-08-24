@@ -4,7 +4,7 @@ URxvt.scrollBar: false
 URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
 URxvt.termName: xterm-256color
-URxvt.font: xft:Hack:size=16:antialias=true, xft:Font Awesome 5 Free:16, xft:dejavu sans:16, xft:SourceHanSansCN:16
+URxvt.font: xft:Hack:size=16:antialias=true, xft:FontAwesome:16, xft:dejavu sans:16, xft:SourceHanSansCN:16
 URxvt.boldfont: xft:Hack:size=16:Bold:antialias=true, xft:Font Awesome 5 Free:Bold:16, xft:dejavu sans:Bold:16,xft:SourceHanSansCN:Bold:16
 URxvt.italicfont: xft:Hack:size=16:Italic:antialias=true, xft:Font Awesome 5 Free:Italic:16, xft:dejavu sans:Italic:16
 URxvt.boldItalicFont: xft:Hack:size=16:Bold:Italic
