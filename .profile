@@ -6,3 +6,5 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 exec sway
+
+export PATH="$HOME/.cargo/bin:$PATH"
