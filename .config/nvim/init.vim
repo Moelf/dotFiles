@@ -30,6 +30,9 @@ inoremap <Esc> USE kj
 nnoremap gf <C-W>vgf
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " set a directory to store the undo history
 set undofile
@@ -64,20 +67,43 @@ Plug 'tpope/vim-surround'
 "ale
 Plug 'w0rp/ale'
 "deoplete
-Plug 'Shougo/echodoc.vim'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-" complete with words from any opened file
-let g:context_filetype#same_filetypes = {}
-let g:context_filetype#same_filetypes._ = '_'
+" Plug 'Shougo/echodoc.vim'
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_ignore_case = 1
+" let g:deoplete#enable_smart_case = 1
+" " complete with words from any opened file
+" let g:context_filetype#same_filetypes = {}
+" let g:context_filetype#same_filetypes._ = '_'
+" assuming your using vim-plug: https://github.com/junegunn/vim-plug
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" IMPORTANTE: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ }
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['~/.local/bin/pyls'],
+    \ 'cpp': ['/usr/bin/clangd'],
+    \ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+set completefunc=LanguageClient#complete
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
 "git-gitter
 Plug 'airblade/vim-gitgutter'
 "Julia
