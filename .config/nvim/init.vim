@@ -15,9 +15,11 @@ set updatetime=100
 set smarttab
 set shiftwidth=4
 set tabstop=4
+set nowrap
+" set termguicolors
 syntax enable
 filetype plugin indent on
-colorscheme elflord
+colorscheme slate
 "terminal enviroment
 set shell=/bin/zsh
 "escape alternative
@@ -27,6 +29,7 @@ inoremap <Esc> USE kj
 "open file under cursor in v split
 nnoremap gf <C-W>vgf
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
 
 " set a directory to store the undo history
 set undofile
@@ -79,5 +82,10 @@ let g:context_filetype#same_filetypes._ = '_'
 Plug 'airblade/vim-gitgutter'
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'
+"IndentLine
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char = '▏'
+let g:indentLine_color_term = 244
 " Initialize plugin system
+"
 call plug#end()

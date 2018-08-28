@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/akako/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -106,6 +106,7 @@ alias python=python3
 alias ll=ls\ -alFh
 alias uaf7=ssh\ -q\ -Y\ jling@uaf-7.t2.ucsd.edu\ -t\ zsh
 alias uaf8=ssh\ -q\ -Y\ jling@uaf-8.t2.ucsd.edu\ -t\ zsh
+alias uaf10=ssh\ -q\ -Y\ jling@uaf-10.t2.ucsd.edu\ -t\ zsh
 alias uaf4=ssh\ -q\ -Y\ jling@uaf-4.t2.ucsd.edu\ -t\ zsh
 alias syncnas=rsync\ -r\ -n\ -t\ -v\ --progress\ -s\ /home/akako/NASHomes\ akako@192.168.50.146:/volume1/homes/akako/WebArchive\ 
 alias tau=ssh\ -Y\ jling@tau.physics.ucsb.edu
