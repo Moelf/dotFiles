@@ -15,7 +15,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # set $term termite
-set $term urxvt
+set $term kitty
 # Your preferred application launcher
 set $menu rofi -show combi
 set $launcher albert toggle
@@ -141,7 +141,7 @@ input "1267:32:Elan_Touch" {
     # define names for workspaces
     set $ws1  "1:   Terminal "
     set $ws2  "2:   Code "
-    set $ws3  "3:   Chromium "
+    set $ws3  "3:  Chrome"
     set $ws4  "4:  Files "
     set $ws5  "5:   Documents "
     set $ws6  "6:   Media "
@@ -173,7 +173,6 @@ input "1267:32:Elan_Touch" {
     bindsym $mod+Shift+0 move container to workspace $ws10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    workspace "3:   Chromium "; exec chromium
     # workspace "4:  Files ";exec nautilus
     # workspace "8:   Chat "; exec telegram-desktop
     workspace "1:   Terminal "; exec $term
@@ -243,6 +242,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym $mod+0 exec mpc next
+bindsym $mod+9 exec mpc prev
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%

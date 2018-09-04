@@ -23,6 +23,8 @@ mpc
 mpd
 ncmpcpp
 neovim
+neofetch
+kitty
 netctl
 openssh
 pavucontrol
