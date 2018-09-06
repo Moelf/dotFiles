@@ -9,10 +9,14 @@ set noshowmode  "Because we have powerline
 let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ }
+"NerdTree
+Plug 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
 "rainbow paren
 Plug 'kien/rainbow_parentheses.vim'
 "golden-ratio
 Plug 'roman/golden-ratio'
+"To make NerdTree look better
 "cursor-word
 Plug 'itchyny/vim-cursorword'
 "vim-rooc syntax
@@ -38,6 +42,10 @@ Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+"Julia
+Plug 'JuliaEditorSupport/julia-vim'
+let g:default_julia_version = '0.6'
+let g:LanguageClient_autoStart = 1
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 " IMPORTANTE: :help Ncm2PopupOpen for more information
@@ -51,6 +59,12 @@ Plug 'autozimu/LanguageClient-neovim', {
 let g:LanguageClient_serverCommands = {
     \ 'python': ['~/.local/bin/pyls'],
     \ 'cpp': ['/usr/bin/clangd'],
+    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+    \     using LanguageServer;
+    \     server = LanguageServer.LanguageServerInstance(STDIN, STDOUT, false);
+    \     server.runlinter = true;
+    \     run(server);
+    \ '],
     \ }
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 set completefunc=LanguageClient#complete
@@ -60,8 +74,6 @@ set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 "Vim LaTeX
 Plug 'lervag/vimtex'
 let g:vimtex_compiler_progname = 'nvr'
-"Julia
-Plug 'JuliaEditorSupport/julia-vim'
 " Initialize plugin system
 call plug#end()
 
@@ -95,11 +107,14 @@ inoremap kj <Esc>`^
 inoremap <Esc> USE kj
 "open file under cursor in v split
 nnoremap gf <C-W>vgf
-nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+nnoremap P :pu<CR>
+autocmd FileType python nnoremap <buffer> <C-p> :exec '!python' shellescape(@%,1)<CR>
+autocmd FileType julia  nnoremap <buffer> <C-p> :exec '!julia' shellescape(@%,1)<CR>
 nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:golden_ratio_exclude_nonmodifiable = 1
 
 " set a directory to store the undo history
 set undofile
