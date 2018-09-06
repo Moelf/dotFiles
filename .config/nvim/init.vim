@@ -13,6 +13,8 @@ let g:lightline = {
 Plug 'kien/rainbow_parentheses.vim'
 "golden-ratio
 Plug 'roman/golden-ratio'
+"cursor-word
+Plug 'itchyny/vim-cursorword'
 "vim-rooc syntax
 Plug 'parnmatt/vim-root'
 "python-folding
@@ -66,7 +68,7 @@ call plug#end()
 set number 
 set autoindent
 set smartindent
-set wrap
+set nowrap
 set ruler
 set ignorecase
 set hlsearch
