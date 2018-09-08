@@ -41,6 +41,8 @@ sway
 sysstat
 tk
 tree
+zsh
+fzf
 vim
 vulkan-intel
 w3m

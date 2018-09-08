@@ -100,6 +100,7 @@ export TERM=xterm-256color
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim=nvim\ -O
+alias vimdiff=nvim\ -d
 export EDITOR='nvim -O'
 alias zshrc=vim\ ~/.zshrc
 alias root=root\ -l
@@ -126,3 +127,4 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
+source /usr/share/fzf/key-bindings.zsh
