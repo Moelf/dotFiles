@@ -29,6 +29,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 "git-gitter
 Plug 'airblade/vim-gitgutter'
+"Vimwiki
+Plug 'vimwiki/vimwiki'
 "IndentLine
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '▏'
@@ -42,6 +44,15 @@ Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'SirVer/ultisnips'
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+" c-j c-k for moving in snippet
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'
 let g:default_julia_version = '0.6'
@@ -108,8 +119,8 @@ inoremap <Esc> USE kj
 "open file under cursor in v split
 nnoremap gf <C-W>vgf
 nnoremap P :pu<CR>
-autocmd FileType python nnoremap <buffer> <C-p> :exec '!python' shellescape(@%,1)<CR>
-autocmd FileType julia  nnoremap <buffer> <C-p> :exec '!julia' shellescape(@%,1)<CR>
+autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>
+autocmd FileType julia  nnoremap <buffer> <C-p> :w<CR>:exec '!julia' shellescape(@%,1)<CR>
 nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

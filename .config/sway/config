@@ -176,7 +176,7 @@ input "1267:32:Elan_Touch" {
     # workspace "4:  Files ";exec nautilus
     # workspace "8:   Chat "; exec telegram-desktop
     workspace "1:   Terminal "; exec $term
-#
+    workspace "2:   Code "; exec chromium --app=https://gitter.im/
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
@@ -247,7 +247,7 @@ bindsym $mod+9 exec mpc prev
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym $mod+Pause exec mpc pause & swaylock -i ~/Pictures/Wallpapers/rzw2v1mue0111.png --scaling fill 
+bindsym $mod+Home exec mpc pause & swaylock -i ~/Pictures/Wallpaper/Portal.png -c 000000 
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec swaygrab ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")
 bindsym Print exec /home/akako/imgcat.sh
