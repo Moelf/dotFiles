@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
-"
 Plug 'morhetz/gruvbox'
 "powerline
 Plug 'itchyny/lightline.vim'
@@ -56,7 +55,7 @@ let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'
-let g:default_julia_version = '0.6'
+let g:default_julia_version = '0.7'
 let g:LanguageClient_autoStart = 1
 " enable ncm2 for all buffers
 au User Ncm2Plugin call ncm2#register_source({                                
@@ -82,12 +81,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 let g:LanguageClient_serverCommands = {
     \ 'python': ['~/.local/bin/pyls'],
     \ 'cpp': ['/usr/bin/clangd'],
-    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
-    \     using LanguageServer;
-    \     server = LanguageServer.LanguageServerInstance(STDIN, STDOUT, false);
-    \     server.runlinter = true;
-    \     run(server);
-    \ '],
     \ }
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 set completefunc=LanguageClient#complete
