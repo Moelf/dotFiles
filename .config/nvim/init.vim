@@ -35,6 +35,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '▏'
 let g:indentLine_color_term = 244
+let g:indentLine_fileTypeExclude=['tex','txt']
 let g:indentLine_concealcursor="cv"
 
 "ale
@@ -58,6 +59,17 @@ Plug 'JuliaEditorSupport/julia-vim'
 let g:default_julia_version = '0.6'
 let g:LanguageClient_autoStart = 1
 " enable ncm2 for all buffers
+au User Ncm2Plugin call ncm2#register_source({                                
+            \ 'name' : 'vimtex',                                                      
+            \ 'priority': 9,                                                          
+            \ 'subscope_enable': 1,                                                   
+            \ 'complete_length': 1,                                                   
+            \ 'scope': ['tex'],                                                       
+            \ 'mark': 'tex',                                                          
+            \ 'word_pattern': '\w+',                                                  
+            \ 'complete_pattern': g:vimtex#re#ncm,                                    
+            \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],   
+            \ })         
 autocmd BufEnter * call ncm2#enable_for_buffer()
 " IMPORTANTE: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
@@ -84,10 +96,18 @@ let g:LanguageClient_diagnosticsEnable=0
 set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 "Vim LaTeX
 Plug 'lervag/vimtex'
+let g:tex_conceal = "amgs"
 let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_complete_close_braces = 1
+let g:vimtex_fold_enabled = 1
 " Initialize plugin system
 call plug#end()
-
+call vimtex#imaps#add_map({
+            \ 'lhs' : '<m-b>',
+            \ 'rhs' : '\begin{',
+            \ 'leader'  : '',
+            \ 'wrapper' : 'vimtex#imaps#wrap_trivial'
+            \})
 set number 
 set autoindent
 set smartindent
