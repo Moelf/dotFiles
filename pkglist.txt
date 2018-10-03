@@ -3,7 +3,7 @@ alsa-utils
 autojump
 bluez-utils
 bzip2
-chromium
+firefox-developer-edition
 clang
 cmake
 coreutils
