@@ -93,6 +93,8 @@ let g:tex_conceal = "amgs"
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_complete_close_braces = 1
 let g:vimtex_fold_enabled = 1
+let g:vimtex_view_method = 'zathura'
+let g:tex_flavor = 'latex'
 " Initialize plugin system
 call plug#end()
 call vimtex#imaps#add_map({
