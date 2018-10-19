@@ -105,6 +105,7 @@ export EDITOR='nvim -O'
 alias zshrc=vim\ ~/.zshrc
 alias root=root\ -l
 alias python=python3
+alias du=ncdu
 alias ll=ls\ -alFh
 alias uaf7=ssh\ -q\ -Y\ jling@uaf-7.t2.ucsd.edu\ -t\ zsh
 alias uaf8=ssh\ -q\ -Y\ jling@uaf-8.t2.ucsd.edu\ -t\ zsh
