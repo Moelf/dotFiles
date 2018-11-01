@@ -15,7 +15,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # set $term termite
-set $term kitty
+set $term env KITTY_ENABLE_WAYLAND=1 kitty
 # Your preferred application launcher
 set $menu rofi -show combi
 set $launcher albert toggle
@@ -60,7 +60,7 @@ client.background       #212121
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpaper/rock.jpg fill
+output * bg ~/Pictures/Wallpaper/wallhaven-423557.jpg fill
 # output eDP-1 scale 2
 # output DP-2 scale 2
 #
