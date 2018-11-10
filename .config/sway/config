@@ -252,14 +252,11 @@ bindsym Print exec /home/akako/imgcat.sh
 # bindsym Print exec termite -e /home/akako/imgcat.sh
 
 #
+gaps inner 5
+gaps outer 5
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-# # Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-gaps inner 10
-gaps outer 5
 bar {
     position bottom
     # pango_markup enable 
