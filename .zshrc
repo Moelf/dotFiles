@@ -117,6 +117,7 @@ alias ex=ssh\ -Y\ ex@moelf.xyz\ -t\ zsh
 alias here=xdg-open\ .
 alias rimecon=cd\ ~/.config/ibus/rime
 alias cern=ssh\ jiling@lxplus.cern.ch
+alias icat="kitty +kitten icat"
 alias ci=sh\ ~/imgcat.sh
 if [ $(tty) = "/dev/tty1" ]; then
 	sway
