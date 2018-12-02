@@ -194,12 +194,12 @@ input "1267:32:Elan_Touchpad" {
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
 
     # move focus to the parent container
     bindsym $mod+a focus parent
     # move back and forth
-    bindsym $mod+a focus parent
+    # bindsym $mod+a focus parent
     bindsym Alt+Tab workspace back_and_forth
 #
 # Scratchpad:
@@ -239,12 +239,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
-bindsym $mod+0 exec mpc next
-bindsym $mod+9 exec mpc prev
+# bindsym $mod+0 exec mpc next
+# bindsym $mod+9 exec mpc prev
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym $mod+Home exec mpc pause & swaylock -i ~/Pictures/Wallpaper/Portal.png -c 000000 
+bindsym $mod+Home exec mpc pause & swaylock -i ~/Pictures/Wallpaper/DITFLogo.png
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindsym Alt+A exec slurp | grim -g - $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
