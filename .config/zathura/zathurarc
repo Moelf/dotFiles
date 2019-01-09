@@ -1,4 +1,4 @@
-set recolor true
+#set recolor true
 set recolor-darkcolor "#b0b0a0"
 set recolor-lightcolor "#2a2a2a"
 set window-title-basename "true"

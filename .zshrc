@@ -119,14 +119,17 @@ alias rimecon=cd\ ~/.config/ibus/rime
 alias cern=ssh\ jiling@lxplus.cern.ch
 alias icat="kitty +kitten icat"
 alias ci=sh\ ~/imgcat.sh
+alias start_gnome=XDG_SESSION_TYPE=wayland\ dbus-run-session\ gnome-session
 # if [ $(tty) = "/dev/tty1" ]; then
 # 	sway
 # 	exit 0
 # fi
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent`
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+        eval `ssh-agent`
+        ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+    fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
+fi
 source /usr/share/fzf/key-bindings.zsh

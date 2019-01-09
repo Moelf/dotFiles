@@ -60,7 +60,7 @@ client.background       #212121
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpaper/ApertureLogo.png fill
+output * bg ~/Pictures/Wallpaper/temple.png fill
 # output eDP-1 scale 2
 # output DP-2 scale 2
 #
@@ -244,7 +244,7 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk 
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym $mod+Home exec mpc pause & swaylock -i ~/Pictures/Wallpaper/DITFLogo.png
+bindsym $mod+Home exec mpc pause & swaylock -i ~/Pictures/Wallpaper/SnowMountain.jpg
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindsym Alt+A exec slurp | grim -g - $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
