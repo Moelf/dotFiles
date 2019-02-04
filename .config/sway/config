@@ -5,7 +5,8 @@
 
 ### Variables
 #
-exec --no-startup-id ibus-daemon -drx
+# exec --no-startup-id ibus-daemon -drx
+exec ibus-daemon --xim
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -111,7 +112,7 @@ input "1267:32:Elan_Touchpad" {
 
     # exit sway (logs you out of your wayland session)
     bindsym $mod+Shift+e exit
-    bindsym $mod+Shift+r exec ibus-daemon -drx
+    # bindsym $mod+Shift+r exec ibus-daemon -drx
 #
 #
     # Move your focus around
@@ -265,6 +266,7 @@ bar {
     separator_symbol "|"
     # srtip_workspace_number yes
     height 40
+    tray_padding 5
     colors {
         background  #21212155
         # statusline  #000000
