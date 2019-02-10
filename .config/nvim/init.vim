@@ -37,8 +37,13 @@ let g:indentLine_color_term = 244
 let g:indentLine_fileTypeExclude=['tex','txt']
 let g:indentLine_concealcursor="cv"
 
+"virtualenv
+Plug 'plytophogy/vim-virtualenv'
+let g:virtualenv_directory = '~/Documents/'
 "ale
 Plug 'w0rp/ale'
+let b:ale_fixers = ['autopep8']
+let g:ale_fix_on_save = 1
 "NCM2
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
