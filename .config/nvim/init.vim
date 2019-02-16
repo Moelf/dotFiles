@@ -1,4 +1,18 @@
 call plug#begin('~/.vim/plugged')
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+
+"jedi vim
+Plug 'deoplete-plugins/deoplete-jedi'
+
+
 " Make sure you use single quotes
 Plug 'morhetz/gruvbox'
 "powerline
@@ -37,46 +51,15 @@ let g:indentLine_color_term = 244
 let g:indentLine_fileTypeExclude=['tex','txt']
 let g:indentLine_concealcursor="cv"
 
-"virtualenv
-Plug 'plytophogy/vim-virtualenv'
-let g:virtualenv_directory = '~/Documents/'
 "ale
 Plug 'w0rp/ale'
 let b:ale_fixers = ['autopep8']
-let g:ale_fix_on_save = 1
-"NCM2
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'SirVer/ultisnips'
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
-" c-j c-k for moving in snippet
-let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'
 let g:default_julia_version = '0.7'
 let g:LanguageClient_autoStart = 1
 " enable ncm2 for all buffers
-au User Ncm2Plugin call ncm2#register_source({                                
-            \ 'name' : 'vimtex',                                                      
-            \ 'priority': 9,                                                          
-            \ 'subscope_enable': 1,                                                   
-            \ 'complete_length': 1,                                                   
-            \ 'scope': ['tex'],                                                       
-            \ 'mark': 'tex',                                                          
-            \ 'word_pattern': '\w+',                                                  
-            \ 'complete_pattern': g:vimtex#re#ncm,                                    
-            \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],   
-            \ })         
-autocmd BufEnter * call ncm2#enable_for_buffer()
-" IMPORTANTE: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
 
 "Language Server
 Plug 'autozimu/LanguageClient-neovim', {
@@ -135,10 +118,8 @@ set shell=/bin/zsh
 "escape alternative
 tnoremap kj <C-\><C-n>
 inoremap kj <Esc>`^
-inoremap <Esc> USE kj
 "open file under cursor in v split
 nnoremap gf <C-W>vgf
-nnoremap P :pu<CR>
 autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>
 autocmd FileType julia  nnoremap <buffer> <C-p> :w<CR>:exec '!julia' shellescape(@%,1)<CR>
 nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
@@ -154,3 +135,9 @@ let mapleader=";"
 colorscheme gruvbox
 set background=dark
 highlight Normal guibg=NONE ctermbg=None
+" Figure out the system Python for Neovim.
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+endif
