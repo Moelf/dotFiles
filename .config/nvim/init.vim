@@ -122,6 +122,7 @@ inoremap kj <Esc>`^
 nnoremap gf <C-W>vgf
 autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>
 autocmd FileType julia  nnoremap <buffer> <C-p> :w<CR>:exec '!julia' shellescape(@%,1)<CR>
+autocmd FileType python nnoremap <buffer> <C-f> :ALEFix<CR>:w<CR>
 nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
