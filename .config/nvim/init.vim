@@ -1,3 +1,9 @@
+function CP()
+    if &buftype=="terminal"
+        bd!
+    endif
+endfunction
+
 call plug#begin('~/.vim/plugged')
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -120,8 +126,11 @@ tnoremap kj <C-\><C-n>
 inoremap kj <Esc>`^
 "open file under cursor in v split
 nnoremap gf <C-W>vgf
-autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>
-autocmd FileType julia  nnoremap <buffer> <C-p> :w<CR>:exec '!julia' shellescape(@%,1)<CR>
+" autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>
+set splitright
+nnoremap <C-p> :call CP() <CR>
+autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:vsp<CR>:term python %<CR>
+autocmd FileType julia  nnoremap <buffer> <C-p> :w<CR>:vsp<CR>:term julia %<CR>
 autocmd FileType python nnoremap <buffer> <C-f> :ALEFix<CR>:w<CR>
 nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")

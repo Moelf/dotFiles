@@ -14,4 +14,4 @@ case "$choice" in
   * ) echo "invalid";exit;
 esac
 sudo pacman -Syu
-sudo pacman -S - < ./pkglist.txt
+# sudo pacman -S - < ./pkglist.txt
