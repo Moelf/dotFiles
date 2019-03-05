@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -112,7 +112,7 @@ alias uaf10=ssh\ -q\ -Y\ jling@uaf-10.t2.ucsd.edu\ -t\ zsh
 alias uaf4=ssh\ -q\ -Y\ jling@uaf-4.t2.ucsd.edu\ -t\ zsh
 alias syncnas=rsync\ -r\ -n\ -t\ -v\ --progress\ -s\ /home/akako/NASHomes\ akako@192.168.50.146:/volume1/homes/akako/WebArchive\ 
 alias tau=ssh\ -Y\ jling@tau.physics.ucsb.edu\ -t\ zsh
-alias ex=ssh\ -Y\ ex@moelf.xyz\ -t\ zsh
+alias ex=ssh\ -Y\ ex@blog.jling.dev\ -t\ zsh
 alias here=xdg-open\ .
 alias rimecon=cd\ ~/.config/ibus/rime
 alias cern=ssh\ jiling@lxplus.cern.ch
