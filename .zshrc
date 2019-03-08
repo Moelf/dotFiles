@@ -10,7 +10,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="agnoster-cus"
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(host dir virtualenv vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh background_jobs time)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_from_right
