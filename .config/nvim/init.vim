@@ -17,6 +17,7 @@ let g:deoplete#enable_at_startup = 1
 
 "jedi vim
 Plug 'deoplete-plugins/deoplete-jedi'
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
 " Make sure you use single quotes
@@ -63,24 +64,9 @@ let b:ale_fixers = ['autopep8']
 
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'
-let g:default_julia_version = '0.7'
-let g:LanguageClient_autoStart = 1
-" enable ncm2 for all buffers
+let g:default_julia_version = '1.1'
+let g:LanguageClient_autoStart = 0
 
-"Language Server
-Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': 'bash install.sh',
-  \ }
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['~/.local/bin/pyls'],
-    \ 'cpp': ['/usr/bin/clangd'],
-    \ }
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-set completefunc=LanguageClient#complete
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-let g:LanguageClient_diagnosticsEnable=0
-set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 "Vim LaTeX
 Plug 'lervag/vimtex'
 let g:tex_conceal = "amgs"
