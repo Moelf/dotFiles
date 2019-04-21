@@ -13,6 +13,11 @@ interval=1
 signal=10
 separator=false
 
+[brightness]
+label=
+interval=1
+separator=true
+
 [volume]
 label=
 instance=Master

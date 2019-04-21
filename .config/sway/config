@@ -4,10 +4,9 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
-#
 # exec --no-startup-id ibus-daemon -drx
 exec ibus-daemon --xim
-# Logo key. Use Mod1 for Alt.
+# Logo key. Use Mod1 for Alt. Mod4 for Meta-Key
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -15,13 +14,11 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-# set $term termite
 set $term env KITTY_ENABLE_WAYLAND=1 kitty
 # Your preferred application launcher
 set $menu rofi -show combi
-set $launcher albert toggle
 # Your preferred file explorer
-set $file_exp ranger
+set $file_exp nautilus
 # colors
 default_border pixel 4
 set $base00 #282828
@@ -95,7 +92,6 @@ input "1267:32:Elan_Touchpad" {
 
     # start your launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+space exec $launcher
 
     # start your file_exp
     bindsym $mod+Alt+e exec $file_exp
@@ -126,16 +122,16 @@ input "1267:32:Elan_Touchpad" {
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
+    # move workspace to other monitor
+    bindsym $mod+Alt+$left move workspace to output left
+    bindsym $mod+Alt+$right move workspace to output right
+    bindsym $mod+Alt+$up move workspace to output up
+    bindsym $mod+Alt+$down move workspace to output down
     # _move_ the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 
@@ -245,10 +241,10 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk 
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym $mod+Home exec mpc pause & swaylock -i ~/Pictures/Wallpaper/SnowMountain.jpg
+bindsym $mod+Home exec swaylock -i ~/Pictures/Wallpapers/dyj2v1s7aoz01.png
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindsym Alt+A exec slurp | grim -g - $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindsym Alt+A exec slurp | grim -g - - | xclip -i -selection c -t image/png
 bindsym Print exec /home/akako/imgcat.sh
 # bindsym Print exec termite -e /home/akako/imgcat.sh
 
@@ -265,7 +261,7 @@ bar {
     status_command i3blocks
     separator_symbol "|"
     # srtip_workspace_number yes
-    height 40
+    height 45
     tray_padding 5
     colors {
         background  #21212155

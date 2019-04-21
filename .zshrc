@@ -63,6 +63,7 @@ HIST_FIND_NO_DUPS="true"
 plugins=(
   zsh-autosuggestions
   gitfast
+  git
   sudo
   python
   autojump 
