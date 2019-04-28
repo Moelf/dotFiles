@@ -244,13 +244,13 @@ bindsym $mod+Home exec "~/home.sh"
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindsym Alt+A exec slurp | grim -g - - | xclip -i -selection c -t image/png
-bindsym Alt+Ctrl+A exec  grim - - | xclip -i -selection c -t image/png
+bindsym Alt+Ctrl+A exec  grim 213.png
 bindsym Print exec /home/akako/imgcat.sh
 # bindsym Print exec termite -e /home/akako/imgcat.sh
 
 #
-gaps inner 5
-gaps outer 5
+gaps inner 30
+gaps outer 50
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
