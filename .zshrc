@@ -101,7 +101,6 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cat=bat
 alias vim=nvim\ -O
 alias vimdiff=nvim\ -d
 export EDITOR='nvim -O'
@@ -117,16 +116,13 @@ alias uaf10=ssh\ -q\ -Y\ jling@uaf-10.t2.ucsd.edu\ -t\ zsh
 alias syncnas=rsync\ -r\ -n\ -t\ -v\ --progress\ -s\ /home/akako/NASHomes\ akako@192.168.50.146:/volume1/homes/akako/WebArchive\ 
 alias tau=ssh\ -Y\ jling@tau.physics.ucsb.edu\ -t\ zsh
 alias ex=ssh\ -Y\ ex@blog.jling.dev\ -t\ zsh
+alias matrix=ssh\ ex@matrix.jling.dev
 alias here=xdg-open\ .
 alias rimecon=cd\ ~/.config/ibus/rime
 alias cern=ssh\ jiling@lxplus.cern.ch
 alias icat="kitty +kitten icat"
 alias ci=sh\ ~/imgcat.sh
 alias start_gnome=XDG_SESSION_TYPE=wayland\ dbus-run-session\ gnome-session
-# if [ $(tty) = "/dev/tty1" ]; then
-# 	sway
-# 	exit 0
-# fi
 if [ -n "$WAYLAND_DISPLAY" ]; then
     if [ ! -S ~/.ssh/ssh_auth_sock ]; then
         eval `ssh-agent`

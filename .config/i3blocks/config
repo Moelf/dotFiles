@@ -15,19 +15,19 @@ separator=false
 
 [brightness]
 label=
-interval=1
+interval=3
 separator=true
 
 [volume]
 label=
 instance=Master
-interval=1
+interval=3
 separator=true
 
 [time]
 command= date '+%d/%m %H:%M'
 label=
-interval=1
+interval=5
 
 [disk]
 label=
@@ -38,18 +38,18 @@ separator=false
 [memory]
 label=
 separator=true
-interval=5
+interval=3
 #color=#dfe3ee
 
 [cpu_usage]
 label=
-interval=2
+interval=3
 separator=false
 
 [temperature]
 #label=TEMP
 label=
-interval=10
+interval=3
 #color=#8caba8
 #color=#dcedc1
 separator=true
@@ -58,7 +58,7 @@ separator=true
 #label=
 #instance=wlp61s0
 #color=#00FFFF
-#interval=10
+#interval=3
 #separator=true
 
 [bandwidth]
@@ -71,4 +71,4 @@ color=#83d0c9
 [battery]
 label=
 instance=0
-interval=1
+interval=3

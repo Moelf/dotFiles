@@ -4,8 +4,6 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
-# exec --no-startup-id ibus-daemon -drx
-exec ibus-daemon --xim
 # Logo key. Use Mod1 for Alt. Mod4 for Meta-Key
 set $mod Mod4
 # Home row direction keys, like vim
@@ -107,7 +105,7 @@ input "1267:32:Elan_Touchpad" {
     bindsym $mod+Shift+c reload
 
     # exit sway (logs you out of your wayland session)
-    bindsym $mod+Shift+e exit
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end Wayland session.' -b 'Yes.' 'swaymsg exit'
     # bindsym $mod+Shift+r exec ibus-daemon -drx
 #
 #
@@ -241,10 +239,12 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk 
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym $mod+Home exec swaylock -i ~/Pictures/Wallpapers/dyj2v1s7aoz01.png
+bindsym $mod+Ctrl+l exec "killall ssh-agent & swaylock -i ~/Pictures/Wallpapers/dyj2v1s7aoz01.png & sleep 2;systemctl suspend"
+bindsym $mod+Home exec "~/home.sh"
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindsym Alt+A exec slurp | grim -g - - | xclip -i -selection c -t image/png
+bindsym Alt+Ctrl+A exec  grim - - | xclip -i -selection c -t image/png
 bindsym Print exec /home/akako/imgcat.sh
 # bindsym Print exec termite -e /home/akako/imgcat.sh
 
@@ -277,3 +277,13 @@ bar {
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 #start up sequenc
+# set GTK theme
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Numix'
+    gsettings set $gnome-schema icon-theme 'Paper'
+    gsettings set $gnome-schema cursor-theme 'Paper'
+    # exec --no-startup-id ibus-daemon -drx
+    ibus-daemon --xim
+    protonmail-bridge&
+}
