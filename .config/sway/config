@@ -5,6 +5,7 @@
 
 ### Variables
 # Logo key. Use Mod1 for Alt. Mod4 for Meta-Key
+xwayland enable
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -239,18 +240,18 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk 
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym $mod+Ctrl+l exec "killall ssh-agent & swaylock -i ~/Pictures/Wallpapers/dyj2v1s7aoz01.png & sleep 2;systemctl suspend"
+bindsym $mod+Ctrl+l exec "swaylock -i ~/Pictures/Wallpapers/DSC03923.jpg"
 bindsym $mod+Home exec "~/home.sh"
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindsym Alt+A exec slurp | grim -g - - | xclip -i -selection c -t image/png
-bindsym Alt+Ctrl+A exec  grim 213.png
+bindsym Alt+Ctrl+A exec  grim - - | wl-copy  -t image/png
 bindsym Print exec /home/akako/imgcat.sh
 # bindsym Print exec termite -e /home/akako/imgcat.sh
 
 #
-gaps inner 30
-gaps outer 50
+gaps inner 20
+gaps outer 30
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.

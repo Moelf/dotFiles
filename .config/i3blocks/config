@@ -32,7 +32,7 @@ interval=5
 [disk]
 label=
 instance=/mnt
-interval=60
+interval=120
 separator=false
 
 [memory]
@@ -58,7 +58,7 @@ separator=true
 #label=
 #instance=wlp61s0
 #color=#00FFFF
-#interval=3
+#interval=1
 #separator=true
 
 [bandwidth]
@@ -71,4 +71,4 @@ color=#83d0c9
 [battery]
 label=
 instance=0
-interval=3
+interval=60

@@ -115,8 +115,9 @@ nnoremap gf <C-W>vgf
 " autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>
 set splitright
 nnoremap <C-p> :call CP() <CR>
-autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:vsp<CR>:term python %<CR>
-autocmd FileType julia  nnoremap <buffer> <C-p> :w<CR>:vsp<CR>:term julia %<CR>
+autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:vsp<CR>:term python %<CR>A
+autocmd FileType julia  nnoremap <buffer> <C-p> :w<CR>:vsp<CR>:term julia %<CR>A
+autocmd FileType cpp  nnoremap <buffer> <C-p> :w<CR>:vsp<CR>:term root -l %<CR>A
 autocmd FileType python nnoremap <buffer> <C-f> :ALEFix<CR>:w<CR>
 nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
