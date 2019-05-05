@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
@@ -16,6 +17,7 @@ POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_from_right
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
+export JULIA_NUM_THREADS=8
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -122,7 +124,6 @@ alias rimecon=cd\ ~/.config/ibus/rime
 alias cern=ssh\ jiling@lxplus.cern.ch
 alias icat="kitty +kitten icat"
 alias ci=sh\ ~/imgcat.sh
-alias start_gnome=XDG_SESSION_TYPE=wayland\ dbus-run-session\ gnome-session
 if [ -n "$WAYLAND_DISPLAY" ]; then
     if [ ! -S ~/.ssh/ssh_auth_sock ]; then
         eval `ssh-agent`
@@ -132,3 +133,4 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 fi
 source /usr/share/fzf/key-bindings.zsh
+zprof

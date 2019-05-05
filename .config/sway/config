@@ -256,20 +256,14 @@ gaps outer 30
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
-    # pango_markup enable 
+    position top
     font Hack, Font Awesome 5 Free
     status_command i3blocks
     separator_symbol "|"
-    # srtip_workspace_number yes
-    height 45
+    height 50
     tray_padding 5
     colors {
         background  #21212155
-        # statusline  #000000
-        # separator   #666666FF
-        # class             border  backgr. text
-        # focused_workspace   #2B83A6 #2B83A6 #FFFFFF
         active_workspace    #212121 #212121 #FFFFFF
         inactive_workspace  #212121 #212121 #86888C
         urgent_workspace    #D64E4E #D64E4E #FFFFFF
@@ -284,7 +278,6 @@ exec_always {
     gsettings set $gnome-schema gtk-theme 'Numix'
     gsettings set $gnome-schema icon-theme 'Paper'
     gsettings set $gnome-schema cursor-theme 'Paper'
-    # exec --no-startup-id ibus-daemon -drx
     ibus-daemon --xim
-    protonmail-bridge&
+    protonmail-bridge --no-window
 }

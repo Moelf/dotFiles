@@ -65,7 +65,6 @@ let b:ale_fixers = ['autopep8']
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'
 let g:default_julia_version = '1.1'
-let g:LanguageClient_autoStart = 0
 
 "Vim LaTeX
 Plug 'lervag/vimtex'
