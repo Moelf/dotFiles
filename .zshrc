@@ -1,6 +1,5 @@
-zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH:/home/akako/Documents/github/flutter_linux/flutter/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -119,11 +118,16 @@ alias syncnas=rsync\ -r\ -n\ -t\ -v\ --progress\ -s\ /home/akako/NASHomes\ akako
 alias tau=ssh\ -Y\ jling@tau.physics.ucsb.edu\ -t\ zsh
 alias ex=ssh\ -Y\ ex@blog.jling.dev\ -t\ zsh
 alias matrix=ssh\ ex@matrix.jling.dev
+alias start_gnome=XDG_SESSION_TYPE=wayland\ dbus-run-session\ gnome-session
 alias here=xdg-open\ .
 alias rimecon=cd\ ~/.config/ibus/rime
 alias cern=ssh\ jiling@lxplus.cern.ch
 alias icat="kitty +kitten icat"
 alias ci=sh\ ~/imgcat.sh
+youtube(){
+    mpv --gpu-context=wayland --hwdec=auto --ytdl-format="bestvideo[height<=?2160]+bestaudio/best" "$@"
+}
+
 if [ -n "$WAYLAND_DISPLAY" ]; then
     if [ ! -S ~/.ssh/ssh_auth_sock ]; then
         eval `ssh-agent`
@@ -133,4 +137,3 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 fi
 source /usr/share/fzf/key-bindings.zsh
-zprof
