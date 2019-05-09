@@ -278,6 +278,7 @@ exec_always {
     gsettings set $gnome-schema gtk-theme 'Numix'
     gsettings set $gnome-schema icon-theme 'Paper'
     gsettings set $gnome-schema cursor-theme 'Paper'
+    [ ! -s ~/.config/mpd/pid ] && mpd
     ibus-daemon --xim
     protonmail-bridge --no-window
 }

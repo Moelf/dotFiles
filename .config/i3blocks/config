@@ -8,19 +8,18 @@ align=right
 
 [mediaplayer]
 label=♫
-instance=mpd
+command=mpc current
 interval=1
-signal=10
 separator=false
-
-[brightness]
-label=
-interval=3
-separator=true
 
 [volume]
 label=
 instance=Master
+interval=3
+separator=true
+
+[brightness]
+label=
 interval=3
 separator=true
 
@@ -70,5 +69,5 @@ color=#83d0c9
 
 [battery]
 label=
-instance=0
+instance=1
 interval=60
