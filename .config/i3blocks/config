@@ -5,21 +5,22 @@ markup=pango
 full_text=
 align=right
 
-
+#https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/mediaplayer/mediaplayer
 [mediaplayer]
 label=♫
-command=mpc current
+instance=mpd
 interval=1
+signal=10
 separator=false
+
+[brightness]
+label=
+interval=3
+separator=true
 
 [volume]
 label=
 instance=Master
-interval=3
-separator=true
-
-[brightness]
-label=
 interval=3
 separator=true
 

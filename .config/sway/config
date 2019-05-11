@@ -256,29 +256,29 @@ gaps outer 30
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-    font Hack, Font Awesome 5 Free
-    status_command i3blocks
-    separator_symbol "|"
-    height 50
-    tray_padding 5
-    colors {
-        background  #21212155
-        active_workspace    #212121 #212121 #FFFFFF
-        inactive_workspace  #212121 #212121 #86888C
-        urgent_workspace    #D64E4E #D64E4E #FFFFFF
-    }
+    swaybar_command waybar
+    # position top
+    font Nerd Font
+    # status_command i3blocks
+    # separator_symbol "|"
+    # height 50
+    # colors {
+    #     background  #21212155
+    #     active_workspace    #212121 #212121 #FFFFFF
+    #     inactive_workspace  #212121 #212121 #86888C
+    #     urgent_workspace    #D64E4E #D64E4E #FFFFFF
+    # }
 }
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 #start up sequenc
 # set GTK theme
 set $gnome-schema org.gnome.desktop.interface
+exec [ ! -s ~/.config/mpd/pid ] && mpd
+exec ibus-daemon --xim
+exec protonmail-bridge --no-window
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Numix'
     gsettings set $gnome-schema icon-theme 'Paper'
     gsettings set $gnome-schema cursor-theme 'Paper'
-    [ ! -s ~/.config/mpd/pid ] && mpd
-    ibus-daemon --xim
-    protonmail-bridge --no-window
 }

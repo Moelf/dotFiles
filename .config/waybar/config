@@ -1,37 +1,67 @@
 {
 	"layer": "top",
-	"modules-left": ["sway/workspaces", "mpd", "sway/mode"],
-	"modules-center": [],
-	"modules-right": ["network", "pulseaudio", "temperature", "cpu", "memory", "clock"],
-	"mpd": {
-		"tooltip": false,
-		"format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
-		"format-disconnected": "ﳌ",
-		"format-stopped": "",
+	"modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["mpd"],
+    "modules-right": ["clock", "pulseaudio", "backlight", "network", "temperature", "cpu", "battery", "tray"],
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
         "state-icons": {
-            "playing": "",
-            "paused": ""
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "pulseaudio": {
+        "tooltip": false,
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-icons": {
+            "default": ["", ""]
         }
-	},
-	"pulseaudio": {
-		"tooltip": false,
-		"scroll-step": 5,
-		"format": "{icon} {volume}%",
-		"format-icons": {
-			"default": ["奄", "奔", "墳"]
-		}
-	},
-	"network": {
-		"tooltip": false,
-		"format-wifi": " {essid} {ipaddr}",
-		"format-ethernet": " {ipaddr}"
-	},
-	"cpu": {
-		"tooltip": false,
-		"format": " {}%"
-	},
-	"memory": {
-		"tooltip": false,
-		"format": " {}%"
-	}
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
+    "network": {
+        "tooltip": false,
+        "format-wifi": " {essid} {signaldBm}dBm",
+        "format-ethernet": " {ipaddr}"
+    },
+    "cpu": {
+        "tooltip": false,
+        "format": " {}%"
+    },
+    "battery": {
+        "tooltip": false,
+        "format": "{capacity}% {icon}%",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-icons": ["", "", "", "", ""]
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    }
 }

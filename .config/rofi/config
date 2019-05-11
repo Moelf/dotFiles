@@ -1,5 +1,5 @@
 rofi.combi-modi:    window,drun,ssh
-rofi.font:          Hack 18
+rofi.font:          Ubuntu 22
 rofi.modi:          combi,drun,window,ssh
 rofi.color-window: argb:EE373B47, #373B47
 rofi.color-normal: argb:00373B47, #737783, argb:00373B47, argb:00373B47, #f9f9f9
