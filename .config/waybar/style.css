@@ -9,12 +9,12 @@
  https://github.com/jakehamilton/dotfiles/ */
 
 * {
-    margin-left: 4px;
+    margin-left: 0px;
 	border: none;
 	border-radius: 0;
 	font-family: Hack Nerd Font;
-	font-size: 19px;
-	min-height: 15px;
+	font-size: 22px;
+	min-height: 18px;
 }
 
 window#waybar {
@@ -98,6 +98,11 @@ window#waybar.hidden {
 	background: #b16286;
 }
 
+#network.disconnected {
+	background: #fb4934;
+}
+
+
 #pulseaudio {
 	margin-top: 8px;
 	margin-left: 8px;
@@ -159,6 +164,7 @@ window#waybar.hidden {
 	background: #282a36;
 }
 
+#battery.AC,
 #battery.warning,
 #battery.critical{
     color: #f8f8f2;

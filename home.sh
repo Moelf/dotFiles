@@ -6,4 +6,9 @@ else
 fi
 # swaymsg output DP-2 position 0 0
 # swaymsg output DP-2 scale 1
-# swaymsg output eDP-1 position 200 2160
+# swaymsg output eDP-1 disable
+
+
+# swaymsg output eDP-1 toggle
+# sleep 2
+# swaymsg output eDP-1 toggle

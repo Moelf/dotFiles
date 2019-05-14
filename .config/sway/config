@@ -245,8 +245,10 @@ bindsym $mod+Home exec "~/home.sh"
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindsym Alt+A exec slurp | grim -g - - | xclip -i -selection c -t image/png
-bindsym Alt+Ctrl+A exec  grim - - | wl-copy  -t image/png
+bindsym Alt+Ctrl+A exec  grim - - | xclip -i -selection c -t image/png
 bindsym Print exec /home/akako/imgcat.sh
+mode passthrough bindsym Ctrl+Alt+Delete mode default
+bindsym $mod+Delete mode passthrough
 # bindsym Print exec termite -e /home/akako/imgcat.sh
 
 #
@@ -257,17 +259,6 @@ gaps outer 30
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
-    # position top
-    font Nerd Font
-    # status_command i3blocks
-    # separator_symbol "|"
-    # height 50
-    # colors {
-    #     background  #21212155
-    #     active_workspace    #212121 #212121 #FFFFFF
-    #     inactive_workspace  #212121 #212121 #86888C
-    #     urgent_workspace    #D64E4E #D64E4E #FFFFFF
-    # }
 }
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
