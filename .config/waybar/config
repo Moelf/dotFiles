@@ -1,7 +1,7 @@
 {
 	"layer": "top",
 	"modules-left": ["sway/workspaces", "sway/mode"],
-    //"modules-center": ["mpd"],
+    "modules-center": ["mpd"],
     "modules-right": ["clock", "pulseaudio", "backlight", "network", "temperature", "cpu", "battery", "tray"],
     "mpd": {
         //"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",

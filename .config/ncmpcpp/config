@@ -1,5 +1,5 @@
 mpd_music_dir = "~/Music"
-mpd_crossfade_time = "2"
+mpd_crossfade_time = "1"
 
 # Visualizer
 visualizer_fifo_path = "/tmp/mpd.fifo"

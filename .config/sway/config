@@ -57,7 +57,7 @@ client.background       #212121
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpapers/EttwN6s.png fill
+# output * bg ~/Pictures/Wallpapers/EttwN6s.png fill
 # output eDP-1 scale 2
 # output DP-2 scale 2
 #
@@ -269,6 +269,7 @@ exec [ ! -s ~/.config/mpd/pid ] && mpd
 exec ibus-daemon --xim
 exec protonmail-bridge --no-window
 exec_always {
+	swaybg -o "*" -i ~/Pictures/Wallpapers/blender_arch.jpg
     gsettings set $gnome-schema gtk-theme 'Numix'
     gsettings set $gnome-schema icon-theme 'Paper'
     gsettings set $gnome-schema cursor-theme 'Paper'
