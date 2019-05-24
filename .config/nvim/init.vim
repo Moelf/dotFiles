@@ -83,25 +83,25 @@ call vimtex#imaps#add_map({
             \ 'wrapper' : 'vimtex#imaps#wrap_trivial'
             \})
 set number 
-" set autoindent
-" set smartindent
+set autoindent
+set smartindent
 set nowrap
 set ruler
 set ignorecase
 set hlsearch
 set incsearch
 set showmatch
-set autoindent
-set noexpandtab
-set tabstop=4
-set shiftwidth=4
 set foldmethod=syntax
 set foldlevel=9
 set pastetoggle=<F2>
+set expandtab
 set updatetime=100
+set smarttab
+set shiftwidth=4
+set tabstop=4
 set nowrap
 set clipboard+=unnamedplus
-set termguicolors
+" set termguicolors
 syntax enable
 filetype plugin indent on
 "terminal enviroment
