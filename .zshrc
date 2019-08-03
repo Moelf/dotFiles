@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH:/home/akako/Documents/github/flutter_linux/flutter/bin
+export TERM=xterm-256color 
+export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH:/home/akako/Documents/github/flutter_linux/flutter/bin:/home/akako/Documents/AWAKE
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -16,7 +17,7 @@ POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_from_right
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-export JULIA_NUM_THREADS=8
+export JULIA_NUM_THREADS=4
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -72,7 +73,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-# export TERM=xterm-256color 
 
 # User configuration
 
@@ -110,18 +110,14 @@ alias root=root\ -l
 alias python=python3
 alias du=ncdu
 alias ll=ls\ -alFh
-alias p125=ssh\ -q\ -Y\ ling00@physics125.physics.ucsb.edu\ -t\ zsh
-alias uaf4=ssh\ -q\ -Y\ jling@uaf-4.t2.ucsd.edu\ -t\ zsh
-alias uaf7=ssh\ -q\ -Y\ jling@uaf-7.t2.ucsd.edu\ -t\ zsh
 alias uaf10=ssh\ -q\ -Y\ jling@uaf-10.t2.ucsd.edu\ -t\ zsh
-alias syncnas=rsync\ -r\ -n\ -t\ -v\ --progress\ -s\ /home/akako/NASHomes\ akako@192.168.50.146:/volume1/homes/akako/WebArchive\ 
 alias tau=ssh\ -Y\ jling@tau.physics.ucsb.edu\ -t\ zsh
 alias ex=ssh\ -Y\ ex@blog.jling.dev\ -t\ zsh
 alias matrix=ssh\ ex@matrix.jling.dev
 alias start_gnome=XDG_SESSION_TYPE=wayland\ dbus-run-session\ gnome-session
 alias here=xdg-open\ .
 alias rimecon=cd\ ~/.config/ibus/rime
-alias cern=ssh\ jiling@lxplus.cern.ch
+alias vm=ssh\ jiling@cwe-513-vol555\ -L\ 8889:localhost:8889
 alias icat="kitty +kitten icat"
 alias ci=sh\ ~/imgcat.sh
 youtube(){

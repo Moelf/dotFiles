@@ -64,7 +64,6 @@ let b:ale_fixers = ['autopep8']
 
 "Julia
 Plug 'JuliaEditorSupport/julia-vim'
-let g:default_julia_version = '1.1'
 
 "Vim LaTeX
 Plug 'lervag/vimtex'
@@ -85,7 +84,6 @@ call vimtex#imaps#add_map({
 set number 
 set autoindent
 set smartindent
-set nowrap
 set ruler
 set ignorecase
 set hlsearch

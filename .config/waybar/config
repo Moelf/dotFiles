@@ -45,6 +45,7 @@
     },
     "network": {
         "tooltip": false,
+        "interval": "1",
         "format-wifi": " {essid} {signaldBm}dBm",
         "format-disconnected": "Network Disconnected",
         "format-ethernet": " {ipaddr}"
@@ -62,6 +63,7 @@
 
     },
     "battery": {
+        "interval": 1,
         "tooltip": false,
         "format": "{capacity}% {icon}%",
         "states": {
