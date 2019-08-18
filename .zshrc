@@ -117,7 +117,7 @@ alias matrix=ssh\ ex@matrix.jling.dev
 alias start_gnome=XDG_SESSION_TYPE=wayland\ dbus-run-session\ gnome-session
 alias here=xdg-open\ .
 alias rimecon=cd\ ~/.config/ibus/rime
-alias vm=ssh\ jiling@cwe-513-vol555\ -L\ 8889:localhost:8889
+alias vm=ssh\ -Y\ jiling@cwe-513-vol555\ -L\ 8889:localhost:8889
 alias icat="kitty +kitten icat"
 alias ci=sh\ ~/imgcat.sh
 youtube(){
