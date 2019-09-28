@@ -111,6 +111,7 @@ alias python=python3
 alias du=ncdu
 alias ll=ls\ -alFh
 alias uaf10=ssh\ -q\ -Y\ jling@uaf-10.t2.ucsd.edu\ -t\ zsh
+alias uaf1=ssh\ -q\ -Y\ jling@uaf-1.t2.ucsd.edu\ -t\ zsh
 alias tau=ssh\ -Y\ jling@tau.physics.ucsb.edu\ -t\ zsh
 alias ex=ssh\ -Y\ ex@blog.jling.dev\ -t\ zsh
 alias matrix=ssh\ ex@matrix.jling.dev
@@ -123,7 +124,18 @@ alias ci=sh\ ~/imgcat.sh
 youtube(){
     mpv --gpu-context=wayland --hwdec=auto --ytdl-format="bestvideo[height<=?2160]+bestaudio/best" "$@"
 }
-
+backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+}
+zle -N backward-kill-dir
+bindkey '^[^?' backward-kill-dir
+function tun() {
+    uaf=$1
+    port=$2
+    ps aux | grep "localhost:$port" | grep -v "grep" | awk '{print $2}' | xargs kill -9
+    ssh -N -f -L localhost:${port}:localhost:${port} jling@uaf-$uaf.t2.ucsd.edu
+}
 if [ -n "$WAYLAND_DISPLAY" ]; then
     if [ ! -S ~/.ssh/ssh_auth_sock ]; then
         eval `ssh-agent`

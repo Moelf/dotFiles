@@ -5,12 +5,38 @@ function CP()
 endfunction
 
 call plug#begin('~/.vim/plugged')
+"julia LSPk
+Plug 'JuliaEditorSupport/julia-vim'
+" julia
+" let g:default_julia_version = '1.0'
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+\   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+\       using LanguageServer;
+\       using Pkg;
+\       import StaticLint;
+\       import SymbolServer;
+\       env_path = dirname(Pkg.Types.Context().env.project_file);
+\       debug = false; 
+\       
+\       server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, "", Dict());
+\       server.runlinter = true;
+\       run(server);
+\   ']
+\ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+"language server
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
+"deoplete
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
 
@@ -61,9 +87,6 @@ let g:indentLine_concealcursor="cv"
 "ale
 Plug 'w0rp/ale'
 let b:ale_fixers = ['autopep8']
-
-"Julia
-Plug 'JuliaEditorSupport/julia-vim'
 
 "Vim LaTeX
 Plug 'lervag/vimtex'

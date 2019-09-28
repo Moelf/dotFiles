@@ -6,7 +6,7 @@
 ### Variables
 # Logo key. Use Mod1 for Alt. Mod4 for Meta-Key
 xwayland enable
-exec ibus-daemon --xim
+exec ibus-daemon -drx
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
