@@ -44,4 +44,5 @@ if [ -n "$WAYLAND_DISPLAY" ]; then
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 fi
-source /usr/share/fzf/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.fzf/shell/key-bindings.zsh
