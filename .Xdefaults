@@ -1,39 +1,3 @@
-! URxvt
-URxvt.perl-ext-common: default,matcher,resize-font
-URxvt.scrollBar: false
-URxvt.inputMethod: ibus
-URxvt.preeditType: OverTheSpot
-URxvt.termName: xterm-256color
-URxvt.font: xft:Hack:size=13:antialias=true
-/* URxvt.boldfont: xft:Hack:size=10:Bold:antialias=true, xft:Font Awesome 5 Free:Bold:10, xft:dejavu sans:Bold:10,xft:SourceHanSansCN:Bold:10 */
-/* URxvt.italicfont: xft:Hack:size=10:Italic:antialias=true, xft:Font Awesome 5 Free:Italic:10, xft:dejavu sans:Italic:10 */
-/* URxvt.boldItalicFont: xft:Hack:size=10:Bold:Italic */
-URxvt.foreground:       #839496
-URxvt.internalBorder: 15
-URxvt.letterSpace:1
-URxvt*depth: 32
-URxvt.background:#282828
-URxvt.color1:#686868
-URxvt.color2:#cc241d
-URxvt.color3:#98971a
-URxvt.color4:#d79921
-URxvt.color5:#458588
-URxvt.color6:#b16286
-URxvt.color7:#689d6a
-URxvt.color8:#a89984
-URxvt.color9:#928374
-URxvt.color10:#fb4934
-URxvt.color11:#b8bb26
-URxvt.color12:#fabd2f
-URxvt.color13:#83a598
-URxvt.color14:#d3869b
-URxvt.color15:#8ec07c
-
-URxvt.geometry: 110x30
-! Use Control-Shift-V/C for X clipboard
-URxvt.iso14755: false
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 ! rofi
 rofi.font: Hack Regular 8
 rofi.terminal: urxvt

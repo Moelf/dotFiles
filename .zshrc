@@ -1,23 +1,18 @@
 # If you come from bash you might have to change your $PATH.
-export TERM=xterm-256color 
+export JL_TD_CONSUMER_KEY=NXJZ9G7BGMGSVWHG0BNOKEOSPQGMYLJX
+# export TERM=xterm-256color 
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH:/home/akako/Documents/github/flutter_linux/flutter/bin:/home/akako/Documents/AWAKE
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="agnoster-cus"
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh background_jobs time)
-POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes)
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-POWERLEVEL9K_SHORTEN_STRATEGY=truncate_from_right
-POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-export JULIA_NUM_THREADS=4
+ZSH_THEME="af-magic"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+export JULIA_NUM_THREADS=6
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -83,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+export EDITOR=vim
 # else
 #   export EDITOR='mvim'
 # fi
@@ -108,7 +103,6 @@ export EDITOR='nvim -O'
 alias zshrc=vim\ ~/.zshrc
 alias root=root\ -l
 alias python=python3
-alias du=ncdu
 alias ll=ls\ -alFh
 alias uaf10=ssh\ -q\ -Y\ jling@uaf-10.t2.ucsd.edu\ -t\ zsh
 alias uaf1=ssh\ -q\ -Y\ jling@uaf-1.t2.ucsd.edu\ -t\ zsh
@@ -121,7 +115,6 @@ alias rimecon=cd\ ~/.config/ibus/rime
 alias vm=ssh\ -Y\ jiling@cwe-513-vol555\ -L\ 8889:localhost:8889
 alias icat="kitty +kitten icat"
 alias ci=sh\ ~/imgcat.sh
-alias pg=realpath\ -e
 youtube(){
     mpv --gpu-context=wayland --hwdec=auto --ytdl-format="bestvideo[height<=?2160]+bestaudio/best" "$@"
 }
@@ -146,3 +139,4 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 fi
 source /usr/share/fzf/key-bindings.zsh
+export GOOGLE_APPLICATION_CREDENTIALS="/home/akako/Documents/Sprin2020_Google/My Project 38954-2e35868c6222.json"
