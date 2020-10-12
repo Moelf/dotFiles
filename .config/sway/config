@@ -59,7 +59,7 @@ client.background       #212121
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg ~/Pictures/Wallpapers/EttwN6s.png fill
-# output eDP-1 scale 2
+output eDP-1 scale 1
 # output DP-2 scale 2
 #
 # Example configuration:
