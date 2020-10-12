@@ -5,7 +5,6 @@
 
 ### Variables
 # Logo key. Use Mod1 for Alt. Mod4 for Meta-Key
-xwayland enable
 exec ibus-daemon -drx
 set $mod Mod4
 # Home row direction keys, like vim
@@ -16,7 +15,7 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
-set $menu rofi -show combi
+set $menu "rofi -combi-modi window,drun,ssh -show combi -modi combi -theme clean"
 # Your preferred file explorer
 set $file_exp nautilus
 # colors
@@ -74,7 +73,7 @@ output eDP-1 scale 1
 #
 input "1267:32:Elan_Touchpad" {
   tap enabled
-  dwt disabled
+  dwt enabled
   natural_scroll enabled
 }
 input "1133:45082:MX_Anywhere_2S_Mouse" {

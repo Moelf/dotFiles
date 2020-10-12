@@ -11,17 +11,17 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export JULIA_NUM_THREADS=6
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+export BAT_THEME=gruvbox
 
 HIST_FIND_NO_DUPS="true"
 
 plugins=(
-#  zsh-autosuggestions
-#  gitfast
-#  git
-#  sudo
-#  python
-#  autojump 
-#  pip
+  zsh-autosuggestions
+  gitfast
+  sudo
+  python
+  autojump 
+  pip
 )
 
 source $ZSH/oh-my-zsh.sh
