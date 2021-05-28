@@ -1,5 +1,0 @@
-! rofi
-rofi.font: Hack Regular 8
-rofi.terminal: urxvt
-rofi.ssh-client: ssh
-rofi.ssh-command: {terminal} -e "{ssh-client} {host}"
