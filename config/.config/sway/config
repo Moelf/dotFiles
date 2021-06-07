@@ -13,9 +13,9 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term kitty -1
 # Your preferred application launcher
-set $menu "rofi -combi-modi window,drun,ssh -show combi -modi combi -theme clean"
+set $menu "wofi"
 # Your preferred file explorer
 set $file_exp nautilus
 # colors
@@ -58,8 +58,7 @@ client.background       #212121
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg ~/Pictures/Wallpapers/EttwN6s.png fill
-output eDP-1 scale 1
-# output DP-2 scale 2
+output eDP-1 scale 1.25
 #
 # Example configuration:
 #
@@ -244,19 +243,20 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
 # bindsym $mod+0 exec mpc next
 # bindsym $mod+9 exec mpc prev
-bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+bindsym XF86AudioMute exec pamixer -t
+bindsym XF86AudioMicMute exec pamixer --default-source -t
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym $mod+Ctrl+l exec "swaylock -i ~/Pictures/Wallpapers/DSC03923.jpg"
+bindsym $mod+Ctrl+l exec "swaylock -i ~/Downloads/IMG_20161227_015745_803.jpg"
 bindsym $mod+Home exec "~/home.sh"
 # bindsym $mod+Pause exec python ~/bing-wall-download.py & swaylock -i ~/bingwall.jpg --scaling fill 
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindsym Alt+A exec slurp | grim -g - - | xclip -i -selection c -t image/png
-# bindsym Alt+A exec slurp | grim -g - - | wl-copy
+#bindsym Alt+A exec slurp | grim -g - - | xclip -i -selection c -t image/png
+bindsym Alt+A exec slurp | grim -g - - | wl-copy
 bindsym Alt+Ctrl+A exec  grim - | wl-copy
 bindsym Print exec /home/akako/imgcat.sh
 mode passthrough bindsym Ctrl+Alt+Delete mode default

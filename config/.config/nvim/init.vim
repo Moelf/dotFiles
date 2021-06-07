@@ -42,8 +42,6 @@ Plug 'roman/golden-ratio'
 "To make NerdTree look better
 "cursor-word
 Plug 'itchyny/vim-cursorword'
-"vim-rooc syntax
-Plug 'parnmatt/vim-root'
 "python-folding
 Plug 'tmhedberg/SimpylFold'
 "Commentary
