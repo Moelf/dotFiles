@@ -89,6 +89,7 @@ window#waybar.solo {
 #battery {
     background-color: #ebdbb2;
     color: #000000;
+    padding: 0 14px;
 }
 
 #battery.charging {

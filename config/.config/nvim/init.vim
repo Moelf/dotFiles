@@ -1,19 +1,35 @@
-function CP()
-    if &buftype=="terminal"
-        bd!
-    endif
-endfunction
-
 call plug#begin('~/.vim/plugged')
 
 "LSP
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'neovim/nvim-lsp'
-Plug 'nvim-lua/diagnostic-nvim'
-Plug 'nvim-lua/completion-nvim'
-Plug 'JuliaEditorSupport/julia-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+
+" dependencies
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+" telescope
+Plug 'nvim-telescope/telescope.nvim'
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 " julia
+Plug 'kdheepak/JuliaFormatter.vim'
+" normal mode mapping
+nnoremap <localleader>jf :JuliaFormatterFormat<CR>
+" visual mode mapping
+vnoremap <localleader>jf :JuliaFormatterFormat<CR>
+let g:JuliaFormatter_options = {
+        \ 'style' : 'blue',
+        \ }
+let g:JuliaFormatter_use_sysimage=1
+let g:JuliaFormatter_always_launch_server=1
+
+Plug 'JuliaEditorSupport/julia-vim'
 let g:latex_to_unicode_auto = 1
 
 " smooth scroll
@@ -32,14 +48,8 @@ set noshowmode  "Because we have powerline
 let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ }
-"NerdTree
-Plug 'scrooloose/nerdtree'
-map <C-n> :NERDTreeToggle<CR>
-"rainbow paren
-Plug 'kien/rainbow_parentheses.vim'
 "golden-ratio
 Plug 'roman/golden-ratio'
-"To make NerdTree look better
 "cursor-word
 Plug 'itchyny/vim-cursorword'
 "python-folding
@@ -59,14 +69,9 @@ let g:indentLine_color_term = 244
 let g:indentLine_fileTypeExclude=['tex','txt']
 let g:indentLine_concealcursor="cv"
 
-"ale
-" Plug 'w0rp/ale'
-" let b:ale_fixers = ['autopep8']
-
 "Vim LaTeX
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_compiler_progname = 'nvr'
 let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk = { 
             \ 'executable' : 'latexmk',
@@ -82,31 +87,61 @@ let g:vimtex_quickfix_mode=0
 " Initialize plugin system
 call plug#end()
 
-" language server
-let g:completion_enable_snippet = 'UltiSnips'
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+lua << EOF
+    require'lspconfig'.julials.setup{
+        on_new_config = function(new_config,new_root_dir)
+          server_path = "/home/akako/.julia/packages/LanguageServer/1LFYN/src/"
+          cmd = {
+            "julia",
+            "--project="..server_path,
+            "--startup-file=no",
+            "--history-file=no",
+            "-e", [[
+              using Pkg;
+              Pkg.instantiate()
+              using LanguageServer; using SymbolServer;
+              depot_path = get(ENV, "JULIA_DEPOT_PATH", "")
+              project_path = dirname(something(Base.current_project(pwd()), Base.load_path_expand(LOAD_PATH[2])))
+              # Make sure that we only load packages from this environment specifically.
+              @info "Running language server" env=Base.load_path()[1] pwd() project_path depot_path
+              server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path);
+              server.runlinter = true;
+              run(server);
+            ]]
+        };
+          new_config.cmd = cmd
+        end
+    }
+EOF
 
 " Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
 
-" Avoid showing message extra message when using completion
-set shortmess+=c
-autocmd BufEnter * lua require'completion'.on_attach()
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
-lua << EOF
-    local nvim_lsp = require'nvim_lsp'
-    local on_attach_vim = function()
-        require'diagnostic'.on_attach()
-    end
-    nvim_lsp.pyls.setup{on_attach=on_attach_vim}
-    nvim_lsp.julials.setup({on_attach=on_attach_vim})
-EOF
-let g:completion_enable_auto_popup = 1
-nnoremap <silent> <leader>lg :lua vim.lsp.util.show_line_diagnostics()<CR>
 
 call vimtex#imaps#add_map({
             \ 'lhs' : '<m-b>',
@@ -135,8 +170,6 @@ set clipboard+=unnamedplus
 " set termguicolors
 syntax enable
 filetype plugin indent on
-"terminal enviroment
-set shell=/bin/zsh
 "escape alternative
 tnoremap kj <C-\><C-n>
 inoremap kj <Esc>`^
@@ -144,13 +177,6 @@ inoremap kj <Esc>`^
 nnoremap gf <C-W>vgf
 " autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>
 set splitright
-nnoremap <C-p> :call CP() <CR>
-autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:vsp<CR>:term python %<CR>A
-autocmd FileType python nnoremap <buffer> <C-f> :ALEFix<CR>:w<CR>
-autocmd FileType julia nnoremap <buffer> <C-c><C-j> :vs term://julia<CR>
-autocmd BufNewFile,BufRead *.jmd set filetype=julia
-autocmd BufNewFile,BufRead *.jmd set syntax=markdown
-autocmd BufNewFile,BufRead *.jmd setlocal commentstring=<!--%s-->
 nnoremap <C-M> :set invnumber \| IndentLinesToggle <CR>
 let g:golden_ratio_exclude_nonmodifiable = 1
 
