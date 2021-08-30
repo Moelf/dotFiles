@@ -5,8 +5,8 @@ set -x NNN_PLUG 'p:preview-tui'
 set -x NNN_FIFO /tmp/nnn.fifo
 
 # User configuration
-alias vim "nvim -O"
-alias vimdiff "nvim -d"
+alias vim "lvim -O"
+alias vimdiff "lvim -d"
 alias root "root -l"
 alias python python3
 
