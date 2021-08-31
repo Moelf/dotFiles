@@ -6,6 +6,8 @@
 ### Variables
 # Logo key. Use Mod1 for Alt. Mod4 for Meta-Key
 exec ibus-daemon -drx
+exec wl-paste -t text --watch clipman store
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -240,10 +242,9 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-bindsym XF86AudioRaiseVolume exec pamixer -i 5
-bindsym XF86AudioLowerVolume exec pamixer -d 5
-# bindsym $mod+0 exec mpc next
-# bindsym $mod+9 exec mpc prev
+bindsym XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost allow
+bindsym XF86AudioLowerVolume exec pamixer -d 5 --allow-boost allow
+bindsym $mod+Shift+v exec clipman pick -t wofi
 bindsym XF86AudioMute exec pamixer -t
 bindsym XF86AudioMicMute exec pamixer --default-source -t
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
@@ -252,6 +253,7 @@ bindsym $mod+Ctrl+l exec "swaylock -i ~/Downloads/IMG_20161227_015745_803.jpg"
 bindsym $mod+Home exec "~/home.sh"
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindsym Alt+A exec slurp | grim -g - - | wl-copy
+bindsym Alt+Shift+A exec grim -g "$(slurp)" - | swappy -f -
 bindsym Alt+Ctrl+A exec  grim - | wl-copy
 mode passthrough bindsym Ctrl+Alt+Delete mode default
 bindsym $mod+Delete mode passthrough
@@ -272,6 +274,6 @@ exec_always {
     protonmail-bridge --no-window
     swaybg -o "*" -i ~/Documents/github/dotFiles/2560x1440-dark-archlinux2.png
     gsettings set $gnome-schema gtk-theme 'Numix'
-    gsettings set $gnome-schema icon-theme 'Paper'
+    gsettings set $gnome-schema icon-theme 'Numix'
     gsettings set $gnome-schema cursor-theme 'Paper'
 }

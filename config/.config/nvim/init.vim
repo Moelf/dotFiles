@@ -4,7 +4,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'neovim/nvim-lspconfig'
+nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<cr>
 Plug 'hrsh7th/nvim-compe'
+
+Plug 'rhysd/git-messenger.vim'
 
 " dependencies
 Plug 'nvim-lua/popup.nvim'
@@ -17,17 +20,14 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" julia
+"julia
 Plug 'kdheepak/JuliaFormatter.vim'
-" normal mode mapping
 nnoremap <localleader>jf :JuliaFormatterFormat<CR>
-" visual mode mapping
 vnoremap <localleader>jf :JuliaFormatterFormat<CR>
 let g:JuliaFormatter_options = {
         \ 'style' : 'blue',
         \ }
 let g:JuliaFormatter_use_sysimage=1
-let g:JuliaFormatter_always_launch_server=1
 
 Plug 'JuliaEditorSupport/julia-vim'
 let g:latex_to_unicode_auto = 1
@@ -48,8 +48,6 @@ set noshowmode  "Because we have powerline
 let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ }
-"golden-ratio
-Plug 'roman/golden-ratio'
 "cursor-word
 Plug 'itchyny/vim-cursorword'
 "python-folding
@@ -88,30 +86,21 @@ let g:vimtex_quickfix_mode=0
 call plug#end()
 
 lua << EOF
-    require'lspconfig'.julials.setup{
-        on_new_config = function(new_config,new_root_dir)
-          server_path = "/home/akako/.julia/packages/LanguageServer/1LFYN/src/"
-          cmd = {
-            "julia",
-            "--project="..server_path,
-            "--startup-file=no",
-            "--history-file=no",
-            "-e", [[
-              using Pkg;
-              Pkg.instantiate()
-              using LanguageServer; using SymbolServer;
-              depot_path = get(ENV, "JULIA_DEPOT_PATH", "")
-              project_path = dirname(something(Base.current_project(pwd()), Base.load_path_expand(LOAD_PATH[2])))
-              # Make sure that we only load packages from this environment specifically.
-              @info "Running language server" env=Base.load_path()[1] pwd() project_path depot_path
-              server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path);
-              server.runlinter = true;
-              run(server);
-            ]]
-        };
-          new_config.cmd = cmd
-        end
-    }
+local cmd = {
+    "julia",
+    "--startup-file=no",
+    "--history-file=no",
+    vim.fn.expand("~/.config/nvim/lsp-julia/run.jl")
+}
+require'lspconfig'.julials.setup{
+    cmd = cmd,
+    -- Why do I need this? Shouldn't it be enough to override cmd on the line above?
+    on_new_config = function(new_config, _)
+        new_config.cmd = cmd
+    end,
+    filetypes = {"julia"},
+}
+-- vim.lsp.set_log_level("debug")
 EOF
 
 " Set completeopt to have a better completion experience
@@ -158,8 +147,7 @@ set hlsearch
 set incsearch
 set showmatch
 set foldmethod=syntax
-set foldlevel=9
-set pastetoggle=<F2>
+set foldlevel=8
 set expandtab
 set updatetime=100
 set smarttab
@@ -167,7 +155,7 @@ set shiftwidth=4
 set tabstop=4
 set nowrap
 set clipboard+=unnamedplus
-" set termguicolors
+set termguicolors
 syntax enable
 filetype plugin indent on
 "escape alternative
