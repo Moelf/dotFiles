@@ -42,7 +42,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.builtin.which_key.mappings["f"] = {
     name = "Telescope Files",
     f = {"<cmd>Telescope find_files<CR>", "Find files"},
-    g = {"<cmd>Telescope live_grep<CR>", "Grep files"},
+    g = {"<cmd>Telescope -u -u live_grep<CR>", "Grep files"},
 }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
@@ -117,6 +117,11 @@ lvim.transparent_window = false
 lvim.plugins = {
     {"morhetz/gruvbox"},
     {"tpope/vim-commentary"},
+    {"tpope/vim-markdown",
+        config = function ()
+        vim.g.markdown_fenced_languages = {'julia', 'cpp', 'python'}
+        end
+    },
     {"kdheepak/JuliaFormatter.vim",
         config = function()
             vim.cmd("nnoremap <localleader>jf :JuliaFormatterFormat<CR>")
