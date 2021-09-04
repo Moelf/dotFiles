@@ -10,8 +10,8 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
-lvim.lint_on_save = true
+lvim.format_on_save = false
+lvim.lint_on_save = false
 lvim.colorscheme = "gruvbox"
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.options.theme = "wombat"
@@ -42,7 +42,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.builtin.which_key.mappings["f"] = {
     name = "Telescope Files",
     f = {"<cmd>Telescope find_files<CR>", "Find files"},
-    g = {"<cmd>Telescope find_files<CR>", "Grep files"},
+    g = {"<cmd>Telescope live_grep<CR>", "Grep files"},
 }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
