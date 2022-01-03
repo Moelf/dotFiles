@@ -19,7 +19,7 @@ SETUVAR _fisher_jethrokuan_2F_fzf_files:/home/akako/\x2econfig/fish/functions/__
 SETUVAR _fisher_jethrokuan_2F_z_files:/home/akako/\x2econfig/fish/functions/__z\x2efish\x1e/home/akako/\x2econfig/fish/functions/__z_add\x2efish\x1e/home/akako/\x2econfig/fish/functions/__z_clean\x2efish\x1e/home/akako/\x2econfig/fish/functions/__z_complete\x2efish\x1e/home/akako/\x2econfig/fish/conf\x2ed/z\x2efish
 SETUVAR _fisher_jomik_2F_fish_2D_gruvbox_files:/home/akako/\x2econfig/fish/functions/theme_gruvbox\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/akako/\x2econfig/fish/functions/fisher\x2efish\x1e/home/akako/\x2econfig/fish/completions/fisher\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejethrokuan/fzf\x1ejethrokuan/z\x1edanhper/fish\x2dssh\x2dagent\x1ejomik/fish\x2dgruvbox
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejethrokuan/fzf\x1edanhper/fish\x2dssh\x2dagent\x1ejomik/fish\x2dgruvbox\x1ejethrokuan/z\x1ePatrickF1/fzf\x2efish
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:99cc99
