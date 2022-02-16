@@ -10,3 +10,4 @@ function mega()
     run(`xdg-open $url`)
 end
 using Revise
+ENV["JULIA_EDITOR"] = "nvim"
