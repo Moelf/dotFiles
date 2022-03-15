@@ -1,0 +1,6 @@
+for_window [class="nautilus"] border pixel
+#for_window [id="gnome-*"] floating enable; border pixel
+for_window [class="feh"] floating enable; border none ;move right 730px,move down 200px 
+for_window [class="ibus-*"] floating enable; border pixel
+for_window [class="skype-*"] floating enable; border pixel
+for_window [class="Vivaldi*"] border none

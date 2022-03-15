@@ -1,0 +1,117 @@
+#!/usr/bin/env sh
+
+# Description: Open hovered or current directory in image viewer.
+#              Supported image viewers open in thumbnail mode when
+#              the hovered entry is a directory.
+#
+# Dependencies:
+#   - imv (https://github.com/eXeC64/imv) or,
+#   - sxiv (https://github.com/muennich/sxiv) or,
+#   - ucollage (https://github.com/ckardaris/ucollage) or,
+#   - lsix (https://github.com/hackerb9/lsix), or
+#   - viu (https://github.com/atanunq/viu), or
+#   - catimg (https://github.com/posva/catimg), or
+#   - optional: ffmpeg for audio thumbnails (album art)
+#   - optional: ffmpegthumbnailer for video thumbnails
+#
+# Shell: POSIX compliant
+# Author: Arun Prakash Jana, Luuk van Baal
+
+target="$(readlink -f "$1")"
+
+exit_prompt() {
+    [ -n "$1" ] && printf "%s\n" "$1"
+    printf "%s" "Press any key to exit..."
+    cfg=$(stty -g); stty raw -echo; head -c 1; stty "$cfg"
+    clear
+    exit
+}
+
+nthumb_cleanup() {
+    [ -n "$!" ] && while [ -e /proc/"$!" ]; do sleep 1; done
+    if [ -f "$target" ]; then
+        rm -r "$(dirname "$target")"/.nthumbs
+    elif [ -d "$target" ]; then
+        rm -r "$target"/.nthumbs
+    fi &
+}
+
+make_thumbs() {
+    if [ -d "$target" ]; then
+        [ "$1" -eq 4 ] && exit_prompt "$3 can only display a single image"
+        cd "$target" || exit_prompt
+    fi
+    if mkdir .nthumbs >/dev/null; then
+        thumbs=1
+    else
+        exit_prompt
+    fi
+    if [ "$1" -eq 4 ]; then
+      mime="$(file -bL --mime-type -- "$2")"
+        case "$mime" in
+          audio/*) ffmpeg -i "$2" ".nthumbs/${2%%.*}.jpg" -y >/dev/null 2>&1
+              ret=".nthumbs/${2%%.*}.jpg" ;;
+          video/*) ffmpegthumbnailer -i "$2" -o .nthumbs/"${2%%.*}".jpg 2> /dev/null
+              ret=".nthumbs/${2%%.*}.jpg" ;;
+          *) ret="$2" ;;
+        esac
+    fi
+    for file in *; do
+        case "$(file -bL --mime-type -- "$file")" in
+          audio/*) [ "$1" -ne 0 ] && ffmpeg -i "$file" ".nthumbs/${file%%.*}.jpg" -y >/dev/null 2>&1 ;;
+          video/*) [ "$1" -ne 1 ] && ffmpegthumbnailer -i "$file" -o .nthumbs/"${file%%.*}".jpg 2> /dev/null ;;
+        esac
+    done
+}
+
+view_files() {
+    find . .nthumbs -maxdepth 1 -type f -print0 | xargs -0 "$@" --
+}
+
+if uname | grep -q "Darwin"; then
+    [ -f "$1" ] && open "$1" >/dev/null 2>&1 &
+elif type lsix >/dev/null 2>&1; then
+    if [ -d "$target" ]; then
+        cd "$target" || exit_prompt
+    fi
+    make_thumbs ""
+    clear
+    lsix
+    cd .nthumbs && lsix
+    nthumb_cleanup
+    exit_prompt
+elif type ucollage >/dev/null 2>&1; then
+    make_thumbs 1
+    if ! UCOLLAGE_EXPAND_DIRS=1 ucollage . .nthumbs; then
+      nthumb_cleanup && exit_prompt
+    fi
+    nthumb_cleanup
+    exit
+elif type sxiv >/dev/null 2>&1; then
+    make_thumbs 0
+    if [ -f "$target" ]; then
+        view_files sxiv >/dev/null 2>&1 &
+    elif [ -d "$target" ]; then
+        view_files sxiv -aqt >/dev/null 2>&1 &
+    fi
+elif type imv >/dev/null 2>&1; then
+    make_thumbs 3
+    view_files imv >/dev/null 2>&1 &
+elif type imvr >/dev/null 2>&1; then
+    make_thumbs 3
+    view_files imvr >/dev/null 2>&1 &
+elif type viu >/dev/null 2>&1; then
+    clear
+    make_thumbs 4 "$1" viu
+    viu -n "$ret"
+    nthumb_cleanup
+    exit_prompt
+elif type catimg >/dev/null 2>&1; then
+    make_thumbs 4 "$1" catimg
+    catimg "$ret"
+    nthumb_cleanup
+    exit_prompt
+else
+    exit_prompt "Please install sxiv/imv/viu/catimg/lsix."
+fi
+[ "$thumbs" -ne 0 ] && nthumb_cleanup &
