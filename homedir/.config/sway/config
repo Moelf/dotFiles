@@ -57,7 +57,7 @@ client.placeholder      #212121 #0C0C0C #FFFFFF #212121   #262626
 client.background       #212121
 
 ### Output configuration
-output eDP-1 scale 1.25
+output eDP-1 scale 1.20
 #
 # Example configuration:
 #
@@ -70,6 +70,11 @@ output eDP-1 scale 1.25
 # Example configuration:
 #
 input "1267:32:Elan_Touchpad" {
+  tap enabled
+  dwt enabled
+  natural_scroll enabled
+}
+input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
   tap enabled
   dwt enabled
   natural_scroll enabled
@@ -268,11 +273,12 @@ include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 #start up sequenc
 # set GTK theme
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 set $gnome-schema org.gnome.desktop.interface
 exec [ ! -s ~/.config/mpd/pid ] && mpd
 exec_always {
     protonmail-bridge --no-window
-    swaybg -o "*" -i ~/Documents/github/dotFiles/2560x1440-dark-archlinux2.png
+    swaybg -o "*" -i ~/Documents/Github/dotFiles/2560x1440-dark-archlinux2.png
     gsettings set $gnome-schema gtk-theme 'Numix'
     gsettings set $gnome-schema icon-theme 'Numix'
     gsettings set $gnome-schema cursor-theme 'Paper'
