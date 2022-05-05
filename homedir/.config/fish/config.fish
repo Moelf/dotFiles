@@ -21,5 +21,8 @@ end
 theme_gruvbox dark hard
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+eval /home/akako/Documents/github/dotFiles/homedir/.julia/conda/3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
+if status is-login
+    sway
+end

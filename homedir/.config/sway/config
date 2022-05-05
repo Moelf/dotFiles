@@ -252,9 +252,15 @@ bindsym XF86AudioLowerVolume exec pamixer -d 5 --allow-boost allow
 bindsym $mod+Shift+v exec clipman pick -t wofi
 bindsym XF86AudioMute exec pamixer -t
 bindsym XF86AudioMicMute exec pamixer --default-source -t
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym $mod+Ctrl+l exec "swaylock -i ~/Downloads/IMG_20161227_015745_803.jpg"
+bindsym XF86MonBrightnessDown exec brightnessctl -e set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl -e set +5%
+bindsym $mod+Ctrl+l exec "swaylock -u -i ~/Pictures/lock.png"
+exec swayidle -w \\
+timeout 300 'swaymsg "output * dpms off"' \\
+resume 'swaymsg "output * dpms on"' \\
+timeout 600 'systemctl suspend"' \\
+before-sleep "swaylock -u -i ~/Pictures/lock.png"
+
 bindsym $mod+Home exec "~/home.sh"
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 bindsym Alt+A exec slurp | grim -g - - | wl-copy
@@ -273,12 +279,12 @@ include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
 #start up sequenc
 # set GTK theme
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 set $gnome-schema org.gnome.desktop.interface
 exec [ ! -s ~/.config/mpd/pid ] && mpd
 exec_always {
-    protonmail-bridge --no-window
-    swaybg -o "*" -i ~/Documents/Github/dotFiles/2560x1440-dark-archlinux2.png
+    /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+    synology-drive
+    swaybg -o "*" -i ~/Documents/github/dotFiles/2560x1440-dark-archlinux2.png
     gsettings set $gnome-schema gtk-theme 'Numix'
     gsettings set $gnome-schema icon-theme 'Numix'
     gsettings set $gnome-schema cursor-theme 'Paper'
