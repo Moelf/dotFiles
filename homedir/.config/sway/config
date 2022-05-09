@@ -254,12 +254,15 @@ bindsym XF86AudioMute exec pamixer -t
 bindsym XF86AudioMicMute exec pamixer --default-source -t
 bindsym XF86MonBrightnessDown exec brightnessctl -e set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl -e set +5%
-bindsym $mod+Ctrl+l exec "swaylock -u -i ~/Pictures/lock.png"
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod+Ctrl+l exec "swaylock -i ~/Pictures/lock.png"
 exec swayidle -w \\
 timeout 300 'swaymsg "output * dpms off"' \\
 resume 'swaymsg "output * dpms on"' \\
 timeout 600 'systemctl suspend"' \\
-before-sleep "swaylock -u -i ~/Pictures/lock.png"
+before-sleep "swaylock -i ~/Pictures/lock.png"
 
 bindsym $mod+Home exec "~/home.sh"
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
