@@ -6,7 +6,12 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    use 'neovim/nvim-lspconfig'
+    use {
+        'neovim/nvim-lspconfig',
+        config = function()
+            require'lspconfig'.julials.setup{}
+        end
+    }
     use 'williamboman/nvim-lsp-installer'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
@@ -56,6 +61,26 @@ return require('packer').startup(function()
         opt = false,
         requires = {{'nvim-lua/plenary.nvim', opt = false}}
     }
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup{
+                icons = false,
+                fold_open = "v", -- icon used for open folds
+                fold_closed = ">", -- icon used for closed folds
+                indent_lines = false, -- add an indent guide below the fold icons
+                signs = {
+                    -- icons / text used for a diagnostic
+                    error = "error",
+                    warning = "warn",
+                    hint = "hint",
+                    information = "info"
+                },
+                use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+            }
+        end
+    }
     use 'kdheepak/JuliaFormatter.vim'
     use 'JuliaEditorSupport/julia-vim'
     use 'psliwka/vim-smoothie'
@@ -63,7 +88,12 @@ return require('packer').startup(function()
     use 'morhetz/gruvbox'
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = false }
+        requires = { 'kyazdani42/nvim-web-devicons', opt = false },
+        config = function()
+            require('lualine').setup {
+                options = { theme = 'gruvbox_dark' }
+            }
+        end
     }
     use 'itchyny/vim-cursorword'
     use 'tmhedberg/SimpylFold'
@@ -74,6 +104,14 @@ return require('packer').startup(function()
     use 'lervag/vimtex'
     use {
         'jose-elias-alvarez/null-ls.nvim',
-        requires = {{'nvim-lua/plenary.nvim', opt = false}}
+        requires = {{'nvim-lua/plenary.nvim', opt = false}},
+        config = function()
+            local null = require("null-ls")
+            null.setup({
+                sources = {
+                    require("null-ls").builtins.diagnostics.vale,
+                },
+            })
+        end
     }
 end)

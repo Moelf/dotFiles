@@ -3,6 +3,7 @@ lua require('plugins')
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
+
 "julia
 vnoremap <localleader>jf :JuliaFormatterFormat<CR>
 let g:JuliaFormatter_options = {
@@ -19,22 +20,6 @@ set noshowmode  "Because we have powerline
 let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ }
-lua << END
-require('lualine').setup {
-    options = { theme = 'gruvbox_dark' }
-    }
-
-require'lspconfig'.julials.setup{}
-END
-
-lua << EOF
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.diagnostics.vale,
-    },
-})
-EOF
-
 let g:indentLine_char = '▏'
 let g:indentLine_color_term = 244
 let g:indentLine_fileTypeExclude=['tex','txt']
@@ -84,6 +69,8 @@ filetype plugin indent on
 "escape alternative
 tnoremap kj <C-\><C-n>
 inoremap kj <Esc>`^
+" toggle LSP trouble pannel
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
 "open file under cursor in v split
 nnoremap gf <C-W>vgf
 " autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>

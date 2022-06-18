@@ -120,11 +120,13 @@ _G.packer_plugins = {
     url = "https://github.com/JuliaEditorSupport/julia-vim"
   },
   ["lualine.nvim"] = {
+    config = { "\27LJ\2\nb\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\1\ntheme\17gruvbox_dark\nsetup\flualine\frequire\0" },
     loaded = true,
     path = "/home/akako/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["null-ls.nvim"] = {
+    config = { "\27LJ\2\n‚\1\0\0\b\0\b\0\0166\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\6\0004\4\3\0006\5\0\0'\a\1\0B\5\2\0029\5\3\0059\5\4\0059\5\5\5>\5\1\4=\4\a\3B\1\2\1K\0\1\0\fsources\1\0\0\tvale\16diagnostics\rbuiltins\nsetup\fnull-ls\frequire\0" },
     loaded = true,
     path = "/home/akako/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
@@ -141,6 +143,7 @@ _G.packer_plugins = {
     url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
+    config = { "\27LJ\2\nG\0\0\3\0\4\0\b6\0\0\0'\2\1\0B\0\2\0029\0\2\0009\0\3\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fjulials\14lspconfig\frequire\0" },
     loaded = true,
     path = "/home/akako/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
@@ -164,6 +167,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/akako/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["trouble.nvim"] = {
+    config = { "\27LJ\2\nÆ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\nsigns\1\0\4\16information\tinfo\thint\thint\fwarning\twarn\nerror\nerror\1\0\5\17indent_lines\1\16fold_closed\6>\14fold_open\6v\nicons\1\25use_diagnostic_signs\1\nsetup\ftrouble\frequire\0" },
+    loaded = true,
+    path = "/home/akako/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -203,10 +212,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\nG\0\0\3\0\4\0\b6\0\0\0'\2\1\0B\0\2\0029\0\2\0009\0\3\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fjulials\14lspconfig\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\2\nÕ\4\0\0\t\0!\0C6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\b\0009\5\6\0009\5\a\5B\5\1\2=\5\t\0049\5\6\0009\5\n\5B\5\1\2=\5\v\0049\5\6\0009\5\f\5)\aüÿB\5\2\2=\5\r\0049\5\6\0009\5\f\5)\a\4\0B\5\2\2=\5\14\0049\5\6\0009\5\15\5B\5\1\2=\5\16\0049\5\6\0009\5\17\5B\5\1\2=\5\18\0049\5\6\0009\5\19\0055\a\22\0009\b\20\0009\b\21\b=\b\23\aB\5\2\2=\5\24\0049\5\6\0009\a\6\0009\a\n\aB\a\1\0025\b\25\0B\5\3\2=\5\26\0049\5\6\0009\a\6\0009\a\a\aB\a\1\0025\b\27\0B\5\3\2=\5\28\4=\4\6\0034\4\4\0005\5\29\0>\5\1\0045\5\30\0>\5\2\0045\5\31\0>\5\3\4=\4 \3B\1\2\1K\0\1\0\fsources\1\0\1\tname\tpath\1\0\1\tname\fluasnip\1\0\1\tname\rnvim_lsp\f<S-Tab>\1\3\0\0\6i\6s\n<Tab>\1\3\0\0\6i\6s\t<CR>\rbehavior\1\0\1\vselect\2\fReplace\20ConfirmBehavior\fconfirm\n<C-e>\nclose\14<C-Space>\rcomplete\n<C-f>\n<C-d>\16scroll_docs\n<C-n>\21select_next_item\n<C-p>\1\0\0\21select_prev_item\fmapping\15completion\1\0\0\1\0\1\16completeopt\26menu,menuone,noselect\nsetup\bcmp\frequire\0", "config", "nvim-cmp")
 time([[Config for nvim-cmp]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\2\nb\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\1\ntheme\17gruvbox_dark\nsetup\flualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+try_loadstring("\27LJ\2\n‚\1\0\0\b\0\b\0\0166\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\6\0004\4\3\0006\5\0\0'\a\1\0B\5\2\0029\5\3\0059\5\4\0059\5\5\5>\5\1\4=\4\a\3B\1\2\1K\0\1\0\fsources\1\0\0\tvale\16diagnostics\rbuiltins\nsetup\fnull-ls\frequire\0", "config", "null-ls.nvim")
+time([[Config for null-ls.nvim]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\nÆ\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\nsigns\1\0\4\16information\tinfo\thint\thint\fwarning\twarn\nerror\nerror\1\0\5\17indent_lines\1\16fold_closed\6>\14fold_open\6v\nicons\1\25use_diagnostic_signs\1\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
