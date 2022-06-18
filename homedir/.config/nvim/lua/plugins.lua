@@ -72,4 +72,8 @@ return require('packer').startup(function()
     use 'airblade/vim-gitgutter'
     use 'Yggdroot/indentLine'
     use 'lervag/vimtex'
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = {{'nvim-lua/plenary.nvim', opt = false}}
+    }
 end)

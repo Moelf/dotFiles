@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/akako/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/akako/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-cmp"] = {
     config = { "\27LJ\2\nÕ\4\0\0\t\0!\0C6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\b\0009\5\6\0009\5\a\5B\5\1\2=\5\t\0049\5\6\0009\5\n\5B\5\1\2=\5\v\0049\5\6\0009\5\f\5)\aüÿB\5\2\2=\5\r\0049\5\6\0009\5\f\5)\a\4\0B\5\2\2=\5\14\0049\5\6\0009\5\15\5B\5\1\2=\5\16\0049\5\6\0009\5\17\5B\5\1\2=\5\18\0049\5\6\0009\5\19\0055\a\22\0009\b\20\0009\b\21\b=\b\23\aB\5\2\2=\5\24\0049\5\6\0009\a\6\0009\a\n\aB\a\1\0025\b\25\0B\5\3\2=\5\26\0049\5\6\0009\a\6\0009\a\a\aB\a\1\0025\b\27\0B\5\3\2=\5\28\4=\4\6\0034\4\4\0005\5\29\0>\5\1\0045\5\30\0>\5\2\0045\5\31\0>\5\3\4=\4 \3B\1\2\1K\0\1\0\fsources\1\0\1\tname\tpath\1\0\1\tname\fluasnip\1\0\1\tname\rnvim_lsp\f<S-Tab>\1\3\0\0\6i\6s\n<Tab>\1\3\0\0\6i\6s\t<CR>\rbehavior\1\0\1\vselect\2\fReplace\20ConfirmBehavior\fconfirm\n<C-e>\nclose\14<C-Space>\rcomplete\n<C-f>\n<C-d>\16scroll_docs\n<C-n>\21select_next_item\n<C-p>\1\0\0\21select_prev_item\fmapping\15completion\1\0\0\1\0\1\16completeopt\26menu,menuone,noselect\nsetup\bcmp\frequire\0" },
     loaded = true,

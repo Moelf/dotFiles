@@ -26,6 +26,15 @@ require('lualine').setup {
 
 require'lspconfig'.julials.setup{}
 END
+
+lua << EOF
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.diagnostics.vale,
+    },
+})
+EOF
+
 let g:indentLine_char = '▏'
 let g:indentLine_color_term = 244
 let g:indentLine_fileTypeExclude=['tex','txt']
@@ -71,7 +80,6 @@ set tabstop=4
 set nowrap
 set clipboard+=unnamedplus
 set termguicolors
-syntax enable
 filetype plugin indent on
 "escape alternative
 tnoremap kj <C-\><C-n>

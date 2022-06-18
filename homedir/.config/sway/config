@@ -259,9 +259,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Ctrl+l exec "swaylock -i ~/Pictures/lock.png"
 exec swayidle -w \\
-timeout 300 'swaymsg "output * dpms off"' \\
+timeout 600 'swaymsg "output * dpms off"' \\
 resume 'swaymsg "output * dpms on"' \\
-timeout 600 'systemctl suspend"' \\
+timeout 1500 'systemctl suspend"' \\
 before-sleep "swaylock -i ~/Pictures/lock.png"
 
 bindsym $mod+Home exec "~/home.sh"
@@ -286,6 +286,8 @@ set $gnome-schema org.gnome.desktop.interface
 exec [ ! -s ~/.config/mpd/pid ] && mpd
 exec_always {
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+    eval "$(ssh-agent -c)"
+    protonmail-bridge --noninteractive
     synology-drive
     swaybg -o "*" -i ~/Documents/github/dotFiles/2560x1440-dark-archlinux2.png
     gsettings set $gnome-schema gtk-theme 'Numix'
