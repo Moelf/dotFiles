@@ -6,6 +6,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use 'github/copilot.vim'
     use {
         'neovim/nvim-lspconfig',
         config = function()
@@ -81,7 +82,7 @@ return require('packer').startup(function()
             }
         end
     }
-    use 'kdheepak/JuliaFormatter.vim'
+    use {'kdheepak/JuliaFormatter.vim', branch = 'main'}
     use 'JuliaEditorSupport/julia-vim'
     use 'psliwka/vim-smoothie'
     use 'jpalardy/vim-slime'

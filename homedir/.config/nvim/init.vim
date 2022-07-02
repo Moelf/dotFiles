@@ -71,6 +71,8 @@ tnoremap kj <C-\><C-n>
 inoremap kj <Esc>`^
 " toggle LSP trouble pannel
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
+" toggle copilot pannel
+nnoremap <leader>cc <cmd>Copilot panel<cr>
 "open file under cursor in v split
 nnoremap gf <C-W>vgf
 " autocmd FileType python nnoremap <buffer> <C-p> :w<CR>:exec '!python' shellescape(@%,1)<CR>
