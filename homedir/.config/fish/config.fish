@@ -1,3 +1,4 @@
+set fish_greeting
 set -x JULIA_NUM_THREADS 4
 set -x BAT_THEME    gruvbox-dark
 set -x EDITOR       "nvim -O"

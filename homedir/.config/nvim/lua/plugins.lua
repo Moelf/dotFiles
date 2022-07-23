@@ -82,7 +82,7 @@ return require('packer').startup(function()
             }
         end
     }
-    use {'kdheepak/JuliaFormatter.vim', branch = 'main'}
+    -- use {'kdheepak/JuliaFormatter.vim', branch = 'main'}
     use 'JuliaEditorSupport/julia-vim'
     use 'psliwka/vim-smoothie'
     use 'jpalardy/vim-slime'
