@@ -19,11 +19,14 @@ function n --wraps=nnn
     nnn -edH
 end
 
+if test -z (pgrep ssh-agent | string collect)
+    eval (ssh-agent -c)
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
+
 theme_gruvbox dark hard
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
 eval /home/akako/Documents/github/dotFiles/homedir/.julia/conda/3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
 if status is-login
     sway
 end

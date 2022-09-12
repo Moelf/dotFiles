@@ -11,6 +11,7 @@ return require('packer').startup(function()
         'neovim/nvim-lspconfig',
         config = function()
             require'lspconfig'.julials.setup{}
+            require'lspconfig'.pyright.setup{}
         end
     }
     use 'williamboman/nvim-lsp-installer'
