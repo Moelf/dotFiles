@@ -26,7 +26,6 @@ if test -z (pgrep ssh-agent | string collect)
 end
 
 theme_gruvbox dark hard
-eval /home/akako/Documents/github/dotFiles/homedir/.julia/conda/3/bin/conda "shell.fish" "hook" $argv | source
 if status is-login
     sway
 end

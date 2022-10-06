@@ -55,8 +55,6 @@ set ignorecase
 set hlsearch
 set incsearch
 set showmatch
-set foldmethod=syntax
-set foldlevel=8
 set expandtab
 set updatetime=100
 set smarttab
@@ -66,6 +64,8 @@ set nowrap
 set clipboard+=unnamedplus
 set termguicolors
 filetype plugin indent on
+set foldmethod=syntax
+set foldlevel=6
 "escape alternative
 tnoremap kj <C-\><C-n>
 inoremap kj <Esc>`^
