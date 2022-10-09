@@ -1,11 +1,11 @@
 [deps]
 BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 Debugger = "31a5f54b-26ea-5ae9-a837-f05ce5417438"
-GR = "28b8d3ca-fb5f-59d9-8090-bfdbd6d07a71"
 IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+JuliaFormatter = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
 LanguageServer = "2b0e0bc5-e4fd-59b4-8912-456d1b03d8d7"
+LiveServer = "16fef848-5104-11e9-1b77-fb7a48bbb589"
 OhMyREPL = "5fb14364-9ced-5910-84b2-373655c76a03"
-PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
 Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
 Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 StaticLint = "b3cc710f-9c33-5bdb-a03d-a94903873e97"

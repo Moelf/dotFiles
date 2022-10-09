@@ -29,3 +29,5 @@ theme_gruvbox dark hard
 if status is-login
     sway
 end
+
+# eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
