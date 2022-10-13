@@ -264,11 +264,12 @@ resume 'swaymsg "output * dpms on"' \\
 timeout 1500 'systemctl suspend"' \\
 before-sleep "swaylock -i ~/Pictures/lock.png"
 
-bindsym $mod+Home exec "~/home.sh"
+# bindsym $mod+Home exec "~/home.sh"
 bindsym $mod+Print exec grim $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
-bindsym Alt+A exec slurp | grim -g - - | wl-copy
+bindsym $mod+Alt+Print exec slurp | grim -g - $HOME/Pictures/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindsym Alt+A exec grim -g "$(slurp)" - | wl-copy
 bindsym Alt+Shift+A exec grim -g "$(slurp)" - | swappy -f -
-bindsym Alt+Ctrl+A exec  grim - | wl-copy
+bindsym Alt+Ctrl+A exec grim -o $(slurp -o -f '%o') - | wl-copy
 mode passthrough bindsym Ctrl+Alt+Delete mode default
 bindsym $mod+Delete mode passthrough
 

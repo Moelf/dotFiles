@@ -105,15 +105,12 @@ return require('packer').startup(function()
     use 'Yggdroot/indentLine'
     use 'lervag/vimtex'
     use {
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = {{'nvim-lua/plenary.nvim', opt = false}},
+        'mfussenegger/nvim-lint',
         config = function()
-            local null = require("null-ls")
-            null.setup({
-                sources = {
-                    require("null-ls").builtins.diagnostics.vale,
-                },
-            })
+            local null = require("lint")
+            null.linters_by_ft = {
+                markdown = {'vale',}
+            }
         end
     }
 end)
