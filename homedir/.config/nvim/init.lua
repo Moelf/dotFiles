@@ -6,7 +6,6 @@ require('nvimoptions')
 require('keymaps')
 
 -- we configure all plugin specific options in this file
-
 -- powerline
 vim.g.lightline = {colorscheme='wombat'}
 vim.g.indentLine_char = '▏'

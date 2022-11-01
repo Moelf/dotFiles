@@ -26,7 +26,8 @@ if test -z (pgrep ssh-agent | string collect)
 end
 
 theme_gruvbox dark hard
-if status is-login
+if status is-login 
+    and test "$XDG_CURRENT_DESKTOP" != "GNOME"
     sway
 end
 
