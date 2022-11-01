@@ -273,8 +273,8 @@ bindsym Alt+Ctrl+A exec grim -o $(slurp -o -f '%o') - | wl-copy
 mode passthrough bindsym Ctrl+Alt+Delete mode default
 bindsym $mod+Delete mode passthrough
 
-gaps inner 10
-gaps outer 10
+gaps inner 6
+gaps outer 6
 bar {
     swaybar_command waybar
 

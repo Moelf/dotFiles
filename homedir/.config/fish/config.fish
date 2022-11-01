@@ -5,6 +5,7 @@ set -x EDITOR       "nvim -O"
 set -x NNN_PLUG     'd:diffs;v:imgview;p:preview-tui'
 set -x NNN_FIFO     /tmp/nnn.fifo
 set -x NNN_TRASH    1
+set -x MOZ_ENABLE_WAYLAND 1
 set PATH $PATH /home/akako/.local/bin
 
 # User configuration
