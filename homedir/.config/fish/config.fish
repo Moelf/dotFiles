@@ -2,7 +2,7 @@ set fish_greeting
 set -x JULIA_NUM_THREADS 4
 set -x BAT_THEME    gruvbox-dark
 set -x EDITOR       "nvim -O"
-set -x NNN_PLUG     'p:preview-tui'
+set -x NNN_PLUG     'd:diffs;v:imgview;p:preview-tui'
 set -x NNN_FIFO     /tmp/nnn.fifo
 set -x NNN_TRASH    1
 set PATH $PATH /home/akako/.local/bin

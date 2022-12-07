@@ -4,6 +4,7 @@ vim.o.completeopt = "menuone,noinsert,noselect"    -- autocomplete options
 vim.o.expandtab = true                             -- expand tabs into spaces
 vim.o.autoindent = true
 vim.o.smarttab = true
+vim.o.smartcase = true
 vim.o.termguicolors = true                         -- enable true color
 vim.o.tabstop = indent
 vim.o.shiftwidth = indent
