@@ -5,3 +5,10 @@
   interactive = auto
   ui = true
   pager = true
+[push]
+	default = simple
+[user]
+	name = Moelf
+	email = proton@jling.dev
+[pull]
+	ff = only

@@ -9,6 +9,13 @@ fi
 
 # User specific aliases and functions
 
+source /etc/bash_completion.d/git
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+export JULIA_NUM_THREADS=8
 alias vim='nvim -O'
+export EDITOR=vim
+export TERM=xterm-256color
+
+HISTSIZE=1000000
+HISTFILESIZE=2000000
