@@ -1,7 +1,10 @@
 [deps]
 BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Debugger = "31a5f54b-26ea-5ae9-a837-f05ce5417438"
-LiteHF = "87f02e12-f6bc-4038-9bdd-797fa8455fab"
+GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
 OhMyREPL = "5fb14364-9ced-5910-84b2-373655c76a03"
+Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
 Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
-UnROOT = "3cd96dde-e98d-4713-81e9-a4a1b0235ce9"
+SnoopCompile = "aa65fe97-06da-5843-b5b1-d5d13cad87d2"

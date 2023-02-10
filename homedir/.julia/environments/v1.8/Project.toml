@@ -1,7 +1,9 @@
 [deps]
+BatchRenaming = "60aaa7b6-5c70-4f63-a5f3-f4da0795f6dd"
 BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 BrowserMacros = "0e713f60-a330-4a0f-8e30-02c28b77d9ad"
 Cthulhu = "f68482b8-f384-11e8-15f7-abe071a5a75f"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Debugger = "31a5f54b-26ea-5ae9-a837-f05ce5417438"
 JET = "c3a54625-cd67-489e-a8e7-0a5a0ff4e31b"
 JuliaFormatter = "98e50ef6-434e-11e9-1051-2b60c6c9e899"

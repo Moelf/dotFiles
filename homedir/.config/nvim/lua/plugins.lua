@@ -1,29 +1,22 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function()
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-    use 'github/copilot.vim'
-    use {
+return require("lazy").setup({
+    'github/copilot.vim',
+    {
         'neovim/nvim-lspconfig',
         config = function()
             require'lspconfig'.julials.setup{}
             require'lspconfig'.pyright.setup{}
         end
-    }
-    use 'williamboman/nvim-lsp-installer'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use "folke/which-key.nvim"
-    use 'hrsh7th/cmp-cmdline'
-    use {
+    },
+    'williamboman/nvim-lsp-installer',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'folke/which-key.nvim',
+    'hrsh7th/cmp-cmdline',
+    {
         'hrsh7th/nvim-cmp',
-        requires = {
-            {'L3MON4D3/LuaSnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
+        dependencies = {
+            'L3MON4D3/LuaSnip',
+            'hrsh7th/cmp-nvim-lsp'
         },
         config = function()
             local cmp = require("cmp")
@@ -57,55 +50,33 @@ return require('packer').startup(function()
                 },
             })
         end
-    }
+    },
 
-    use {
+    {
         'nvim-telescope/telescope.nvim',
-        opt = false,
-        requires = {{'nvim-lua/plenary.nvim', opt = false}}
-    }
-    use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-            require("trouble").setup{
-                icons = false,
-                fold_open = "v", -- icon used for open folds
-                fold_closed = ">", -- icon used for closed folds
-                indent_lines = false, -- add an indent guide below the fold icons
-                signs = {
-                    -- icons / text used for a diagnostic
-                    error = "error",
-                    warning = "warn",
-                    hint = "hint",
-                    information = "info"
-                },
-                use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
-            }
-        end
-    }
-    -- use {'kdheepak/JuliaFormatter.vim', branch = 'main'}
-    use 'JuliaEditorSupport/julia-vim'
-    use 'psliwka/vim-smoothie'
-    use 'jpalardy/vim-slime'
-    use 'morhetz/gruvbox'
-    use {
+        lazy = false,
+        dependencies = {{'nvim-lua/plenary.nvim', lazy = false}}
+    },
+    'JuliaEditorSupport/julia-vim',
+    'psliwka/vim-smoothie',
+    'morhetz/gruvbox',
+    {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = false },
+        dependencies = { 'kyazdani42/nvim-web-devicons', lazy = false },
         config = function()
             require('lualine').setup {
                 options = { theme = 'gruvbox_dark' }
             }
         end
-    }
-    use 'itchyny/vim-cursorword'
-    use 'tmhedberg/SimpylFold'
-    use 'tpope/vim-commentary'
-    use 'tpope/vim-surround'
-    use 'airblade/vim-gitgutter'
-    use 'Yggdroot/indentLine'
-    use 'lervag/vimtex'
-    use {
+    },
+    'itchyny/vim-cursorword',
+    'tmhedberg/SimpylFold',
+    'tpope/vim-commentary',
+    'tpope/vim-surround',
+    'airblade/vim-gitgutter',
+    'Yggdroot/indentLine',
+    'lervag/vimtex',
+    {
         'mfussenegger/nvim-lint',
         config = function()
             local null = require("lint")
@@ -114,4 +85,4 @@ return require('packer').startup(function()
             }
         end
     }
-end)
+})
