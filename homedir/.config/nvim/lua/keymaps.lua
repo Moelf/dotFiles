@@ -5,6 +5,13 @@ vim.keymap.set('n', "<C-M>", function() vim.o.number = not vim.o.number end)
 local WhichKey = require("which-key")
 local tl = require("telescope.builtin")
 WhichKey.register({
+    t = {
+        name = "nvim.tree",
+        t = {"<cmd>NvimTreeToggle<CR>", "Toggle Tree", noremap=true},
+    }
+}, {prefix="<leader>"})
+
+WhichKey.register({
     f = {
         name = "Telescope",
         f = {tl.find_files, "Find Files", noremap=true},

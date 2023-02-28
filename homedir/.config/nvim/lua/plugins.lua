@@ -11,6 +11,31 @@ return require("lazy").setup({
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'folke/which-key.nvim',
+    {
+        "nvim-treesitter/nvim-treesitter", 
+        build = ":TSUpdate",
+        config = function()
+            local nts = require("nvim-treesitter.configs")
+            nts.setup {
+                ensure_installed = { 
+                    "julia", "llvm", "diff", "markdown",
+                    "c", "lua", "vim", "help"
+                },
+                highlight = {
+                    enable = true,
+                },
+                disable = function(lang, buf)
+                    local max_filesize = 10000 * 1024 -- 100 KB
+                    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+                    if ok and stats and stats.size > max_filesize then
+                        return true
+                    end
+                end,
+                additional_vim_regex_highlighting = false,
+            }
+        end
+    },
+
     'hrsh7th/cmp-cmdline',
     {
         'hrsh7th/nvim-cmp',
@@ -58,11 +83,17 @@ return require("lazy").setup({
         dependencies = {{'nvim-lua/plenary.nvim', lazy = false}}
     },
     'JuliaEditorSupport/julia-vim',
-    'psliwka/vim-smoothie',
+    {
+        'psliwka/vim-smoothie',
+        lazy = false
+    },
     'morhetz/gruvbox',
     {
+        'nvim-tree/nvim-tree.lua',
+        config = true
+    },
+    {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons', lazy = false },
         config = function()
             require('lualine').setup {
                 options = { theme = 'gruvbox_dark' }
