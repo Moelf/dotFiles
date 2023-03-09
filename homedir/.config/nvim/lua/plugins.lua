@@ -18,7 +18,7 @@ return require("lazy").setup({
             local nts = require("nvim-treesitter.configs")
             nts.setup {
                 ensure_installed = { 
-                    "julia", "llvm", "diff", "markdown",
+                    "julia", "llvm", "diff", "markdown", "python",
                     "c", "lua", "vim", "help"
                 },
                 highlight = {
