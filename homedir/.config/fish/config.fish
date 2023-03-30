@@ -13,7 +13,6 @@ alias rm "echo 'Use trash'"
 alias del trash
 alias vim "nvim -O"
 alias vimdiff "nvim -d"
-alias root "root -l"
 alias python python3
 
 function n --wraps=nnn
