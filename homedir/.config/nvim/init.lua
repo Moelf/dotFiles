@@ -12,6 +12,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+-- Vim Slime
+vim.g.slime_target = 'neovim'
+
 require('plugins')
 require('nvimoptions')
 require('keymaps')

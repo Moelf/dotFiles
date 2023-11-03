@@ -9,4 +9,4 @@ dmenu-parse_action=true
 allow_images=true
 line_wrap=word_char
 insensitive=true
-term=kitty
+term=alacritty

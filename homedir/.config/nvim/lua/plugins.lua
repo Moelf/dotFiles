@@ -1,4 +1,6 @@
 return require("lazy").setup({
+    'kdheepak/JuliaFormatter.vim',
+    'mcchrish/nnn.vim',
     'github/copilot.vim',
     {
         'neovim/nvim-lspconfig',
@@ -19,7 +21,7 @@ return require("lazy").setup({
             nts.setup {
                 ensure_installed = { 
                     "julia", "llvm", "diff", "markdown", "python",
-                    "c", "lua", "vim", "help"
+                    "c", "lua", "vim", "vimdoc"
                 },
                 highlight = {
                     enable = true,
@@ -87,6 +89,18 @@ return require("lazy").setup({
         'psliwka/vim-smoothie',
         lazy = false
     },
+    {
+        'akinsho/toggleterm.nvim', version = "*",
+        config = function()
+            require('toggleterm').setup {
+                open_mapping = [[<c-t>]],
+                direction = 'vertical',
+                size = vim.o.columns * 0.4
+            }
+
+        end
+    },
+    'jpalardy/vim-slime',
     'morhetz/gruvbox',
     {
         'nvim-tree/nvim-tree.lua',
