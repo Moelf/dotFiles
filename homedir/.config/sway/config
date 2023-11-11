@@ -150,16 +150,16 @@ input "1133:45082:MX_Anywhere_2S_Mouse" {
 # Workspaces:
 
     # define names for workspaces
-    set $ws1  "1:   Terminal "
-    set $ws2  "2:   Code "
-    set $ws3  "3:   Firefox"
-    set $ws4  "4:   Files "
-    set $ws5  "5:   Documents "
-    set $ws6  "6:   Media "
-    set $ws7  "7:   Design "
-    set $ws8  "8:   Chat "
-    set $ws9  "9:   General "
-    set $ws10 "10:   Settings "
+    set $ws1  "1: "
+    set $ws2  "2:  "
+    set $ws3  "3:  "
+    set $ws4  "4:  "
+    set $ws5  "5:  "
+    set $ws6  "6:  "
+    set $ws7  "7:  "
+    set $ws8  "8:  "
+    set $ws9  "9:  "
+    set $ws10 "10:  "
     # switch to workspace
     bindsym $mod+1 workspace $ws1 
     bindsym $mod+2 workspace $ws2 
@@ -282,18 +282,11 @@ bar {
     swaybar_command waybar
 }
 include /etc/sway/config.d/*
-include ~/.config/sway/config.d/*
 #start up sequenc
-# set GTK theme
-set $gnome-schema org.gnome.desktop.interface
-exec [ ! -s ~/.config/mpd/pid ] && mpd
 exec synology-drive
 exec_always {
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     eval "$(ssh-agent -c)"
     protonmail-bridge --noninteractive
     swaybg -o "*" -m fill -i ~/Documents/github/dotFiles/3440x1440-dark-archlinux2.png
-    gsettings set $gnome-schema gtk-theme 'Numix'
-    gsettings set $gnome-schema icon-theme 'Numix'
-    gsettings set $gnome-schema cursor-theme 'Paper'
 }

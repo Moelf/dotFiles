@@ -32,15 +32,13 @@ window#waybar.solo {
     padding: 1px 7px;
     color: #131313;
     border-radius: 5px;
-    /* background-color: transparent; 
-    border-bottom: 3px solid transparent;
-    */
 }
 
 #workspaces button:hover {
     background: lightblue;
     color: #131313;
     border-bottom: 3px solid #ffffff;
+    transition-duration: .1s;
 
 }
 
