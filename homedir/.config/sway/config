@@ -283,10 +283,10 @@ bar {
 }
 include /etc/sway/config.d/*
 #start up sequenc
-exec synology-drive
 exec_always {
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     eval "$(ssh-agent -c)"
     protonmail-bridge --noninteractive
+    synology-drive
     swaybg -o "*" -m fill -i ~/Documents/github/dotFiles/3440x1440-dark-archlinux2.png
 }

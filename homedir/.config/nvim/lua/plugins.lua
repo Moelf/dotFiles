@@ -1,5 +1,4 @@
 return require("lazy").setup({
-    'kdheepak/JuliaFormatter.vim',
     'mcchrish/nnn.vim',
     'github/copilot.vim',
     {
@@ -42,7 +41,6 @@ return require("lazy").setup({
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
-            'L3MON4D3/LuaSnip',
             'hrsh7th/cmp-nvim-lsp'
         },
         config = function()
@@ -72,7 +70,6 @@ return require("lazy").setup({
                 -- You should specify your *installed* sources.
                 sources = {
                     { name = "nvim_lsp" },
-                    { name = 'luasnip' },
                     { name = "path" }
                 },
             })

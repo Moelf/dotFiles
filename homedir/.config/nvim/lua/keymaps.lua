@@ -50,5 +50,6 @@ WhichKey.register({
         name = "LSP/Copilot commands",
         p = {"<cmd>TroubleToggle<CR>", "Show LSP trouble panel", noremap=true},
         c = {"<cmd>Copilot panel<CR>", "Show Copilot panel", noremap=true},
+        f = {"<cmd>lua vim.lsp.buf.format()<CR>", "Format", noremap=true}
     }
 }, {prefix="<leader>"})

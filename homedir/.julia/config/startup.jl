@@ -11,4 +11,4 @@ function mega()
 end
 using Revise
 ENV["JULIA_EDITOR"] = "nvim"
-ENV["JULIA_PYTHONCALL_EXE"] = "/usr/bin/python"
+# ENV["JULIA_PYTHONCALL_EXE"] = "/usr/bin/python"
