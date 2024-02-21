@@ -1,5 +1,7 @@
 set fish_greeting
-set PATH $PATH /home/akako/.local/bin
+set PATH $PATH $HOME/.local/bin
+set PATH $PATH /usr/bin/vendor_perl/
+export (envsubst < $HOME/.config/environment.d/main.conf)
 
 # User configuration
 alias chat "chatblade -s"
