@@ -42,3 +42,6 @@ vim.g.vimtex_compiler_latexmk = {
         '-interaction=nonstopmode',
     }
 }
+
+-- Copilot
+vim.g.copilot_no_tab_map= true

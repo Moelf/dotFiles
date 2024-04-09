@@ -5,9 +5,7 @@
 
 ### Variables
 # Logo key. Use Mod1 for Alt. Mod4 for Meta-Key
-# exec ibus-daemon -drx
-exec wl-paste -t text --watch clipman store
-exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+exec wl-paste --watch cliphist store
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -19,7 +17,7 @@ set $term alacritty
 # Your preferred application launcher
 set $menu "wofi"
 # Your preferred file explorer
-set $file_exp nautilus
+set $file_exp nemo
 # colors
 default_border pixel 3
 set $base00 #282828
@@ -118,7 +116,7 @@ input "1278:33:HHKB-Hybrid_1_Keyboard" {
     floating_modifier $mod normal
 
     # reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # exit sway (logs you out of your wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end Wayland session.' -b 'Yes.' 'swaymsg exit'
@@ -256,7 +254,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost allow
 bindsym XF86AudioLowerVolume exec pamixer -d 5 --allow-boost allow
-bindsym $mod+Shift+v exec clipman pick -t wofi
+bindsym $mod+Shift+v exec cliphist list | wofi -dmenu | cliphist decode | wl-copy
 bindsym XF86AudioMute exec pamixer -t
 bindsym XF86AudioMicMute exec pamixer --default-source -t
 bindsym XF86MonBrightnessDown exec brightnessctl -e set 5%-
@@ -291,6 +289,7 @@ bar {
 include /etc/sway/config.d/*
 #start up sequenc
 exec_always {
+    fcitx5 -d --replace
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     eval "$(ssh-agent -c)"
     protonmail-bridge --noninteractive
