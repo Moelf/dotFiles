@@ -1,0 +1,6 @@
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+        include "us"
+        name[Group1] = "Modified for HHKB";
+        key <ESC> { [ Escape, asciitilde ] };
+};
