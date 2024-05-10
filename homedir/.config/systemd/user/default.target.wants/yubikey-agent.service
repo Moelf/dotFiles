@@ -1,1 +1,24 @@
-/usr/lib/systemd/user/yubikey-agent.service
+[Unit]
+Description=Seamless ssh-agent for YubiKeys
+Documentation=https://filippo.io/yubikey-agent
+
+[Service]
+ExecStart=yubikey-agent -l %t/yubikey-agent/yubikey-agent.sock
+ExecReload=/bin/kill -HUP $MAINPID
+IPAddressDeny=any
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallErrorNumber=EPERM
+SystemCallArchitectures=native
+NoNewPrivileges=yes
+KeyringMode=private
+UMask=0177
+RuntimeDirectory=yubikey-agent
+
+[Install]
+WantedBy=default.target
