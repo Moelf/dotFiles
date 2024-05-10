@@ -9,7 +9,6 @@ fi
 
 # User specific aliases and functions
 
-source /etc/bash_completion.d/git
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export JULIA_NUM_THREADS=8
