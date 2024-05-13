@@ -73,11 +73,13 @@ input "1267:32:Elan_Touchpad" {
   dwt enabled
   natural_scroll enabled
 }
+
 input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
   tap enabled
   dwt enabled
   natural_scroll enabled
 }
+
 input "1133:45082:MX_Anywhere_2S_Mouse" {
   scroll_factor 1
 }
@@ -299,5 +301,5 @@ exec_always {
     eval "$(ssh-agent -c)"
     protonmail-bridge --noninteractive
     synology-drive
-    swaybg -o "*" -m fill -i ~/Documents/github/dotFiles/3440x1440-dark-archlinux2.png
+    swaybg -o "*" -m fill -i ~/Documents/github/dotFiles/2560x1600-dark-archlinux2.png
 }
