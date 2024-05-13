@@ -1,7 +1,6 @@
 set fish_greeting
 set PATH $PATH $HOME/.local/bin
 set PATH $PATH /usr/bin/vendor_perl/
-export (envsubst < $HOME/.config/environment.d/main.conf)
 
 # User configuration
 alias chat "chatblade -s"
@@ -21,8 +20,13 @@ if test -z (pgrep ssh-agent | string collect)
     set -Ux SSH_AGENT_PID $SSH_AGENT_PID
 end
 
-theme_gruvbox dark hard
-
 function con
     eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 end
+
+export (envsubst < $HOME/.config/environment.d/main.conf)
+if status --is-interactive
+    atuin init fish | source
+    theme_gruvbox dark hard
+end
+
