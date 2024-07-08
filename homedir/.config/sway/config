@@ -92,9 +92,14 @@ input "12972:18:Framework_Laptop_16_Keyboard_Module_-_ANSI_Keyboard" {
     xkb_options ctrl:swapcaps
  }
 
-# input "1278:33:HHKB-Hybrid_1_Keyboard" {
-#     xkb_layout "hhkb"
-# }
+input "1278:33:HHKB-Hybrid_1_Keyboard" {
+    xkb_layout "hhkb"
+}
+
+input "1278:33:HHKB-Hybrid_2_Keyboard" {
+    xkb_layout "hhkb"
+}
+
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -269,12 +274,11 @@ bindsym XF86MonBrightnessUp exec brightnessctl -e set +5%
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym $mod+Ctrl+l exec "swaylock -s fill -i ~/Pictures/lock2.jpg"
+bindsym $mod+Ctrl+l exec "swaylock -s fill -i ~/Pictures/toronto_bkg.jpg"
 exec swayidle -w \\
 timeout 600 'swaymsg "output * dpms off"' \\
 resume 'swaymsg "output * dpms on"' \\
-timeout 1500 'systemctl suspend"' \\
-before-sleep "swaylock -s fill -i ~/Pictures/lock2.jpg"
+before-sleep "swaylock -s fill -i ~/Pictures/toronto_bkg.jpg"
 
 exec udiskie &
 

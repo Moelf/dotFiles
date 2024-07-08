@@ -19,9 +19,9 @@ return require("lazy").setup({
         config = function()
             local nts = require("nvim-treesitter.configs")
             nts.setup {
-                ensure_installed = { 
+                ensure_installed = {
+                    "c", "lua", "vim", "vimdoc", "query",
                     "julia", "llvm", "diff", "markdown", "python",
-                    "c", "lua", "vim", "vimdoc"
                 },
                 highlight = {
                     enable = true,

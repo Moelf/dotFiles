@@ -14,10 +14,7 @@ vim.o.textwidth = 100
 vim.o.splitright = true                            -- open splits on the right by default
 vim.o.number=true
 vim.o.laststatus=2
-vim.o.noshowmode=false  -- Because we have powerline
 vim.o.undofile = true
 vim.o.undodir = vim.fn.expand('~/.vim/undodir')
-vim.o.mapleader=";"
-vim.o.colorscheme="gruvbox"
 vim.o.background="dark"
 vim.cmd('colorscheme gruvbox')
