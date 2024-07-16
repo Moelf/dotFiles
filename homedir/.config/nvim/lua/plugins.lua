@@ -12,6 +12,7 @@ return require("lazy").setup({
     'williamboman/nvim-lsp-installer',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
+    'echasnovski/mini.icons',
     'folke/which-key.nvim',
     {
         "nvim-treesitter/nvim-treesitter", 

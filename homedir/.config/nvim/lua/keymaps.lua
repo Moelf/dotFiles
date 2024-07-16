@@ -21,52 +21,51 @@ vim.cmd[[
 
 local WhichKey = require("which-key")
 local tl = require("telescope.builtin")
-WhichKey.register({
-    t = {
-        name = "nvim.tree",
-        t = {"<cmd>NvimTreeToggle<CR>", "Toggle Tree", noremap=true},
-    }
-}, {prefix="<leader>"})
-
-WhichKey.register({
-    f = {
-        name = "Telescope",
-        f = {tl.find_files, "Find Files", noremap=true},
-        g = {tl.live_grep, "Live RipGrep", noremap=true},
-    }
-}, {prefix="<leader>"})
-
-WhichKey.register({
-    l = {
-        name = "LaTeX commands",
-        i = {"<cmd>VimtexInfo<CR>", "show latex info", noremap=true},
-        I = {"<cmd>VimtexInfoFull<CR>", "show full latex info", noremap=true},
-        t = {"<cmd>VimtexTocOpen<CR>", "open latex table of contents", noremap=true},
-        T = {"<cmd>VimtexTocToggle<CR>", "toggle latex table of contents", noremap=true},
-        q = {"<cmd>VimtexLog<CR>", "show latex compiler log", noremap=true},
-        v = {"<cmd>VimtexView<CR>", "view latex output", noremap=true},
-        l = {"<cmd>VimtexCompile<CR>", "start latex compilation", noremap=true},
-        L = {"<cmd>VimtexCompileSelected<CR>", "start latex compilation for selection", noremap=true},
-        k = {"<cmd>VimtexStop<CR>", "stop latex compilation", noremap=true},
-        K = {"<cmd>VimtexStopAll<CR>", "stop all latex compilation", noremap=true},
-        e = {"<cmd>VimtexErrors<CR>", "show latex compilation errors", noremap=true},
-        o = {"<cmd>VimtexCompileOutput<CR>", "open file where compiler is redirected", noremap=true},
-        g = {"<cmd>VimtexStatus<CR>", "show latex compiler status", noremap=true},
-        G = {"<cmd>VimtexStatusAll<CR>", "show latex compiler status for all", noremap=true},
-        c = {"<cmd>VimtexClean<CR>", "clean latex output", noremap=true},
-        C = {"<cmd>VimtexCleanAll<CR>", "clean all latex output", noremap=true},
-        x = {"<cmd>VimtexReload<CR>", "reload vimtex", noremap=true},
-        a = {"<cmd>VimtexContextMenu<CR>", "open latex context menu", noremap=true},
-        u = {":call LaTeXtoUnicode#Toggle()<CR>", "toggle latex-to-unicode", noremap=true},
-    }
-}, {prefix="<leader>"})
+WhichKey.add(
+  {
+    { "<leader>t", group = "nvim.tree" },
+    { "<leader>tt", "<cmd>NvimTreeToggle<CR>", desc = "Toggle Tree", remap = false },
+  }
+  )
 
 
-WhichKey.register({
-    c = {
-        name = "LSP/Copilot commands",
-        p = {"<cmd>TroubleToggle<CR>", "Show LSP trouble panel", noremap=true},
-        c = {"<cmd>Copilot panel<CR>", "Show Copilot panel", noremap=true},
-        f = {"<cmd>lua vim.lsp.buf.format()<CR>", "Format", noremap=true}
-    }
-}, {prefix="<leader>"})
+WhichKey.add(  {
+    { "<leader>f", group = "Telescope" },
+    { "<leader>ff", tl.find_files, desc = "Find Files", remap = false },
+    { "<leader>fg", tl.live_grep, desc = "Live RipGrep", remap = false },
+  }
+  )
+
+WhichKey.add(
+  {
+    { "<leader>l", group = "LaTeX commands" },
+    { "<leader>lC", "<cmd>VimtexCleanAll<CR>", desc = "clean all latex output", remap = false },
+    { "<leader>lG", "<cmd>VimtexStatusAll<CR>", desc = "show latex compiler status for all", remap = false },
+    { "<leader>lI", "<cmd>VimtexInfoFull<CR>", desc = "show full latex info", remap = false },
+    { "<leader>lK", "<cmd>VimtexStopAll<CR>", desc = "stop all latex compilation", remap = false },
+    { "<leader>lL", "<cmd>VimtexCompileSelected<CR>", desc = "start latex compilation for selection", remap = false },
+    { "<leader>lT", "<cmd>VimtexTocToggle<CR>", desc = "toggle latex table of contents", remap = false },
+    { "<leader>la", "<cmd>VimtexContextMenu<CR>", desc = "open latex context menu", remap = false },
+    { "<leader>lc", "<cmd>VimtexClean<CR>", desc = "clean latex output", remap = false },
+    { "<leader>le", "<cmd>VimtexErrors<CR>", desc = "show latex compilation errors", remap = false },
+    { "<leader>lg", "<cmd>VimtexStatus<CR>", desc = "show latex compiler status", remap = false },
+    { "<leader>li", "<cmd>VimtexInfo<CR>", desc = "show latex info", remap = false },
+    { "<leader>lk", "<cmd>VimtexStop<CR>", desc = "stop latex compilation", remap = false },
+    { "<leader>ll", "<cmd>VimtexCompile<CR>", desc = "start latex compilation", remap = false },
+    { "<leader>lo", "<cmd>VimtexCompileOutput<CR>", desc = "open file where compiler is redirected", remap = false },
+    { "<leader>lq", "<cmd>VimtexLog<CR>", desc = "show latex compiler log", remap = false },
+    { "<leader>lt", "<cmd>VimtexTocOpen<CR>", desc = "open latex table of contents", remap = false },
+    { "<leader>lu", ":call LaTeXtoUnicode#Toggle()<CR>", desc = "toggle latex-to-unicode", remap = false },
+    { "<leader>lv", "<cmd>VimtexView<CR>", desc = "view latex output", remap = false },
+    { "<leader>lx", "<cmd>VimtexReload<CR>", desc = "reload vimtex", remap = false },
+  }
+)
+
+WhichKey.add(
+  {
+    { "<leader>c", group = "LSP/Copilot commands" },
+    { "<leader>cc", "<cmd>Copilot panel<CR>", desc = "Show Copilot panel", remap = false },
+    { "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", desc = "Format", remap = false },
+    { "<leader>cp", "<cmd>TroubleToggle<CR>", desc = "Show LSP trouble panel", remap = false },
+  }
+)
