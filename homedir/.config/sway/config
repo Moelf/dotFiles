@@ -77,6 +77,7 @@ input "1267:32:Elan_Touchpad" {
 input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
   tap enabled
   dwt enabled
+  scroll_factor 0.2
   natural_scroll enabled
 }
 
