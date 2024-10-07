@@ -30,3 +30,10 @@ if status --is-interactive
     theme_gruvbox dark hard
 end
 
+function mget --wraps=mega-get
+    if count $argv > /dev/null
+        set -l stripped (string replace -ar '\s' '' $argv[1])
+        echo $stripped
+        mega-get $stripped . -q
+    end
+end
