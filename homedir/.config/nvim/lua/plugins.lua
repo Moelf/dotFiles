@@ -3,6 +3,23 @@ return require("lazy").setup({
     'mcchrish/nnn.vim',
     'github/copilot.vim',
     {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add options here
+            -- or leave it empty to use the default settings
+        },
+        keys = {
+            -- suggested keymap
+            { "<C-S-p>", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+        },
+    },
+    {
+        'kaarmu/typst.vim',
+        ft = 'typst',
+        lazy=false,
+    },
+    {
         'neovim/nvim-lspconfig',
         config = function()
             require'lspconfig'.julials.setup{}
@@ -21,7 +38,7 @@ return require("lazy").setup({
             local nts = require("nvim-treesitter.configs")
             nts.setup {
                 ensure_installed = {
-                    "c", "lua", "vim", "vimdoc", "query",
+                    "c", "lua", "vim", "vimdoc", "query", "typst",
                     "julia", "llvm", "diff", "markdown", "python",
                 },
                 highlight = {
@@ -39,12 +56,12 @@ return require("lazy").setup({
         end
     },
     {
-    "L3MON4D3/LuaSnip",
-    config = function()
+        "L3MON4D3/LuaSnip",
+        config = function()
             require("luasnip").config.set_config({ -- Setting LuaSnip config
-              -- Enable autotriggered snippets
+                -- Enable autotriggered snippets
                 enable_autosnippets = true,
-                  -- Use Tab (or some other key if you prefer) to trigger visual selection
+                -- Use Tab (or some other key if you prefer) to trigger visual selection
                 store_selection_keys = "<C-S>",
             })
             require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
@@ -143,7 +160,14 @@ return require("lazy").setup({
     'tpope/vim-surround',
     'airblade/vim-gitgutter',
     'Yggdroot/indentLine',
-    'lervag/vimtex',
+    {
+        "lervag/vimtex",
+        lazy = false,
+        init = function()
+            -- VimTeX configuration goes here, e.g.
+            vim.g.vimtex_view_method = "zathura"
+        end
+    },
     {
         'mfussenegger/nvim-lint',
         config = function()
@@ -152,5 +176,46 @@ return require("lazy").setup({
                 markdown = {'vale',}
             }
         end
+    },
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        opts = {
+            provider = "ollama",
+            vendors = {
+                ---@type AvanteProvider
+                ollama = {
+                    ["local"] = true,
+                    endpoint = "127.0.0.1:11434/v1",
+                    model = "codegemma",
+                    parse_curl_args = function(opts, code_opts)
+                        return {
+                            url = opts.endpoint .. "/chat/completions",
+                            headers = {
+                                ["Accept"] = "application/json",
+                                ["Content-Type"] = "application/json",
+                            },
+                            body = {
+                                model = opts.model,
+                                messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
+                                max_tokens = 2048,
+                                stream = true,
+                            },
+                        }
+                    end,
+                    parse_response_data = function(data_stream, event_state, opts)
+                        require("avante.providers").openai.parse_response(data_stream, event_state, opts)
+                    end,
+                },
+            },
+        },
+        build = "make",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        }
     }
 })

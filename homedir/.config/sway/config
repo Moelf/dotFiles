@@ -55,7 +55,7 @@ client.placeholder      #212121 #0C0C0C #FFFFFF #212121   #262626
 client.background       #212121
 
 ### Output configuration
-output eDP-1 scale 1.25
+output eDP-1 scale 1.20
 bindsym $mod+Shift+m output eDP-1 toggle
 #
 # Example configuration:
@@ -77,7 +77,7 @@ input "1267:32:Elan_Touchpad" {
 input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
   tap enabled
   dwt enabled
-  scroll_factor 0.2
+  scroll_factor 0.3
   natural_scroll enabled
 }
 
@@ -265,11 +265,11 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-bindsym XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost allow
-bindsym XF86AudioLowerVolume exec pamixer -d 5 --allow-boost allow
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.9 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- 
 bindsym $mod+Shift+v exec cliphist list | wofi -dmenu | cliphist decode | wl-copy
-bindsym XF86AudioMute exec pamixer -t
-bindsym XF86AudioMicMute exec pamixer --default-source -t
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 bindsym XF86MonBrightnessDown exec brightnessctl -e set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl -e set +5%
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -302,9 +302,10 @@ include /etc/sway/config.d/*
 #start up sequenc
 exec_always {
     fcitx5 -d --replace
+    protonmail-bridge --noninteractive
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     eval "$(ssh-agent -c)"
-    protonmail-bridge --noninteractive
     synology-drive
     swaybg -o "*" -m fill -i ~/Documents/github/dotFiles/2560x1600-dark-archlinux2.png
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 }

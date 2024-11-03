@@ -45,3 +45,6 @@ vim.g.vimtex_compiler_latexmk = {
 
 -- Copilot
 vim.g.copilot_no_tab_map= true
+
+-- typst
+vim.g.typst_pdf_viewer='zathura'
