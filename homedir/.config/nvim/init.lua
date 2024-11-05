@@ -29,8 +29,6 @@ vim.g.indentLine_fileTypeExclude={'tex','txt'}
 vim.g.indentLine_concealcursor="cv"
 
 -- Vim LaTeX
-vim.g.vimtex_view_method = 'zathura'
-vim.g.tex_flavor = 'latex'
 vim.g.vimtex_quickfix_mode=0
 vim.g.vimtex_compiler_latexmk = { 
     executable = 'latexmk',

@@ -24,6 +24,7 @@ return require("lazy").setup({
         config = function()
             require'lspconfig'.julials.setup{}
             require'lspconfig'.pyright.setup{}
+            require'lspconfig'.typst_lsp.setup{}
         end
     },
     'williamboman/nvim-lsp-installer',
@@ -165,7 +166,8 @@ return require("lazy").setup({
         lazy = false,
         init = function()
             -- VimTeX configuration goes here, e.g.
-            vim.g.vimtex_view_method = "zathura"
+            vim.g.vimtex_view_general_viewer = 'zathura'
+            vim.g.tex_flavor = 'latex'
         end
     },
     {
