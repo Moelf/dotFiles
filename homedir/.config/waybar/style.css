@@ -42,14 +42,14 @@ window#waybar.solo {
 
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     background: #3f3f3f;
     color: white;
     border-bottom: 3px solid #ffffff;
 
 }
 
-#workspaces button.focused:hover {
+#workspaces button.active:hover {
     background: lightblue;
     color: black;
     border-bottom: 3px solid #ffffff;

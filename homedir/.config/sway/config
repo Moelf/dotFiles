@@ -302,7 +302,6 @@ include /etc/sway/config.d/*
 #start up sequenc
 exec_always {
     fcitx5 -d --replace
-    protonmail-bridge --noninteractive
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     eval "$(ssh-agent -c)"
     synology-drive

@@ -1,15 +1,15 @@
 {
     "layer": "top",
         "height": 25,
-        "modules-left": ["sway/workspaces", "sway/mode"],
+        "modules-left": ["hyprland/workspaces", "hyprland/submap"],
         "modules-center": ["clock"],
         "modules-right": ["cpu", "pulseaudio", "network", "backlight", "battery", "tray"],
         // Modules configuration
-        "sway/workspaces": {
+        "hyprland/workspaces": {
             "disable-scroll": true,
             "all-outputs": true,
         },
-        "sway/mode": {
+        "hyprland/submap": {
             "format": "<span style=\"italic\">{}</span>"
         },
         "idle_inhibitor": {

@@ -24,7 +24,7 @@ return require("lazy").setup({
         config = function()
             require'lspconfig'.julials.setup{}
             require'lspconfig'.pyright.setup{}
-            require'lspconfig'.typst_lsp.setup{}
+            -- require'lspconfig'.typst_lsp.setup{}
         end
     },
     'williamboman/nvim-lsp-installer',
