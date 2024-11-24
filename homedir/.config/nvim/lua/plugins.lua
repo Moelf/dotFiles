@@ -188,7 +188,8 @@ return require("lazy").setup({
             vendors = {
                 ---@type AvanteProvider
                 ollama = {
-                    ["local"] = true,
+                    __inherited_from = "openai",
+                    api_key_name = "",
                     endpoint = "127.0.0.1:11434/v1",
                     model = "codegemma",
                     parse_curl_args = function(opts, code_opts)
