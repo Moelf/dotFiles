@@ -37,3 +37,4 @@ function mget --wraps=mega-get
         mega-get $stripped . -q
     end
 end
+fish_add_path /Users/akako/.pixi/bin
