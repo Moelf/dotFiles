@@ -1,22 +1,49 @@
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
-  ui = true
-  pager = true
+# clearly makes git better
+
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[init]
+    defaultBranch = main
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 [push]
-	default = simple
-[user]
-	name = Moelf
-	email = proton@jling.dev
-[pull]
-	ff = only
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+
+# why the hell not?
+
+[help]
+    autocorrect = prompt
+[commit]
+    verbose = true
+[rerere]
+    enabled = true
+    autoupdate = true
 [core]
-	editor = /usr/bin/nvim -O
+    excludesfile = ~/.gitignore
+    editor = /usr/bin/nvim
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+[user]
+    name = Moelf
+    email = proton@jling.dev
+[credential "https://github.com"]
+    helper = 
+    helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper = 
+    helper = !/usr/bin/gh auth git-credential

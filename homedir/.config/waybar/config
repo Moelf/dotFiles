@@ -1,6 +1,6 @@
 {
     "layer": "top",
-        "height": 25,
+        "height": 30,
         "modules-left": ["hyprland/workspaces", "hyprland/submap"],
         "modules-center": ["clock"],
         "modules-right": ["cpu", "pulseaudio", "network", "backlight", "battery", "tray"],

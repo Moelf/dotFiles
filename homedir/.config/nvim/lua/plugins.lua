@@ -1,4 +1,9 @@
 return require("lazy").setup({
+    -- {
+    --     "brianhuster/autosave.nvim",
+    --     event="InsertEnter",
+    --     opts = {autosave_enabled=false} -- Configuration here
+    -- },
     'roman/golden-ratio',
     'mcchrish/nnn.vim',
     'github/copilot.vim',
@@ -24,7 +29,12 @@ return require("lazy").setup({
         config = function()
             require'lspconfig'.julials.setup{}
             require'lspconfig'.pyright.setup{}
-            -- require'lspconfig'.typst_lsp.setup{}
+            require("lspconfig")["tinymist"].setup {
+                settings = {
+                    formatterMode = "typstyle",
+                    exportPdf = "never",
+                }
+            }
         end
     },
     'williamboman/mason.nvim',
@@ -174,7 +184,7 @@ return require("lazy").setup({
             provider = "ollama",
             ollama = {
                 endpoint = "http://desktop:11434", -- Note that there is no /v1 at the end.
-                model = "llama3.2",
+                model = "gemma3:4b",
             },
         },
         build = "make",
