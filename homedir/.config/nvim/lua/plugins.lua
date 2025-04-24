@@ -27,9 +27,7 @@ return require("lazy").setup({
             -- require'lspconfig'.typst_lsp.setup{}
         end
     },
-    'williamboman/nvim-lsp-installer',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
+    'williamboman/mason.nvim',
     'echasnovski/mini.icons',
     'folke/which-key.nvim',
     {
@@ -57,22 +55,12 @@ return require("lazy").setup({
         end
     },
     {
-        "L3MON4D3/LuaSnip",
-        config = function()
-            require("luasnip").config.set_config({ -- Setting LuaSnip config
-                -- Enable autotriggered snippets
-                enable_autosnippets = true,
-                -- Use Tab (or some other key if you prefer) to trigger visual selection
-                store_selection_keys = "<C-S>",
-            })
-            require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
-        end
-    },
-    'hrsh7th/cmp-cmdline',
-    {
         'hrsh7th/nvim-cmp',
         dependencies = {
-            'hrsh7th/cmp-nvim-lsp'
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
         },
         config = function()
             local cmp = require("cmp")
@@ -94,8 +82,8 @@ return require("lazy").setup({
                     end),
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
                     ["<C-n>"] = cmp.mapping.select_next_item(),
-                    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-d>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.close(),
                     ["<CR>"] = cmp.mapping.confirm({
@@ -113,8 +101,8 @@ return require("lazy").setup({
                 -- You should specify your *installed* sources.
                 sources = {
                     { name = "nvim_lsp" },
-                    { name = "path" },
-                    { name = "buffer" }
+                    { name = "buffer" },
+                    { name = "path" }
                 },
             })
         end
@@ -141,7 +129,6 @@ return require("lazy").setup({
 
         end
     },
-    'jpalardy/vim-slime',
     'morhetz/gruvbox',
     {
         'nvim-tree/nvim-tree.lua',
