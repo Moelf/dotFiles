@@ -1,5 +1,5 @@
 # dotFile
-Using [Sway](https://github.com/swaywm/sway), [Waybar](https://github.com/Alexays/Waybar) 
-as status bar, ncmpcpp, [neovim](https://neovim.io/) etc.
+
+Niri, Waybar, Neovim
 
 ![Sample Screenshot](ScreenShot.png?raw=true "Title")

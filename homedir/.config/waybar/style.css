@@ -2,14 +2,13 @@
     border: none;
     border-radius: 0;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: juliamono;
+    font-family: "JuliaMono", "Font Awesome 6 Free";
     font-size: 14px;
-    min-height: 30px;
-    margin: 0 0px;
+    /* margin: 0 0px; */
 }
 
 window#waybar {
-    /* background-image: linear-gradient(130deg, #a6c0fe 0%, #f68084 100%); */
+    background-image: linear-gradient(130deg, #a6c0fe 0%, #f68084 100%);
     background-color: #f68084;
     opacity: 0.9;
     transition-property: background-color;
@@ -20,14 +19,12 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
+/* window#waybar.empty { */
+/*     background-color: transparent; */
+/* } */
+/* window#waybar.solo { */
+/*     background-color: #FFFFFF; */
+/* } */
 
 #workspaces button {
     padding: 1px 7px;

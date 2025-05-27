@@ -1,10 +1,30 @@
 {
     "layer": "top",
         "height": 30,
-        "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+        "modules-left": ["pulseaudio", "backlight", "battery", "power-profiles-daemon", "hyprland/workspaces", "hyprland/submap"],
         "modules-center": ["clock"],
-        "modules-right": ["cpu", "pulseaudio", "network", "backlight", "battery", "tray"],
+        "modules-right": ["network", "tray"],
+
         // Modules configuration
+        "battery": {
+            "states": {
+                // "good": 95,
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{capacity}% {icon}",
+            "format-charging": "{capacity}% ",
+            "format-plugged": "{capacity}% ",
+            "format-alt": "{time} {icon}",
+            // "format-good": "", // An empty format will hide the module
+            "format-full": "100% ",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "power-profiles-daemon": {
+            "format": "({profile})",
+            "tooltip-format": "Power profile: {profile}nDriver: {driver}",
+            "tooltip": true,
+        },
         "hyprland/workspaces": {
             "disable-scroll": true,
             "all-outputs": true,
@@ -48,22 +68,7 @@
         "backlight": {
             // "device": "acpi_video1",
             "format": "{percent}% {icon}",
-            "format-icons": ["🌑","🌒","🌓","🌔","🌕"]
-            //"format-icons": ["", ""]
-        },
-        "battery": {
-            "states": {
-                // "good": 95,
-                "warning": 30,
-                "critical": 15
-            },
-            "format": "{capacity}% {icon}",
-            "format-charging": "{capacity}% ",
-            "format-plugged": "{capacity}% ",
-            "format-alt": "{time} {icon}",
-            // "format-good": "", // An empty format will hide the module
-            "format-full": "100% ",
-            "format-icons": ["", "", "", "", ""]
+            "format-icons": ["", "", "", "", "", "", "", "", ""],
         },
         "network": {
             "format": "{ifname}",
@@ -73,12 +78,11 @@
             "format-disconnected": "Disconnected ⚠",
         },
         "pulseaudio": {
-            // "scroll-step": 1, // %, can be a float
             "disable-scroll": true,
-            "format": "{icon} {volume}    {format_source}",
+            "format": "{icon} {volume}",
             "format-bluetooth": "{volume}% {icon} {format_source}",
             "format-bluetooth-muted": " {icon} {format_source}",
-            "format-muted": " {format_source}",
+            "format-muted": " ",
             "format-source": " {volume}",
             "format-source-muted": "",
             "format-icons": {
