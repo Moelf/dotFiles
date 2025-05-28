@@ -191,9 +191,10 @@ return require("lazy").setup({
             lazy = false,
             opts = {
                 provider = "ollama",
+                mode = "legacy",
                 ollama = {
-                    endpoint = "http://desktop:11434",
-                    model = "gemma3:4b-it-qat",
+                    endpoint = "http://100.89.216.27:11434",
+                    model = "devstral:24b",
                 },
             },
             build = "make",

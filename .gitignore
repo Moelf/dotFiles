@@ -1,2 +1,2 @@
-./homedir/.julia/**/Manifest.toml
+./homedir/.julia
 **/**/packer_compiled.lua
