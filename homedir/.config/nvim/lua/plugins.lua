@@ -191,7 +191,6 @@ return require("lazy").setup({
             lazy = false,
             opts = {
                 provider = "ollama",
-                mode = "legacy",
                 ollama = {
                     endpoint = "http://100.89.216.27:11434",
                     model = "devstral:24b",

@@ -1,7 +1,6 @@
 -- nvim keymap
 vim.keymap.set("i", "kj", "<Esc>", {noremap=true})
 vim.keymap.set('n', "<C-M>", function() vim.o.number = not vim.o.number end)
-vim.keymap.set("v", "<leader>cf", vim.lsp.buf.format, { remap = false })
 
 vim.cmd[[
     imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")
@@ -66,6 +65,7 @@ WhichKey.add(
     { "<leader>c", group = "LSP/Copilot commands" },
     { "<leader>cc", "<cmd>Copilot panel<CR>", desc = "Show Copilot panel", remap = false },
     { "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", desc = "Format", remap = false },
+    { "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Format", remap = false },
     { "<leader>cp", "<cmd>TroubleToggle<CR>", desc = "Show LSP trouble panel", remap = false },
   }
 )
