@@ -1,6 +1,0 @@
-[submodule ".fzf"]
-	path = fzf/.fzf
-	url = https://github.com/junegunn/fzf
-[submodule "homedir/.zprezto"]
-	path = homedir/.zprezto
-	url = https://github.com/sorin-ionescu/prezto.git
