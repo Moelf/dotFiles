@@ -190,11 +190,17 @@ return require("lazy").setup({
             event = "VeryLazy",
             lazy = false,
             opts = {
-                provider = "ollama",
-                ollama = {
-                    endpoint = "http://100.89.216.27:11434",
-                    model = "devstral:24b",
-                },
+                providers = {
+                    ollama = {
+                        endpoint = "http://100.89.216.27:11434",
+                        model = "devstral:24b",
+                        timeout = 60000,
+                        options = {
+                            num_ctx = 20480,
+                            keep_alive = "50m",
+                        },
+                    }
+                }
             },
             build = "make",
             dependencies = {
