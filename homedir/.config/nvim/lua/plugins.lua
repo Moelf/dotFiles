@@ -36,10 +36,15 @@ return require("lazy").setup({
         lazy = false,
     },
     {
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
+    },
+    {
         'neovim/nvim-lspconfig',
         config = function()
+            vim.lsp.enable('pyright')
             require 'lspconfig'.julials.setup {}
-            require 'lspconfig'.pyright.setup {}
             require 'lspconfig'.tinymist.setup {
                 settings = {
                     formatterMode = "typstyle",
@@ -207,9 +212,9 @@ return require("lazy").setup({
                             options = {
                                 num_ctx = 20480,
                                 keep_alive = "50m",
-                            },
-                        },
-                    }
+                            }
+		        }
+		    }
                 }
             },
             build = "make",
