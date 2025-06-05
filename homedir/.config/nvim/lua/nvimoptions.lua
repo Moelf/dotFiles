@@ -17,6 +17,7 @@ vim.opt.number=true
 vim.opt.laststatus=2
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
+
 vim.opt.background="dark"
 vim.cmd('colorscheme gruvbox')
 
