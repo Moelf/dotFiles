@@ -195,9 +195,11 @@ return require("lazy").setup({
                         endpoint = "http://100.89.216.27:11434",
                         model = "devstral:24b",
                         timeout = 60000,
-                        options = {
-                            num_ctx = 20480,
-                            keep_alive = "50m",
+                        extra_request_body = {
+                            options = {
+                                num_ctx = 20480,
+                                keep_alive = "50m",
+                            },
                         },
                     }
                 }
