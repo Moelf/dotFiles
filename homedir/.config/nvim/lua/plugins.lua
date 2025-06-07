@@ -13,7 +13,7 @@ return require("lazy").setup({
         "m4xshen/hardtime.nvim",
         lazy = false,
         dependencies = { "MunifTanjim/nui.nvim" },
-        opts = {},
+        opts = {disable_mouse=false},
     },
     'roman/golden-ratio',
     'mcchrish/nnn.vim',
@@ -92,6 +92,8 @@ return require("lazy").setup({
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
