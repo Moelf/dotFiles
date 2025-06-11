@@ -23,7 +23,7 @@ vim.cmd('colorscheme gruvbox')
 
 vim.api.nvim_create_user_command("TypstPin", function()
   local tinymist_id = nil
-  for _, client in pairs(vim.lsp.get_active_clients()) do
+  for _, client in pairs(vim.lsp.get_clients()) do
     if client.name == "tinymist" then
       tinymist_id = client.id
       break

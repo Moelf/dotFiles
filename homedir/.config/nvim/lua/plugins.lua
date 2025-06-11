@@ -13,10 +13,9 @@ return require("lazy").setup({
         "m4xshen/hardtime.nvim",
         lazy = false,
         dependencies = { "MunifTanjim/nui.nvim" },
-        opts = {disable_mouse=false},
+        opts = {disable_mouse = false},
     },
     'roman/golden-ratio',
-    'mcchrish/nnn.vim',
     'github/copilot.vim',
     {
         "HakonHarnes/img-clip.nvim",
@@ -205,6 +204,7 @@ return require("lazy").setup({
             event = "VeryLazy",
             lazy = false,
             opts = {
+                provider = "ollama",
                 providers = {
                     ollama = {
                         endpoint = "http://100.89.216.27:11434",
