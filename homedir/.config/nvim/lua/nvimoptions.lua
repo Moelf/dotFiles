@@ -1,5 +1,6 @@
 local indent = 4
 vim.opt.inccommand = "split" -- "for incsearch while sub
+vim.g.clipboard = "osc52"                    -- have vim use OS clipboard
 vim.opt.clipboard = "unnamedplus"                    -- have vim use OS clipboard
 vim.opt.completeopt = "menuone,noinsert,noselect"    -- autocomplete options
 vim.opt.expandtab = true                             -- expand tabs into spaces
