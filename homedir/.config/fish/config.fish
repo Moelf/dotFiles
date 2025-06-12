@@ -27,7 +27,7 @@ end
 export (envsubst < $HOME/.config/environment.d/main.conf)
 if status --is-interactive
     atuin init fish --disable-up-arrow | source
-    theme_gruvbox dark hard
+    theme_gruvbox dark
 end
 
 function mget --wraps=mega-get

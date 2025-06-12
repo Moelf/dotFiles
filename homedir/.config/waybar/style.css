@@ -1,66 +1,43 @@
 * {
     border: none;
-    border-radius: 0;
-    /* `otf-font-awesome` is required to be installed for icons */
+    font-size: 13px;
     font-family: "JuliaMono", "Font Awesome 6 Free";
-    font-size: 14px;
-    /* margin: 0 0px; */
+    color: #ffffff;
+    border-radius: 20px;
 }
 
+window {
+	/*font-weight: bold;*/
+}
 window#waybar {
-    background-image: linear-gradient(130deg, #a6c0fe 0%, #f68084 100%);
-    background-color: #f68084;
-    opacity: 0.9;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background: rgba(0, 0, 0, 0);
 }
-
-window#waybar.hidden {
-    opacity: 0.2;
+/*-----module groups----*/
+.modules-right {
+	background-color: rgba(146,64,70,0.9);
+    margin: 2px 10px 0 0;
 }
-
-/* window#waybar.empty { */
-/*     background-color: transparent; */
-/* } */
-/* window#waybar.solo { */
-/*     background-color: #FFFFFF; */
-/* } */
-
+.modules-center {
+	background-color: rgba(146,64,70,0.9);
+    margin: 2px 0 0 0;
+}
+.modules-left {
+    margin: 2px 0 0 5px;
+	background-color: rgba(246,128,132,0.9);
+}
+/*-----modules indv----*/
 #workspaces button {
-    padding: 1px 7px;
-    color: #131313;
-    border-radius: 5px;
+    padding: 1px 5px;
+    background-color: transparent;
 }
-
 #workspaces button:hover {
-    background: lightblue;
-    color: #131313;
-    border-bottom: 3px solid #ffffff;
-    transition-duration: .1s;
-
+    box-shadow: inherit;
+	background-color: rgba(146,64,70,0.9);
 }
 
-#workspaces button.active {
-    background: #3f3f3f;
-    color: white;
-    border-bottom: 3px solid #ffffff;
+#workspaces button.focused {
+	background-color: rgba(146,64,70,0.9);
 
-}
-
-#workspaces button.active:hover {
-    background: lightblue;
-    color: black;
-    border-bottom: 3px solid #ffffff;
-
-}
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
 }
 
 #clock,
@@ -68,43 +45,49 @@ window#waybar.hidden {
 #cpu,
 #memory,
 #temperature,
-#backlight,
 #network,
 #pulseaudio,
 #custom-media,
 #tray,
 #mode,
-#idle_inhibitor,
-#mpd 
-#tray {
-    padding: 0 14px;
-    margin: 0 0px;
-    color: #000000;
+#custom-power,
+#custom-menu,
+#idle_inhibitor {
+    padding: 0 10px;
 }
-
-@keyframes blink {
-    to {
-        color: #282828;
-    }
+#mode {
+    color: #cc3436;
+    font-weight: bold;
 }
-
-#battery.critical:not(.charging) {
-    color: #282828;
-    animation-name: blink;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+#custom-power {
+    background-color: rgba(0,119,179,0.6);
+    border-radius: 100px;
+    margin: 5px 5px;
+    padding: 1px 1px 1px 6px;
 }
-
-label:focus {
-    background-color: #000000;
+/*-----Indicators----*/
+#idle_inhibitor.activated {
+    color: #2dcc36;
 }
-
-#pulseaudio {
-    border-radius: 5px 0px 0px 5px;
-}
-
 #pulseaudio.muted {
-    color: red;
+    color: #cc3436;
 }
+#battery.charging {
+    color: #2dcc36;
+}
+#battery.warning:not(.charging) {
+	color: #e6e600;
+}
+#battery.critical:not(.charging) {
+    color: #cc3436;
+}
+#temperature.critical {
+    color: #cc3436;
+}
+/*-----Colors----*/
+/*
+ *rgba(0,85,102,1),#005566 --> Indigo(dye)
+ *rgba(0,43,51,1),#002B33 --> Dark Green 
+ *rgba(0,153,153,1),#009999 --> Persian Green 
+ *
+ */

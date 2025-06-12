@@ -1,7 +1,14 @@
 {
     "layer": "top",
         "height": 30,
-        "modules-left": ["pulseaudio", "backlight", "battery", "power-profiles-daemon", "hyprland/workspaces", "hyprland/submap"],
+        "modules-left": [
+            "pulseaudio",
+            "backlight",
+            "battery",
+            "power-profiles-daemon",
+            "wlr/taskbar",
+            "niri/workspaces",
+        ],
         "modules-center": ["clock"],
         "modules-right": ["network", "tray"],
 
@@ -25,12 +32,21 @@
             "tooltip-format": "Power profile: {profile}nDriver: {driver}",
             "tooltip": true,
         },
-        "hyprland/workspaces": {
+        "niri/workspaces": {
             "disable-scroll": true,
             "all-outputs": true,
         },
         "hyprland/submap": {
             "format": "<span style=\"italic\">{}</span>"
+        },
+        "wlr/taskbar": {
+            // "all-outputs": true,
+            // "format": "{icon} {title} {short_state}",
+            "format": "{icon}",
+            "tooltip-format": "{title} | {app_id}",
+            "on-click": "activate",
+            "on-click-middle": "close",
+            "on-click-right": "fullscreen"
         },
         "idle_inhibitor": {
             "format": "{icon}",
