@@ -21,7 +21,7 @@
 # # separated by equals signs.
 font-family=JuliaMono
 font-feature=-calt
-window-decoration = none
+window-decoration = server
 clipboard-read=allow
 clipboard-write=allow
 theme=GruvboxDark
