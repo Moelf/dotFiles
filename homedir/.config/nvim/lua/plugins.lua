@@ -43,6 +43,7 @@ return require("lazy").setup({
         'neovim/nvim-lspconfig',
         config = function()
             vim.lsp.enable('pyright')
+            require('lspconfig').harper_ls.setup {}
             require 'lspconfig'.julials.setup {}
             require 'lspconfig'.tinymist.setup {
                 settings = {
@@ -61,7 +62,16 @@ return require("lazy").setup({
             vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
         end
     },
-    'williamboman/mason.nvim',
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = { "harper_ls", "julials", "tinymist"},
+        },
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
     'echasnovski/mini.icons',
     'folke/which-key.nvim',
     {
