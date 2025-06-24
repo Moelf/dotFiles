@@ -64,17 +64,17 @@ return require("lazy").setup({
             vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
         end
     },
-    {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            automatic_enable = false,
-            ensure_installed = { "lua_ls", "harper_ls", "julials", "tinymist" },
-        },
-        dependencies = {
-            { "mason-org/mason.nvim", opts = {} },
-            "neovim/nvim-lspconfig",
-        },
-    },
+    -- {
+    --     "mason-org/mason-lspconfig.nvim",
+    --     opts = {
+    --         automatic_enable = false,
+    --         ensure_installed = { "lua_ls", "harper_ls", "julials", "tinymist" },
+    --     },
+    --     dependencies = {
+    --         { "mason-org/mason.nvim", opts = {} },
+    --         "neovim/nvim-lspconfig",
+    --     },
+    -- },
     'echasnovski/mini.icons',
     'folke/which-key.nvim',
     {

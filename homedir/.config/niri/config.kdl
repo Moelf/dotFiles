@@ -237,6 +237,9 @@ layout {
 spawn-at-startup "synology-drive"
 spawn-at-startup "waybar"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "gsettings set org.gnome.desktop.interface color-scheme prefer-dark"
+spawn-at-startup "gsettings set org.gnome.desktop.interface gtk-theme Adawaita"
+spawn-at-startup "gsettings set org.gnome.desktop.interface icon-theme Adawaita"
 environment {
     DISPLAY ":0"
 }
