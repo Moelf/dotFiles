@@ -13,7 +13,7 @@ return require("lazy").setup({
         "m4xshen/hardtime.nvim",
         lazy = false,
         dependencies = { "MunifTanjim/nui.nvim" },
-        opts = {disable_mouse = false},
+        opts = { disable_mouse = false },
     },
     'roman/golden-ratio',
     'github/copilot.vim',
@@ -42,21 +42,23 @@ return require("lazy").setup({
     {
         'neovim/nvim-lspconfig',
         config = function()
+            vim.lsp.enable('lua_ls')
             vim.lsp.enable('pyright')
-            require('lspconfig').harper_ls.setup {}
-            require 'lspconfig'.julials.setup {}
-            require 'lspconfig'.tinymist.setup {
+            vim.lsp.enable('harper_ls')
+            vim.lsp.enable('julials')
+            vim.lsp.enable('tinymist')
+            vim.lsp.config('tinymist', {
+                -- Server-specific settings. See `:help lsp-quickstart`
                 settings = {
-                    formatterMode = "typstyle",
-                    exportPdf = "never",
-                }
-            }
+                    ['tinymist'] = {formatterMode = "typstyle", exportPdf = "never"},
+                },
+            })
         end
     },
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         event = "VeryLazy", -- Or `LspAttach`
-        priority = 1000, -- needs to be loaded in first
+        priority = 1000,    -- needs to be loaded in first
         config = function()
             require('tiny-inline-diagnostic').setup()
             vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
@@ -65,7 +67,8 @@ return require("lazy").setup({
     {
         "mason-org/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = { "harper_ls", "julials", "tinymist"},
+            automatic_enable = false,
+            ensure_installed = { "lua_ls", "harper_ls", "julials", "tinymist" },
         },
         dependencies = {
             { "mason-org/mason.nvim", opts = {} },
@@ -127,114 +130,114 @@ return require("lazy").setup({
                         vim.api.nvim_feedkeys(
                             vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n',
                             true)
-                        end),
-                        ["<C-p>"] = cmp.mapping.select_prev_item(),
-                        ["<C-n>"] = cmp.mapping.select_next_item(),
-                        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-                        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-                        ["<C-Space>"] = cmp.mapping.complete(),
-                        ["<C-e>"] = cmp.mapping.close(),
-                        ["<CR>"] = cmp.mapping.confirm({
-                            behavior = cmp.ConfirmBehavior.Replace,
-                            select = true,
-                        }),
-                        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
-                        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
-                    },
+                    end),
+                    ["<C-p>"] = cmp.mapping.select_prev_item(),
+                    ["<C-n>"] = cmp.mapping.select_next_item(),
+                    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.close(),
+                    ["<CR>"] = cmp.mapping.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                        select = true,
+                    }),
+                    ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+                    ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
+                },
 
-                    experimental = {
-                        ghost_text = false -- this feature conflict with copilot.vim's preview.
-                    },
+                experimental = {
+                    ghost_text = false     -- this feature conflict with copilot.vim's preview.
+                },
 
-                    -- You should specify your *installed* sources.
-                    sources = {
-                        { name = "nvim_lsp" },
-                        { name = "buffer" },
-                        { name = "path" }
-                    },
-                })
-            end
-        },
+                -- You should specify your *installed* sources.
+                sources = {
+                    { name = "nvim_lsp" },
+                    { name = "buffer" },
+                    { name = "path" }
+                },
+            })
+        end
+    },
 
-        {
-            'nvim-telescope/telescope.nvim',
-            lazy = false,
-            dependencies = { { 'nvim-lua/plenary.nvim', lazy = false } }
-        },
-        'JuliaEditorSupport/julia-vim',
-        {
-            'akinsho/toggleterm.nvim',
-            version = "*",
-            config = function()
-                require('toggleterm').setup {
-                    open_mapping = [[<c-t>]],
-                    direction = 'vertical',
-                    size = vim.o.columns * 0.4
-                }
-            end
-        },
-        'morhetz/gruvbox',
-        {
-            'nvim-tree/nvim-tree.lua',
-            config = true
-        },
-        {
-            'nvim-lualine/lualine.nvim',
-            config = function()
-                require('lualine').setup {
-                    options = { theme = 'gruvbox_dark' }
-                }
-            end
-        },
-        'itchyny/vim-cursorword',
-        'tpope/vim-commentary',
-        'tpope/vim-surround',
-        'airblade/vim-gitgutter',
-        'Yggdroot/indentLine',
-        {
-            "lervag/vimtex",
-            lazy = false,
-            init = function()
-                -- VimTeX configuration goes here, e.g.
-                vim.g.vimtex_view_general_viewer = 'zathura'
-                vim.g.tex_flavor = 'latex'
-            end
-        },
-        {
-            'mfussenegger/nvim-lint',
-            config = function()
-                local null = require("lint")
-                null.linters_by_ft = {
-                    markdown = { 'vale', }
-                }
-            end
-        },
-        {
-            "yetone/avante.nvim",
-            event = "VeryLazy",
-            lazy = false,
-            opts = {
-                provider = "ollama",
-                providers = {
-                    ollama = {
-                        endpoint = "http://100.89.216.27:11434",
-                        model = "devstral:24b",
-                        timeout = 60000,
-                        extra_request_body = {
-                            options = {
-                                num_ctx = 20480,
-                                keep_alive = "50m",
-                            }
-		        }
-		    }
-                }
-            },
-            build = "make",
-            dependencies = {
-                "nvim-treesitter/nvim-treesitter",
-                "stevearc/dressing.nvim",
-                "nvim-lua/plenary.nvim",
-                "MunifTanjim/nui.nvim",
+    {
+        'nvim-telescope/telescope.nvim',
+        lazy = false,
+        dependencies = { { 'nvim-lua/plenary.nvim', lazy = false } }
+    },
+    'JuliaEditorSupport/julia-vim',
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        config = function()
+            require('toggleterm').setup {
+                open_mapping = [[<c-t>]],
+                direction = 'vertical',
+                size = vim.o.columns * 0.4
             }
+        end
+    },
+    'morhetz/gruvbox',
+    {
+        'nvim-tree/nvim-tree.lua',
+        config = true
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        config = function()
+            require('lualine').setup {
+                options = { theme = 'gruvbox_dark' }
+            }
+        end
+    },
+    'itchyny/vim-cursorword',
+    'tpope/vim-commentary',
+    'tpope/vim-surround',
+    'airblade/vim-gitgutter',
+    'Yggdroot/indentLine',
+    {
+        "lervag/vimtex",
+        lazy = false,
+        init = function()
+            -- VimTeX configuration goes here, e.g.
+            vim.g.vimtex_view_general_viewer = 'zathura'
+            vim.g.tex_flavor = 'latex'
+        end
+    },
+    {
+        'mfussenegger/nvim-lint',
+        config = function()
+            local null = require("lint")
+            null.linters_by_ft = {
+                markdown = { 'vale', }
+            }
+        end
+    },
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        opts = {
+            provider = "ollama",
+            providers = {
+                ollama = {
+                    endpoint = "http://100.89.216.27:11434",
+                    model = "devstral:24b",
+                    timeout = 60000,
+                    extra_request_body = {
+                        options = {
+                            num_ctx = 20480,
+                            keep_alive = "50m",
+                        }
+                    }
+                }
+            }
+        },
+        build = "make",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
         }
-    })
+    }
+})
