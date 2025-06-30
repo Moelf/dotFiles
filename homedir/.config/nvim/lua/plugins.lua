@@ -42,17 +42,12 @@ return require("lazy").setup({
     {
         'neovim/nvim-lspconfig',
         config = function()
-            vim.lsp.enable('lua_ls')
-            vim.lsp.enable('pyright')
-            vim.lsp.enable('harper_ls')
             vim.lsp.enable('julials')
-            vim.lsp.enable('tinymist')
-            vim.lsp.config('tinymist', {
-                -- Server-specific settings. See `:help lsp-quickstart`
-                settings = {
-                    ['tinymist'] = {formatterMode = "typstyle", exportPdf = "never"},
-                },
-            })
+            --     -- Server-specific settings. See `:help lsp-quickstart`
+            --     settings = {
+            --         ['tinymist'] = { formatterMode = "typstyle", exportPdf = "never" },
+            --     },
+            -- })
         end
     },
     {
@@ -64,17 +59,16 @@ return require("lazy").setup({
             vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
         end
     },
-    -- {
-    --     "mason-org/mason-lspconfig.nvim",
-    --     opts = {
-    --         automatic_enable = false,
-    --         ensure_installed = { "lua_ls", "harper_ls", "julials", "tinymist" },
-    --     },
-    --     dependencies = {
-    --         { "mason-org/mason.nvim", opts = {} },
-    --         "neovim/nvim-lspconfig",
-    --     },
-    -- },
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = { "pyrefly", "lua_ls", "harper_ls", "tinymist" },
+        },
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
     'echasnovski/mini.icons',
     'folke/which-key.nvim',
     {
@@ -146,7 +140,7 @@ return require("lazy").setup({
                 },
 
                 experimental = {
-                    ghost_text = false     -- this feature conflict with copilot.vim's preview.
+                    ghost_text = false -- this feature conflict with copilot.vim's preview.
                 },
 
                 -- You should specify your *installed* sources.
@@ -165,6 +159,26 @@ return require("lazy").setup({
         dependencies = { { 'nvim-lua/plenary.nvim', lazy = false } }
     },
     'JuliaEditorSupport/julia-vim',
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+        config = function()
+            require("conform").setup({
+                formatters = {
+                    runic = {
+                        command = "julia",
+                        args = { "--startup-file=no", "--project=@runic", "-e", "using Runic; exit(Runic.main(ARGS))" },
+                    },
+                },
+                formatters_by_ft = {
+                    julia = { 'runic' },
+                },
+                default_format_opts = {
+                    lsp_format = "fallback",
+                },
+            })
+        end
+    },
     {
         'akinsho/toggleterm.nvim',
         version = "*",
@@ -217,19 +231,19 @@ return require("lazy").setup({
         event = "VeryLazy",
         lazy = false,
         opts = {
-            provider = "ollama",
+            provider = "openai",
             providers = {
                 ollama = {
-                    endpoint = "http://100.89.216.27:11434",
-                    model = "devstral:24b",
+                    endpoint = "http://desktop:11434",
+                    model = "gemma3:4b-it-qat",
                     timeout = 60000,
                     extra_request_body = {
                         options = {
-                            num_ctx = 20480,
-                            keep_alive = "50m",
+                            num_ctx = 10480,
+                            keep_alive = "240m",
                         }
                     }
-                }
+                },
             }
         },
         build = "make",

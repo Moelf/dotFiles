@@ -64,7 +64,7 @@ WhichKey.add(
   {
     { "<leader>c", group = "LSP/Copilot commands" },
     { "<leader>cc", "<cmd>Copilot panel<CR>", desc = "Show Copilot panel", remap = false },
-    { "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", desc = "Format", remap = false },
+    { "<leader>cf", "<cmd>lua require('conform').format({async=true})<CR>", desc = "conform Format", remap = false },
     { "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Format", remap = false },
     { "<leader>cp", "<cmd>Trouble diagnostics toggle<CR>", desc = "Show LSP trouble panel", remap = false },
   }
