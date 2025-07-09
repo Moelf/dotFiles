@@ -12,4 +12,5 @@ function mega()
 end
 using Revise
 ENV["JULIA_EDITOR"] = "nvim"
-# ENV["JULIA_PYTHONCALL_EXE"] = "/usr/bin/python"
+using KittyTerminalImages
+set_kitty_config!(:scale, 0.5)

@@ -26,7 +26,7 @@ return require("lazy").setup({
         },
         keys = {
             -- suggested keymap
-            { "<C-S-p>", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+            { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
         },
     },
     {
