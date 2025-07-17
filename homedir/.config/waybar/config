@@ -9,7 +9,7 @@
             "wlr/taskbar",
             "niri/workspaces",
         ],
-        "modules-center": ["clock"],
+        "modules-center": ["clock", "custom/weather"],
         "modules-right": ["network", "tray"],
 
         // Modules configuration
@@ -111,5 +111,12 @@
                 "default": ["", "", ""]
             },
             "on-click": "pavucontrol"
-        }
+        },
+        "custom/weather": {
+            "format": "{}°",
+            "tooltip": true,
+            "interval": 3600,
+            "exec": "wttrbar --location Boston",
+            "return-type": "json"
+        },
 }
