@@ -24,7 +24,7 @@ font-feature=-calt
 window-decoration = server
 clipboard-read=allow
 clipboard-write=allow
-theme=GruvboxDark
+theme="Gruvbox Dark"
 #
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:
