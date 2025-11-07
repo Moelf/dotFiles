@@ -79,6 +79,15 @@ return require("lazy").setup({
                 { "mason-org/mason.nvim", opts = {} },
                 "neovim/nvim-lspconfig",
             },
+            config = function()
+                require("mason-lspconfig").setup {
+                    automatic_enable = {
+                        exclude = {
+                            "julials"
+                        }
+                    }
+                }
+            end
         },
         'echasnovski/mini.icons',
         'folke/which-key.nvim',
