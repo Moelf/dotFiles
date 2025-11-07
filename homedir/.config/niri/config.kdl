@@ -31,7 +31,7 @@ input {
         // drag false
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
+        // accel-speed 0.0
         // accel-profile "flat"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
@@ -40,7 +40,7 @@ input {
     mouse {
         // off
         // natural-scroll
-        // accel-speed 0.2
+        accel-speed -0.4
         // accel-profile "flat"
         // scroll-method "no-scroll"
     }
@@ -72,11 +72,21 @@ input {
 output "DP-3" {
     position x=1280 y=-1440
 }
+output "DP-2" {
+    mode "2560x1440@179.960"
+    // variable-refresh-rate on-demand=true
+    position x=1280 y=-1440
+}
 output "eDP-1" {
     scale 1.5
     variable-refresh-rate on-demand=true
     position x=1735 y=0
 }
+
+// output "DP-3"{
+//     // off
+//     mode "1920x1080@29.9"
+// }
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -292,6 +302,7 @@ workspace "Terminal"
 workspace "Editor"
 workspace "Firefox"
 workspace "Document"
+workspace "Email"
 workspace "Chat"
 
 binds {
@@ -312,7 +323,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "wofi" "--show" "drun"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-s" "fill" "-i" "~/Documents/github/dotFiles/apothecary_lock.jpg"; }
+    Mod+Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-s" "fill" "-i" "~/Documents/github/dotFiles/apothecary_lock.jpg"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -352,6 +363,8 @@ binds {
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
+    Mod+Alt+H     { move-workspace-to-monitor-left; }
+    Mod+Alt+L     { move-workspace-to-monitor-right; }
     Mod+Alt+J     { move-workspace-to-monitor-down; }
     Mod+Alt+K     { move-workspace-to-monitor-up; }
     // You can bind mouse wheel scroll ticks using the following syntax.
@@ -397,8 +410,8 @@ binds {
     Mod+1 { focus-workspace "Terminal"; }
     Mod+2 { focus-workspace "Editor"; }
     Mod+3 { focus-workspace "Firefox"; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace "Document"; }
+    Mod+4 { focus-workspace "Document"; }
+    Mod+5 { focus-workspace "Email"; }
     Mod+6 { focus-workspace 6; }
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace "Chat"; }
@@ -406,8 +419,8 @@ binds {
     Mod+Shift+1 { move-window-to-workspace "Terminal"; }
     Mod+Shift+2 { move-window-to-workspace "Editor"; }
     Mod+Shift+3 { move-window-to-workspace "Firefox"; }
-    Mod+Shift+4 { move-window-to-workspace 4; }
-    Mod+Shift+5 { move-window-to-workspace "Document"; }
+    Mod+Shift+4 { move-window-to-workspace "Document"; }
+    Mod+Shift+5 { move-window-to-workspace "Email"; }
     Mod+Shift+6 { move-window-to-workspace 6; }
     Mod+Shift+7 { move-window-to-workspace 7; }
     Mod+Shift+8 { move-window-to-workspace "Chat"; }

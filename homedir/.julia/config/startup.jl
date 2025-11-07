@@ -12,5 +12,5 @@ function mega()
 end
 using Revise
 ENV["JULIA_EDITOR"] = "nvim"
+
 using KittyTerminalImages
-set_kitty_config!(:scale, 0.5)

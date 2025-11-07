@@ -1,5 +1,7 @@
 [deps]
 BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+BinaryBuilder = "12aac903-9f7c-5d81-afc2-d9565ea332ae"
+BinaryBuilderBase = "7f725544-6523-48cd-82d1-3fa08ff4056e"
 Debugger = "31a5f54b-26ea-5ae9-a837-f05ce5417438"
 JET = "c3a54625-cd67-489e-a8e7-0a5a0ff4e31b"
 OhMyREPL = "5fb14364-9ced-5910-84b2-373655c76a03"
