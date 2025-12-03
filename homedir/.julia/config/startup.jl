@@ -13,4 +13,4 @@ end
 using Revise
 ENV["JULIA_EDITOR"] = "nvim"
 
-using KittyTerminalImages
+#=using KittyTerminalImages=#

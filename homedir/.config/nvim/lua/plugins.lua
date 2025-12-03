@@ -51,6 +51,11 @@ return require("lazy").setup({
             cmd = "Trouble",
         },
         {
+            'mrcjkb/rustaceanvim',
+            version = '^6', -- Recommended
+            lazy = false, -- This plugin is already lazy
+        },
+        {
             'neovim/nvim-lspconfig',
             config = function()
                 vim.lsp.enable('julials')
