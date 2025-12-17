@@ -1,6 +1,6 @@
 return require("lazy").setup({
     defaults = {
-        version = "*",
+        version = false,
     },
     spec = {
         'psliwka/vim-smoothie',
@@ -53,7 +53,7 @@ return require("lazy").setup({
         {
             'mrcjkb/rustaceanvim',
             version = '^6', -- Recommended
-            lazy = false, -- This plugin is already lazy
+            lazy = false,   -- This plugin is already lazy
         },
         {
             'neovim/nvim-lspconfig',
@@ -257,19 +257,16 @@ return require("lazy").setup({
             event = "VeryLazy",
             lazy = false,
             opts = {
-                provider = "openai",
+                provider = "ollama",
+                auto_suggestions_provider = "ollama",
                 providers = {
                     ollama = {
+                        model = "ministral-3:14b",
                         endpoint = "http://desktop:11434",
-                        model = "gemma3:4b-it-qat",
-                        timeout = 60000,
-                        extra_request_body = {
-                            options = {
-                                num_ctx = 10480,
-                                keep_alive = "240m",
-                            }
-                        }
                     },
+                },
+                behaviour = {
+                    auto_suggestions = false,
                 }
             },
             build = "make",
