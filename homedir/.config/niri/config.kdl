@@ -31,6 +31,7 @@ input {
         // drag false
         // drag-lock
         natural-scroll
+        scroll-factor 0.3
         // accel-speed 0.0
         // accel-profile "flat"
         // scroll-method "two-finger"

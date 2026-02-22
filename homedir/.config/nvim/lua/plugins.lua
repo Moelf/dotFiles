@@ -14,12 +14,6 @@ return require("lazy").setup({
             }
         },
         {
-            "m4xshen/hardtime.nvim",
-            lazy = false,
-            dependencies = { "MunifTanjim/nui.nvim" },
-            opts = { disable_mouse = false },
-        },
-        {
             'nvim-focus/focus.nvim',
             config = function()
                 require("focus").setup(
@@ -31,10 +25,6 @@ return require("lazy").setup({
         {
             "HakonHarnes/img-clip.nvim",
             event = "VeryLazy",
-            opts = {
-                -- add options here
-                -- or leave it empty to use the default settings
-            },
             keys = {
                 -- suggested keymap
                 { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
@@ -56,17 +46,6 @@ return require("lazy").setup({
             lazy = false,   -- This plugin is already lazy
         },
         {
-            'neovim/nvim-lspconfig',
-            config = function()
-                vim.lsp.enable('julials')
-                --     -- Server-specific settings. See `:help lsp-quickstart`
-                --     settings = {
-                --         ['tinymist'] = { formatterMode = "typstyle", exportPdf = "never" },
-                --     },
-                -- })
-            end
-        },
-        {
             "rachartier/tiny-inline-diagnostic.nvim",
             event = "VeryLazy", -- Or `LspAttach`
             priority = 1000,    -- needs to be loaded in first
@@ -78,21 +57,12 @@ return require("lazy").setup({
         {
             "mason-org/mason-lspconfig.nvim",
             opts = {
-                ensure_installed = { "pyrefly", "lua_ls", "harper_ls", "tinymist" },
+                ensure_installed = { "ruff", "ty", "lua_ls", "harper_ls", "tinymist" },
             },
             dependencies = {
                 { "mason-org/mason.nvim", opts = {} },
                 "neovim/nvim-lspconfig",
             },
-            config = function()
-                require("mason-lspconfig").setup {
-                    automatic_enable = {
-                        exclude = {
-                            "julials"
-                        }
-                    }
-                }
-            end
         },
         'echasnovski/mini.icons',
         'folke/which-key.nvim',
@@ -198,6 +168,7 @@ return require("lazy").setup({
                     },
                     formatters_by_ft = {
                         julia = { 'runic' },
+                        python = { "ruff" },
                     },
                     default_format_opts = {
                         lsp_format = "fallback",
