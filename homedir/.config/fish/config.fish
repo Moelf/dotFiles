@@ -38,6 +38,3 @@ function mget --wraps=mega-get
     end
 end
 fish_add_path /Users/akako/.pixi/bin
-
-# Added by LM Studio CLI tool (lms)
-set -gx PATH $PATH /home/akako/.lmstudio/bin
