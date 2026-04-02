@@ -25,11 +25,11 @@ window-decoration = server
 clipboard-read=allow
 clipboard-write=allow
 theme="Gruvbox Dark"
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind
 #
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:
-Alt+Left=
-Alt+Right=
 # key= value
 # key =value
 # key = value
