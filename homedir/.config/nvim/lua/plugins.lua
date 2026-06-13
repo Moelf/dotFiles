@@ -168,6 +168,7 @@ return require("lazy").setup({
                     formatters_by_ft = {
                         julia = { 'runic' },
                         python = { "ruff" },
+                        typst = { "typstyle" },
                     },
                     default_format_opts = {
                         lsp_format = "fallback",

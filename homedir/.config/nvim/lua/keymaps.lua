@@ -6,18 +6,6 @@ vim.cmd [[
     imap <expr> <Plug>(vimrc:copilot-dummy-map) copilot#Accept("\<Tab>")
 ]]
 
--- Yes, we're just executing a bunch of Vimscript, but this is the officially
--- endorsed method; see https://github.com/L3MON4D3/LuaSnip#keymaps
--- vim.cmd[[
--- " Use Tab to expand and jump through snippets
--- imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
--- smap <silent><expr> <Tab> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
-
--- " Use Shift-Tab to jump backwards through snippets
--- imap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
--- smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
--- ]]
-
 local WhichKey = require("which-key")
 local tl = require("telescope.builtin")
 WhichKey.add(
@@ -32,6 +20,9 @@ WhichKey.add({
     { "<leader>f",  group = "Telescope" },
     { "<leader>ff", tl.find_files,      desc = "Find Files",   remap = false },
     { "<leader>fg", tl.live_grep,       desc = "Live RipGrep", remap = false },
+    { "<leader>fo", tl.oldfiles,       desc = "Grep Oldfiles", remap = false },
+    { "<leader>fb", tl.buffers,       desc = "Search Buffers", remap = false },
+    { "<leader>fe", function() tl.find_files({cwd = vim.fn.expand("%:p:h")}) end, desc = "Search Nearby Files", remap = false },
 }
 )
 
