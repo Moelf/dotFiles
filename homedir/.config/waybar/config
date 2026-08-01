@@ -29,7 +29,7 @@
         },
         "power-profiles-daemon": {
             "format": "({profile})",
-            "tooltip-format": "Power profile: {profile}nDriver: {driver}",
+            "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
             "tooltip": true,
         },
         "niri/workspaces": {

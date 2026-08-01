@@ -57,3 +57,39 @@ require("mason-lspconfig").setup {
         }
     }
 }
+
+vim.lsp.config("tinymist", {
+  cmd = { "tinymist" },
+  filetypes = { "typst" },
+
+  settings = {
+    formatterMode = "typstyle",
+    exportPdf = "onType",
+  },
+
+  on_attach = function(client, bufnr)
+    vim.keymap.set("n", "<leader>tp", function()
+      client:exec_cmd({
+        title = "pin",
+        command = "tinymist.pinMain",
+        arguments = { vim.api.nvim_buf_get_name(bufnr) },
+      }, { bufnr = bufnr })
+    end, {
+      buffer = bufnr,
+      desc = "[T]inymist [P]in",
+      noremap = true,
+    })
+
+    vim.keymap.set("n", "<leader>tu", function()
+      client:exec_cmd({
+        title = "unpin",
+        command = "tinymist.pinMain",
+        arguments = { vim.v.null },
+      }, { bufnr = bufnr })
+    end, {
+      buffer = bufnr,
+      desc = "[T]inymist [U]npin",
+      noremap = true,
+    })
+  end,
+})

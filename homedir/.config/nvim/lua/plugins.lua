@@ -17,8 +17,68 @@ return require("lazy").setup({
             'nvim-focus/focus.nvim',
             config = function()
                 require("focus").setup(
-                    { ui = { cursorline = false, } }
+                    { ui = { cursorline = true, } }
                 )
+
+                -- Let diffview own the layout in its own tab; focus.nvim's golden ratio
+                -- squeezes the content panes and stretches the file panel.
+                local ignore_filetypes = { 'DiffviewFiles', 'DiffviewFileHistory' }
+                local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
+
+                -- focus drops these to 1 globally whenever it bails out, and never restores
+                -- them, breaking vim's own minimum-width handling for the rest of the session
+                local winwidth, winminwidth = vim.o.winwidth, vim.o.winminwidth
+
+                local function in_diffview_tab()
+                    local ok, lib = pcall(require, 'diffview.lib')
+                    return ok and lib.tabpage_to_view(vim.api.nvim_get_current_tabpage()) ~= nil
+                end
+
+                local augroup = vim.api.nvim_create_augroup('FocusDisable', { clear = true })
+
+                vim.api.nvim_create_autocmd('WinEnter', {
+                    group = augroup,
+                    callback = function(args)
+                        vim.w.focus_disable = in_diffview_tab()
+                            or vim.tbl_contains(ignore_buftypes, vim.bo[args.buf].buftype)
+                        vim.o.winwidth, vim.o.winminwidth = winwidth, winminwidth
+                    end,
+                    desc = 'Disable focus autoresize in diffview tabs and special buftypes',
+                })
+
+                vim.api.nvim_create_autocmd('FileType', {
+                    group = augroup,
+                    callback = function(args)
+                        -- args.buf: diffview sets 'filetype' on a buffer that is not current
+                        vim.b[args.buf].focus_disable =
+                            vim.tbl_contains(ignore_filetypes, vim.bo[args.buf].filetype)
+                    end,
+                    desc = 'Disable focus autoresize for diffview panels',
+                })
+
+                -- tag the windows before focus gets a WinEnter to react to, and undo
+                -- whatever it managed to resize already
+                vim.api.nvim_create_autocmd('User', {
+                    group = augroup,
+                    pattern = { 'DiffviewViewOpened', 'DiffviewViewPostLayout', 'DiffviewViewEnter' },
+                    callback = function()
+                        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+                            vim.w[win].focus_disable = true
+                        end
+                        vim.cmd('wincmd =')
+                    end,
+                    desc = 'Hand the diffview tab layout back to diffview',
+                })
+
+                vim.api.nvim_create_autocmd('VimResized', {
+                    group = augroup,
+                    callback = function()
+                        if in_diffview_tab() then
+                            vim.cmd('wincmd =')
+                        end
+                    end,
+                    desc = 'Rebalance diffview panes on terminal resize',
+                })
             end
         },
         'github/copilot.vim',
@@ -33,6 +93,18 @@ return require("lazy").setup({
             'kaarmu/typst.vim',
             ft = 'typst',
             lazy = false,
+        },
+        {
+            "sindrets/diffview.nvim",
+            opts = {
+                use_icons = false,
+            },
+        },
+        {
+            'chomosuke/typst-preview.nvim',
+            ft = 'typst',
+            version = '1.*',
+            opts = {},
         },
         {
             "folke/trouble.nvim",
@@ -67,9 +139,10 @@ return require("lazy").setup({
         'folke/which-key.nvim',
         {
             "nvim-treesitter/nvim-treesitter",
+            branch = "main",
             build = ":TSUpdate",
             config = function()
-                local nts = require("nvim-treesitter.configs")
+                local nts = require("nvim-treesitter")
                 nts.setup {
                     ensure_installed = {
                         "c", "lua", "vim", "vimdoc", "query", "typst",
@@ -228,12 +301,12 @@ return require("lazy").setup({
             event = "VeryLazy",
             lazy = false,
             opts = {
-                provider = "ollama",
-                auto_suggestions_provider = "ollama",
+                provider = "openai",
                 providers = {
-                    ollama = {
-                        model = "ministral-3:14b",
-                        endpoint = "http://desktop:11434",
+                    openai = {
+                        endpoint = "http://desktop:4000/",
+                        model = "Gemma4",
+                        timeout = 30000,
                     },
                 },
                 behaviour = {
